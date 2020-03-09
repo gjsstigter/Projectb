@@ -18,6 +18,7 @@ class App extends Component {
                 <div className="App">
                     <Nav/>
 
+
                     <Switch>
                         <Route path="/" exact component={Home}/>
                         <Route component={P404}/>
