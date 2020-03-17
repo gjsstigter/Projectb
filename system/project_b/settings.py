@@ -12,7 +12,7 @@ SECRET_KEY = '=l28(nch_b(ehg!_va#l9ve649!8gi0+=$_()h^l3bhlm(r(-)'
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # SECURITY WARNING: Change to whitelist when running in production
 CORS_ORIGIN_ALLOW_ALL = True

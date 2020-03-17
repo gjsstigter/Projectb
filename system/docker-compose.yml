@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:5.7
+    hostname: db
+    volumes:
+      - ../../../../../data/mysql:/var/lib/mysql
+      - ../../../../../logs/mysql:/var/log/mysqlv
+      - ../../../../../data/db-dumps:/db-dumps
+      - $SSH_AUTH_SOCK:/ssh-agent
+    environment:
+      SSH_AUTH_SOCK: /ssh-agent
+      MYSQL_ROOT_PASSWORD: D2h8o6iXt2Of
+      MYSQL_DATABASE: projectb
+      MYSQL_USER: projectb
+      MYSQL_PASSWORD: 8CLKJs3OcztR
+
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:80
+    hostname: django
+    ports:
+      - 80
+    volumes:
+      - ./:/code
+    depends_on:
+      - db
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    hostname: phpmyadmin
+    links:
+      - db:db
