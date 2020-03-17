@@ -1,6 +1,7 @@
-
 # Created by https://www.gitignore.io/api/react,django,python,pycharm,webstorm,phpstorm,jetbrains,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=react,django,python,pycharm,webstorm,phpstorm,jetbrains,visualstudiocode
+
+.env
 
 ### Django ###
 *.log
