@@ -24,6 +24,7 @@ services:
       - 80
     volumes:
       - ./:/code
+      - ../src/.env:/code/.env
     depends_on:
       - db
 
