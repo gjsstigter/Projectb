@@ -14,6 +14,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# SECURITY WARNING: Change to whitelist when running in production
+CORS_ORIGIN_ALLOW_ALL = True
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
