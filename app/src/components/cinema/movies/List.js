@@ -23,9 +23,11 @@ class List extends Component{
     movieList = () => {
         let {movies} = this.state;
         let movieList = movies.map((movie) => (
-            <div key={movie.id}>
-                <h2>{movie.title} - {movie.genre}</h2>
-            </div>
+            <fieldset key={movie.id} style={{backgroundImage: `url(${movie.photo})`}}>
+                <legend>{movie.title} - {movie.genre}</legend>
+                <p>{movie.description}</p>
+                <p>{movie.release_date}</p>
+            </fieldset>
         ));
         return movieList;
     };
