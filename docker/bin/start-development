@@ -7,4 +7,4 @@ source $(dirname $0)/bash_helpers
 
 echo -e "\e[33m===="
 echo -e "\e[32mSite on: \e[34mhttp://frontend.${PROJECT_NAME}.vdmi/"
-echo -e "\e[32mSite on: \e[34mhttp://backend.${PROJECT_NAME}.vdmi/"
+echo -e "\e[32mBackend on: \e[34mhttp://backend.${PROJECT_NAME}.vdmi/"

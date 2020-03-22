@@ -34,9 +34,7 @@ services:
       - ../../data/mysql:/var/lib/mysql
       - ../../logs/mysql:/var/log/mysqlv
       - ../../data/db-dumps:/db-dumps
-      - $SSH_AUTH_SOCK:/ssh-agent
     environment:
-      SSH_AUTH_SOCK: /ssh-agent
       MYSQL_ROOT_PASSWORD: D2h8o6iXt2Of
       MYSQL_DATABASE: projectb
       MYSQL_USER: projectb
