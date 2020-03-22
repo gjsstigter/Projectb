@@ -1,0 +1,13 @@
+#!/bin/bash
+
+realpath() {
+    [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
+}
+
+DIRNAME=$(dirname $(dirname $(dirname $(realpath "$0"))))
+source ${DIRNAME}/docker/config/environment
+ARGS="$@"
+HOST_USER_ID=$(id -u)
+HOST_GROUP_ID=$(id -g)
+export HOST_USER_ID
+export HOST_GROUP_ID

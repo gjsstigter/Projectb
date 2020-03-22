@@ -1,0 +1,10 @@
+#!/bin/bash
+
+source $(dirname $0)/bash_helpers
+
+/usr/local/bin/docker-compose --project-name ${PROJECT_NAME} -f docker/docker-compose.yml up -d
+
+
+echo -e "\e[33m===="
+echo -e "\e[32mSite on: \e[34mhttp://frontend.${PROJECT_NAME}.vdmi/"
+echo -e "\e[32mSite on: \e[34mhttp://backend.${PROJECT_NAME}.vdmi/"

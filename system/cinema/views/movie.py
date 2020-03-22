@@ -38,7 +38,7 @@ def movie_overview(request):
             "stars": 5,
             "photo": "path/to/file",
             "keywords": ['Acteurs', 'Actie', 'Nederlands'],
-            "genre": "Horror",
+            "genre": "Child",
             "studio": "Warner bros",
             "actors": ["Harison ford", "Silvester stalone", "Firstname Lastname"]
         }
