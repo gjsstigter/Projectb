@@ -7,7 +7,7 @@ class Home extends Component{
         return(
             <main>
                 <h2>This is the home</h2>
-                <List></List>
+                <List/>
             </main>
         )
     }
