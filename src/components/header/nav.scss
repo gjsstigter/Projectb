@@ -1,0 +1,17 @@
+.nav-main {
+  border-bottom: 1px solid black;
+
+  .menu-items__list {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-evenly;
+
+    .menu-item {
+      .menu-link {
+        text-decoration: none;
+        color: black;
+        font-weight: 600;
+      }
+    }
+  }
+}
