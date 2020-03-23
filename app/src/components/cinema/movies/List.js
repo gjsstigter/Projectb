@@ -39,13 +39,12 @@ class List extends Component{
             return (
                 <section>
                     {this.movieList()}
-                    {/*{movies.stringify()}*/}
                 </section>
             );
         } else {
             return (
                 <section>
-                    <h2>Data is getting loaded</h2>
+                    <h2>Loading...</h2>
                 </section>
             )
         }
