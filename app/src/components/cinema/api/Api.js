@@ -1,6 +1,7 @@
-const Api = (api) => {
+require('dotenv').config();
 
-    return fetch('http://proxy.projectb.vdmi/http://172.23.0.3/api' + api, {
+const Api = (api) => {
+    return fetch(`${process.env.REACT_APP_API_URL}${api}`, {
         method: 'GET',
         headers: {
             'Access-Control-Allow-Origin': '*',
