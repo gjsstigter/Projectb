@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+  frontend:
+    build:
+      context: ../
+      dockerfile: docker/DockerfileFrontend
+    hostname: frontend
+    env_file:
+      - config/frontend.env
+    volumes:
+      - ../app:/app
+
+  proxy:
+    image: palamccc/cors-proxy
+
+  backend:
+    build:
+      context: ../
+      dockerfile: docker/DockerfileBackend
+    command: python manage.py runserver 0.0.0.0:80
+    hostname: backend
+    ports:
+      - 80
+    volumes:
+      - ../system:/code
+    depends_on:
+      - db
+
+  db:
+    image: mysql:5.7
+    hostname: db
+    volumes:
+      - ../../data/mysql:/var/lib/mysql
+      - ../../logs/mysql:/var/log/mysqlv
+      - ../../data/db-dumps:/db-dumps
+    environment:
+      MYSQL_ROOT_PASSWORD: D2h8o6iXt2Of
+      MYSQL_DATABASE: projectb
+      MYSQL_USER: projectb
+      MYSQL_PASSWORD: 8CLKJs3OcztR
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    hostname: phpmyadmin
+    links:
+      - db:db
