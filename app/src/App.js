@@ -9,6 +9,7 @@ import {
 import Home from "./components/pages/Home";
 import Header from "./components/header/Header";
 import P404 from "./components/pages/P404";
+import './assets/scss/All.scss'
 
 class App extends Component {
     render() {

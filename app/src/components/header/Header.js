@@ -5,7 +5,7 @@ import Nav from "./Nav";
 class Header extends Component{
     render() {
         return(
-            <header>
+            <header id={`masthead`} className={`site-header header-default  light`}>
                 <Nav/>
                 <Slider/>
             </header>
