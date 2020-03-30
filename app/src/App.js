@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 import Home from "./components/pages/Home";
-import Nav from "./components/header/Nav";
+import Header from "./components/header/Header";
 import P404 from "./components/pages/P404";
 
 class App extends Component {
@@ -15,9 +15,7 @@ class App extends Component {
         return (
             <Router>
                 <div className="App">
-                    <Nav/>
-
-
+                    <Header/>
                     <Switch>
                         <Route path="/" exact component={Home}/>
                         <Route component={P404}/>
