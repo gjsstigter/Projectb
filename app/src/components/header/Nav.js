@@ -5,7 +5,7 @@ class Nav extends Component {
 
     render() {
         return (
-            <nav id={`page`} className={`hfeed site`}>
+            <nav>
                 <section>
                     <Link to={`/`}>Maak een account</Link>
                     <Link to={`/`}>Login</Link>
