@@ -1,0 +1,25 @@
+.region-nav {
+  background: green;
+  display: flex;
+  flex-direction: column;
+
+  .account-login {
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    background: $black;
+    // color: $white;
+
+    a {
+      color: $white;
+      padding: 10px;
+      text-decoration: none;
+    }
+
+    .create-account {
+      background-color: $purple;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+  }
+}
