@@ -2,52 +2,16 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from cinema.serializers.movie import MovieSerializer
+from cinema.serializers.movie import MovieCreateSerializer, MovieGetSerializer
 from cinema.models import Movie, Genre, Keyword, Actor
 
 
 @api_view(['GET'])
 def movie_overview(request):
-    data = [
-        {
-            "id": 1,
-            "title": "Filmpie",
-            "description": "bla bla bla bla bla bla bla bla bla bla bla bla",
-            "release_date": "12-12-2020",
-            "stars": 5,
-            "photo": "path/to/file",
-            "keywords": ['Acteurs', 'Actie', 'Nederlands'],
-            "genre": "Horror",
-            "studio": "Warner bros",
-            "actors": ["Harison ford", "Silvester stalone", "Firstname Lastname"]
-        },
-        {
-            "id": 2,
-            "title": "Filmpie 2",
-            "description": "bla bla bla bla bla bla bla bla bla bla bla bla",
-            "release_date": "12-12-2020",
-            "stars": 5,
-            "photo": "https://tinypng.com/images/social/website.jpg",
-            "keywords": ['Acteurs', 'Actie', 'Nederlands'],
-            "genre": "Horror",
-            "studio": "Warner bros",
-            "actors": ["Harison ford", "Silvester stalone", "Firstname Lastname"]
-        },
-        {
-            "id": 3,
-            "title": "Filmpie 3",
-            "description": "bla bla bla bla bla bla bla bla bla bla bla bla",
-            "release_date": "12-12-2020",
-            "stars": 5,
-            "photo": "https://tinypng.com/images/social/website.jpg",
-            "keywords": ['Acteurs', 'Actie', 'Nederlands'],
-            "genre": "Child",
-            "studio": "Warner bros",
-            "actors": ["Harison ford", "Silvester stalone", "Firstname Lastname"]
-        }
-    ]
+    data = Movie.objects.get_queryset()
+    movies = MovieGetSerializer(data, many=True).data
 
-    return Response(data, status=status.HTTP_200_OK)
+    return Response(movies, status=status.HTTP_200_OK)
 
 
 @api_view(['POST'])
@@ -90,7 +54,7 @@ def movie_create(request):
             actor_ids.append(actor.id)
         data['actors'] = actor_ids
 
-    movie_validate = MovieSerializer(data=data)
+    movie_validate = MovieCreateSerializer(data=data)
     movie_validate.is_valid(raise_exception=True)
     movie_validate.save()
 
