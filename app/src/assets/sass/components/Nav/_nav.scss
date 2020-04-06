@@ -1,0 +1,60 @@
+.region-nav {
+  display: flex;
+  flex-direction: column;
+
+  .account-login {
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    background: $black;
+    // color: $white;
+
+    a {
+      color: $white;
+      padding: 10px;
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    .create-account {
+      background-color: $purple;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+  }
+
+  .navigation {
+    display: flex;
+    justify-content: space-around;
+
+    .logo {
+      padding: 10px;
+      display: flex;
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .link {
+        display: table;
+
+        a {
+          margin: 0 5px;
+          padding: 5px 5px;
+          text-decoration: none;
+          text-transform: uppercase;
+          border-bottom: 3px solid $transparent;
+          transition: border-color $ani-time ease-in-out;
+          color: $black;
+
+          &:hover {
+            border-bottom: 3px solid $orange;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,26 +1,38 @@
-import React, {Component} from "react";
-import {Link} from "react-router-dom";
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class Nav extends Component {
-
-    render() {
-        return (
-            <nav>
-                <section>
-                    <Link to={`/`}>Maak een account</Link>
-                    <Link to={`/`}>Login</Link>
-                </section>
-                <section>
-                    <h1>Project B</h1>
-                    <ul>
-                        <li><Link to={`/`}>Login</Link></li>
-                        <li><Link to={`/`}>Login</Link></li>
-                        <li><Link to={`/`}>Login</Link></li>
-                    </ul>
-                </section>
-            </nav>
-        )
-    }
+  render() {
+    return (
+      <nav className="region-nav">
+        <section className="account-login">
+          <Link className="create-account" to={`/`}>
+            Maak een account
+          </Link>
+          <Link to={`/`} classname="login">
+            Login
+          </Link>
+        </section>
+        <section className="navigation">
+          <div className="logo">
+            {/* <img src="#" alt="Films Euhh logo" /> */}
+            <h1>LOGO</h1>
+          </div>
+          <ul>
+            <li className="link">
+              <Link to={`/`}>Home</Link>
+            </li>
+            <li className="link">
+              <Link to={`/`}>Films</Link>
+            </li>
+            <li className="link">
+              <Link to={`/`}>Contact</Link>
+            </li>
+          </ul>
+        </section>
+      </nav>
+    );
+  }
 }
 
 export default Nav;

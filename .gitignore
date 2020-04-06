@@ -122,6 +122,7 @@ dmypy.json
 .pyre/
 
 node_modules/
+package-lock.json
 
 # End of https://www.gitignore.io/api/django
 
