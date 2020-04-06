@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import Slider from "./Slider/Slider";
+import List from "../cinema/movies/List";
 
 class Home extends Component {
   render() {
     return (
       <main>
-        <Slider />
         <h2>This is the home</h2>
+        {/* <List/> */}
       </main>
     );
   }
