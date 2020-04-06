@@ -14,7 +14,9 @@ class Nav extends Component {
           </Link>
         </section>
         <section className="navigation">
-          <h1>Project B</h1>
+          <div>
+            <img src="#" alt="Films Euhh logo" />
+          </div>
           <ul className="navigation-links">
             <li className="link">
               <Link to={`/`}>Login</Link>
