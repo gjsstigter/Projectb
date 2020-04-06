@@ -9,9 +9,9 @@ class Movie(models.Model):
     description = models.TextField()
     release_date = models.DateField()
     studio = models.CharField(max_length=255)
-    genre = models.OneToOneField(Genre, models.PROTECT)
-    stars = models.IntegerField(blank=True)
-    photo = models.FilePathField(blank=True)
+    genre = models.ForeignKey(Genre, models.PROTECT)
+    stars = models.DecimalField(blank=True, max_digits=3, decimal_places=1)
+    photo = models.CharField(blank=True, max_length=255)
     keywords = models.ManyToManyField(Keyword, blank=True)
     actors = models.ManyToManyField(Actor, blank=True)
 

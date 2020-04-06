@@ -59,16 +59,39 @@ def movie_create(request):
 
     if 'genre' in data:
         genre = data['genre']
-        data['genre'], created = Genre.objects.get_or_create(name__iexact=genre)
+        genre, created = Genre.objects.get_or_create(name=genre)
+        if created:
+            genre.save()
+        data['genre'] = genre.id
     else:
         return Response({'detail': 'Please enter a Genre'}, status=status.HTTP_400_BAD_REQUEST)
 
     if 'keywords' in data:
         keywords = data['keywords']
 
+        keyword_ids = []
+
         for keyword in keywords:
-            Keyword.objects.get_or_create(word__iexact=keyword)
+            keyword, created = Keyword.objects.get_or_create(word=keyword)
+            if created:
+                keyword.save()
+            keyword_ids.append(keyword.id)
+        data['keywords'] = keyword_ids
+
+    if 'actors' in data:
+        actors = data['actors']
+
+        actor_ids = []
+
+        for actor in actors:
+            actor, created = Actor.objects.get_or_create(name=actor)
+            if created:
+                actor.save()
+            actor_ids.append(actor.id)
+        data['actors'] = actor_ids
 
     movie_validate = MovieSerializer(data=data)
     movie_validate.is_valid(raise_exception=True)
-    movie = movie_validate.save()
+    movie_validate.save()
+
+    return Response(movie_validate.data, status=status.HTTP_201_CREATED)

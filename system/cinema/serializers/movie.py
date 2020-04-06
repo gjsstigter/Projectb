@@ -1,11 +1,11 @@
 from rest_framework import serializers
-from cinema.models import Movie
+from cinema.models import Movie, Genre, Keyword, Actor
 
 
 class MovieSerializer(serializers.ModelSerializer):
-    genre = serializers.StringRelatedField(many=False)
-    keywords = serializers.StringRelatedField(many=True)
-    actors = serializers.StringRelatedField(many=True)
+    genre = serializers.PrimaryKeyRelatedField(many=False, queryset=Genre.objects.all())
+    keywords = serializers.PrimaryKeyRelatedField(many=True, queryset=Keyword.objects.all())
+    actors = serializers.PrimaryKeyRelatedField(many=True, queryset=Actor.objects.all())
 
     class Meta:
         model = Movie

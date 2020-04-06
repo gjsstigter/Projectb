@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from .movie import movie_overview
+from .movie import *
 
 
 def index(request):
