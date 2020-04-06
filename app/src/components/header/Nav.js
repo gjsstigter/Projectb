@@ -14,18 +14,19 @@ class Nav extends Component {
           </Link>
         </section>
         <section className="navigation">
-          <div>
-            <img src="#" alt="Films Euhh logo" />
+          <div className="logo">
+            {/* <img src="#" alt="Films Euhh logo" /> */}
+            <h1>LOGO</h1>
           </div>
-          <ul className="navigation-links">
+          <ul>
             <li className="link">
-              <Link to={`/`}>Login</Link>
+              <Link to={`/`}>Home</Link>
             </li>
             <li className="link">
-              <Link to={`/`}>Login</Link>
+              <Link to={`/`}>Films</Link>
             </li>
             <li className="link">
-              <Link to={`/`}>Login</Link>
+              <Link to={`/`}>Contact</Link>
             </li>
           </ul>
         </section>
