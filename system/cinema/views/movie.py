@@ -59,3 +59,11 @@ def movie_create(request):
     movie_validate.save()
 
     return Response(movie_validate.data, status=status.HTTP_201_CREATED)
+
+
+@api_view(['GET'])
+def movie_detail(request, pk):
+    movie = Movie.objects.get(pk=pk)
+    data = MovieGetSerializer(movie).data
+
+    return Response(data, status=status.HTTP_200_OK)
