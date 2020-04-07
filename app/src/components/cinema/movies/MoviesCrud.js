@@ -38,6 +38,12 @@ export class MoviesCreate extends MoviesCrud{
               </label>
               <input type={`text`} required/>
             </p>
+            <p>
+              <label>
+                Stars:
+              </label>
+              <input type={`range`} min={0} max={10} required/>
+            </p>
           </section>
         </form>
       </main>
