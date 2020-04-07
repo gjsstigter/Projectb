@@ -10,6 +10,7 @@ import Home from "./components/pages/Home";
 import Header from "./components/header/Header";
 import P404 from "./components/pages/P404";
 import './assets/scss/All.scss'
+import Admin from "./components/pages/Admin";
 
 class App extends Component {
     render() {
@@ -18,7 +19,8 @@ class App extends Component {
                 <div className="App">
                     <Header/>
                     <Switch>
-                        <Route path="/" exact component={Home}/>
+                        <Route path={`/`} exact component={Home}/>
+                        <Route path={[`/admin/:page/:id/:crud/`, `/admin/:page/:crud/`, `/admin/:page/`, `/admin/`]} component={Admin}/>
                         <Route component={P404}/>
                     </Switch>
 

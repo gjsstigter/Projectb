@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import List from "../cinema/movies/List";
+// import List from "../cinema/movies/List";
 
 class Home extends Component{
 
