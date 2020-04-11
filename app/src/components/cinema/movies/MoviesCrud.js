@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import Api from "../api/Api";
 
 class MoviesCrud extends Component{
   constructor(props) {
@@ -24,8 +25,8 @@ class MoviesCrud extends Component{
         release_date: '',
         genre: '',
         studio: '',
-        keywords: '',
-        actors: '',
+        keywords: [],
+        actors: [],
       },
       errors: {
         title: '',
@@ -89,14 +90,14 @@ class MoviesCrud extends Component{
             : '';
         break;
       case 'keywords':
-        inputs.keywords = value;
+        inputs.keywords.push(value);
         errors.keywords =
           value < 0
             ? 'Vul de keywords aan'
             : '';
         break;
       case 'actors':
-        inputs.actors = value;
+        inputs.actors.push(value);
         errors.actors =
           value < 0
             ? 'Vul de acteurs aan'
@@ -132,7 +133,14 @@ class MoviesCrud extends Component{
 
     let progress = filled / inputsLength * 100;
     this.setState({formProgress: progress});
-  }
+  };
+
+  submit = (event) => {
+    event.preventDefault();
+    console.log(JSON.stringify(this.state.inputs));
+    Api(`movie/create/`, `POST`, this.state.inputs)
+      .then(res => {console.log(res)});
+  };
 }
 
 export class MoviesCreate extends MoviesCrud{
@@ -192,7 +200,7 @@ export class MoviesCreate extends MoviesCrud{
               <input type={`text`} name={`keywords`} onChange={this.handleChange} noValidate/>
             </p>
             <p>
-              <input type={`submit`} name={`submit`} disabled={!valid} value={(valid) ? 'Verstuur' : 'Controleer de velden'}/>
+              <input type={`submit`} name={`submit`} onClick={this.submit} disabled={!valid} value={(valid) ? 'Verstuur' : 'Controleer de velden'}/>
             </p>
           </section>
         </form>
