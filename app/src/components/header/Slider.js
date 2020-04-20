@@ -13,7 +13,7 @@ const slideImages = importAll(
 );
 
 const properties = {
-  duration: 5000,
+  duration: 10000,
   transitionDuration: 500,
   infinite: true,
   indicators: true,
@@ -26,7 +26,7 @@ const Slider = () => {
     return (
       <div className="each-slide">
         <div style={{ backgroundImage: `url(${imgName})`}} className="slide-image"  >
-          <span className="slide-text">this is de slider test</span>
+          <span className="slide-text">Deze film is gaaf en moet je zien!!</span>
         </div>
       </div>
     );
