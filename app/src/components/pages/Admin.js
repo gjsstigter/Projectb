@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import MoviesCreate, {MoviesRead} from "../cinema/movies/MoviesCrud";
+import MoviesCreate, {MoviesRead, MoviesReadAll} from "../cinema/movies/MoviesCrud";
 import {Link, NavLink} from "react-router-dom";
 
 class Admin extends Component{
@@ -39,10 +39,10 @@ class Admin extends Component{
           case `read`:
             body = <MoviesRead id={id}/>;
             break;
-          case `readAll`:
+          case `readall`:
             body = (
               <main>
-                <h1>readAll</h1>
+                <MoviesReadAll/>
               </main>
             );
             break;
@@ -70,7 +70,19 @@ class Admin extends Component{
       default:
         return (
           <main>
-            <h1>Welke stappen wilt u graag doen...</h1>
+            <h1>Choose one of the following links..</h1>
+            <ul>
+              <li><Link to={`/admin/movies/`}>Movies</Link></li>
+              <ul>
+                <li><Link to={`/admin/movies/create`}>Create</Link></li>
+                <li><Link to={`/admin/movies/readall`}>Read all movies</Link></li>
+              </ul>
+              <li><Link to={`/admin/tickets/`}>Tickets</Link></li>
+              <ul>
+                <li><Link to={`/admin/tickets/create`}>Create</Link></li>
+                <li><Link to={`/admin/tickets/readall`}>Read all tickets</Link></li>
+              </ul>
+            </ul>
           </main>
         );
     }

@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import Api from "../api/Api";
+import {Link} from "react-router-dom";
 
 class MoviesCrud extends Component{
   constructor(props) {
@@ -40,6 +41,9 @@ class MoviesCrud extends Component{
       },
     };
   }
+}
+
+export class MoviesCreate extends MoviesCrud{
 
   handleChange = (event) => {
     event.preventDefault();
@@ -90,14 +94,14 @@ class MoviesCrud extends Component{
             : '';
         break;
       case 'keywords':
-        inputs.keywords.push(value);
+        inputs.keywords[0] = value;
         errors.keywords =
           value < 0
             ? 'Vul de keywords aan'
             : '';
         break;
       case 'actors':
-        inputs.actors.push(value);
+        inputs.actors[0] = value;
         errors.actors =
           value < 0
             ? 'Vul de acteurs aan'
@@ -141,9 +145,6 @@ class MoviesCrud extends Component{
     Api(`movie/create/`, `POST`, this.state.inputs)
       .then(res => {console.log(res)});
   };
-}
-
-export class MoviesCreate extends MoviesCrud{
 
   render() {
     let {formProgress, valid} = this.state;
@@ -219,6 +220,88 @@ export class MoviesRead extends MoviesCrud{
         <h2>Read {id}</h2>
       </main>)
     });
+
+    return(body);
+  }
+}
+
+export class MoviesReadAll extends MoviesCrud{
+  constructor(props) {
+    super(props);
+    this.state = {
+      loaded: false
+    };
+    console.log(`super` + JSON.stringify(props));
+    this.setState({});
+  }
+
+  movieList = () => {
+    Api(`/movie/`)
+      // .then(res => console.log(res))
+      .then(res => (this.setState(
+        {
+            movies: res,
+            loaded: true,
+          }
+        )
+      ));
+  };
+
+  componentDidMount() {
+    this.movieList();
+  }
+
+  render() {
+    let {movies, loaded}  = this.state;
+    let body;
+
+    if(loaded) {
+      body = (
+        <main>
+          <Link to={`/admin/`}>{`<<<`} Go back</Link>
+          <h2>All movies</h2>
+          {movies.map((movie) => {
+            return (<section key={movie.id}>
+              <h3>{movie.title} - <i>{movie.genre}</i></h3>
+              <img alt={movie.title} src={movie.photo}/>
+              <p>{movie.description}</p>
+              <table>
+                <tr>
+                  <td>Stars</td>
+                  <td>{movie.stars}</td>
+                </tr>
+                <tr>
+                  <td>Release date</td>
+                  <td>{movie.release_date}</td>
+                </tr>
+                <tr>
+                  <td>Studio</td>
+                  <td>{movie.studio}</td>
+                </tr>
+                <tr>
+                  <td>Actors</td>
+                  <td><ul>{movie.actors.map((actor) => (
+                      <li>{actor}</li>
+                  ))}</ul></td>
+                </tr>
+                <tr>
+                  <td>Keywords</td>
+                  <td><ul>{movie.keywords.map((keyword) => (
+                    <li>{keyword}</li>
+                  ))}</ul></td>
+                </tr>
+              </table>
+            </section>)
+          })}
+        </main>
+      );
+    } else {
+      body = (<main>
+        <h2>Loading...</h2>
+      </main>);
+    }
+
+
 
     return(body);
   }
