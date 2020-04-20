@@ -25,7 +25,7 @@ const Slider = () => {
   let images = slideImages.map((imgName, index) => {
     return (
       <div className="each-slide">
-        <div style={{ backgroundImage: `url(${imgName})`, height: `500px` }}>
+        <div style={{ backgroundImage: `url(${imgName})`}} className="slide-image"  >
           <span className="slide-text">this is de slider test</span>
         </div>
       </div>
