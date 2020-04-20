@@ -26,7 +26,9 @@ const Slider = () => {
     return (
       <div className="each-slide">
         <div style={{ backgroundImage: `url(${imgName})`}} className="slide-image"  >
-          <span className="slide-text">Deze film is gaaf en moet je zien!!</span>
+          <div className="slide-text">
+            <p>Deze film is gaaf en moet je zien!!</p>
+          </div>
         </div>
       </div>
     );
