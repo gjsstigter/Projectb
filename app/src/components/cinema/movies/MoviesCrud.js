@@ -251,42 +251,42 @@ export class MoviesRead extends MoviesCrud {
           <Link to={`/admin/movies/readall`}>{`<<<`} Go back</Link>
           <h2>All movies</h2>
           <section>
-              <h3>{movies.title} - <i>{movies.genre}</i></h3>
-              <img alt={movies.title} src={movies.photo}/>
-              <p>{movies.description}</p>
-              <table>
-                <tbody>
-                <tr>
-                  <td>Stars</td>
-                  <td>{movies.stars}</td>
-                </tr>
-                <tr>
-                  <td>Release date</td>
-                  <td>{movies.release_date}</td>
-                </tr>
-                <tr>
-                  <td>Studio</td>
-                  <td>{movies.studio}</td>
-                </tr>
-                <tr>
-                  <td>Actors</td>
-                  <td>
-                    <ul>{movies.actors.map((actor) => (
-                      <li>{actor}</li>
-                    ))}</ul>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Keywords</td>
-                  <td>
-                    <ul>{movies.keywords.map((keyword) => (
-                      <li>{keyword}</li>
-                    ))}</ul>
-                  </td>
-                </tr>
+            <h3>{movies.title} - <i>{movies.genre}</i></h3>
+            <img alt={movies.title} src={movies.photo}/>
+            <p>{movies.description}</p>
+            <table>
+              <tbody>
+              <tr>
+                <td>Stars</td>
+                <td>{movies.stars}</td>
+              </tr>
+              <tr>
+                <td>Release date</td>
+                <td>{movies.release_date}</td>
+              </tr>
+              <tr>
+                <td>Studio</td>
+                <td>{movies.studio}</td>
+              </tr>
+              <tr>
+                <td>Actors</td>
+                <td>
+                  <ul>{movies.actors.map((actor) => (
+                    <li>{actor}</li>
+                  ))}</ul>
+                </td>
+              </tr>
+              <tr>
+                <td>Keywords</td>
+                <td>
+                  <ul>{movies.keywords.map((keyword) => (
+                    <li>{keyword}</li>
+                  ))}</ul>
+                </td>
+              </tr>
               </tbody>
-              </table>
-            </section>
+            </table>
+          </section>
         </main>
       );
     } else {
@@ -335,25 +335,43 @@ export class MoviesReadAll extends MoviesCrud {
         <main>
           <Link to={`/admin/`}>{`<<<`} Go back</Link>
           <h2>All movies</h2>
-          {movies.map((movie) => {
-            return (<section key={movie.id}>
-              <h3>{movie.title} - <i>{movie.genre}</i></h3>
-              <img alt={movie.title} src={movie.photo}/>
-              <p>{movie.description}</p>
-              <Link to={`/admin/movies/read/${movie.id}`}>> Read movie</Link>
-            </section>)
-          })}
-        </main>
-      );
-    } else {
-      body = (<main>
-        <h2>Loading...</h2>
-      </main>);
-    }
+          <table>
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Genre</th>
+              <th>View</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            {movies.map((movie) => {
+              return (<tr key={movie.id}>
+                <td>{movie.id}</td>
+                <td>{movie.title}</td>
+                <td>{movie.description}</td>
+                <td>{movie.genre}</td>
+                <td><Link to={`/admin/movies/read/${movie.id}`}>Read movie</Link></td>
+                <td><Link to={`/admin/movies/read/${movie.id}`}>Edit movie</Link></td>
+                <td><Link to={`/admin/movies/read/${movie.id}`}>Delete movie</Link></td>
+              </tr>)
+            })}
+            </tbody>
+          </table>
+          < /main>
+            );
+            } else {
+            body = (<main>
+              <h2>Loading...</h2>
+            </main>);
+          }
 
 
-    return (body);
-  }
-}
+            return (body);
+            }
+            }
 
-export default MoviesCreate;
+            export default MoviesCreate;
