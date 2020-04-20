@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import Api from "../api/Api";
 import {Link} from "react-router-dom";
 
-class MoviesCrud extends Component{
+class MoviesCrud extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -43,11 +43,11 @@ class MoviesCrud extends Component{
   }
 }
 
-export class MoviesCreate extends MoviesCrud{
+export class MoviesCreate extends MoviesCrud {
 
   handleChange = (event) => {
     event.preventDefault();
-    const { name, value } = event.target;
+    const {name, value} = event.target;
     let {errors, inputs} = this.state;
 
     switch (name) {
@@ -108,7 +108,7 @@ export class MoviesCreate extends MoviesCrud{
             : '';
     }
 
-    this.setState({errors, [name]: value}, ()=> {
+    this.setState({errors, [name]: value}, () => {
       console.log(errors)
     });
 
@@ -143,13 +143,16 @@ export class MoviesCreate extends MoviesCrud{
     event.preventDefault();
     console.log(JSON.stringify(this.state.inputs));
     Api(`movie/create/`, `POST`, this.state.inputs)
-      .then(res => {console.log(res)});
+      .then(res => {
+        console.log(res)
+      });
   };
 
   render() {
     let {formProgress, valid} = this.state;
-    return(
+    return (
       <main>
+        <Link to={`/admin/`}>{`<<<`} Go back</Link>
         <h2>Create a new movie</h2>
         <progress value={formProgress} max={100}/>
         <form>
@@ -201,7 +204,8 @@ export class MoviesCreate extends MoviesCrud{
               <input type={`text`} name={`keywords`} onChange={this.handleChange} noValidate/>
             </p>
             <p>
-              <input type={`submit`} name={`submit`} onClick={this.submit} disabled={!valid} value={(valid) ? 'Verstuur' : 'Controleer de velden'}/>
+              <input type={`submit`} name={`submit`} onClick={this.submit} disabled={!valid}
+                     value={(valid) ? 'Verstuur' : 'Controleer de velden'}/>
             </p>
           </section>
         </form>
@@ -210,22 +214,93 @@ export class MoviesCreate extends MoviesCrud{
   }
 }
 
-export class MoviesRead extends MoviesCrud{
+export class MoviesRead extends MoviesCrud {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loaded: false,
+      id: (this.props.id) ? this.props.id.toLowerCase() : `null`,
+    };
+    // console.log(`super` + JSON.stringify());
+    // this.setState({id: (this.props.id) ? this.props.id.toLowerCase() : `null`,});
+  }
+
+  movieList = () => {
+    Api(`/movie/${this.state.id}`)
+      // .then(res => console.log(res))
+      .then(res => (this.setState(
+          {
+            movies: res,
+            loaded: true,
+          }
+        )
+      ));
+  };
+
+  componentDidMount() {
+    this.movieList();
+  }
+
   render() {
-    let {id, movies}  = this.state;
+    let {movies, loaded} = this.state;
     let body;
 
-    movies.map((movie) => {
+    if (loaded) {
+      body = (
+        <main>
+          <Link to={`/admin/movies/readall`}>{`<<<`} Go back</Link>
+          <h2>All movies</h2>
+          <section>
+              <h3>{movies.title} - <i>{movies.genre}</i></h3>
+              <img alt={movies.title} src={movies.photo}/>
+              <p>{movies.description}</p>
+              <table>
+                <tbody>
+                <tr>
+                  <td>Stars</td>
+                  <td>{movies.stars}</td>
+                </tr>
+                <tr>
+                  <td>Release date</td>
+                  <td>{movies.release_date}</td>
+                </tr>
+                <tr>
+                  <td>Studio</td>
+                  <td>{movies.studio}</td>
+                </tr>
+                <tr>
+                  <td>Actors</td>
+                  <td>
+                    <ul>{movies.actors.map((actor) => (
+                      <li>{actor}</li>
+                    ))}</ul>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Keywords</td>
+                  <td>
+                    <ul>{movies.keywords.map((keyword) => (
+                      <li>{keyword}</li>
+                    ))}</ul>
+                  </td>
+                </tr>
+              </tbody>
+              </table>
+            </section>
+        </main>
+      );
+    } else {
       body = (<main>
-        <h2>Read {id}</h2>
-      </main>)
-    });
+        <h2>Loading...</h2>
+      </main>);
+    }
 
-    return(body);
+
+    return (body);
   }
 }
 
-export class MoviesReadAll extends MoviesCrud{
+export class MoviesReadAll extends MoviesCrud {
   constructor(props) {
     super(props);
     this.state = {
@@ -239,7 +314,7 @@ export class MoviesReadAll extends MoviesCrud{
     Api(`/movie/`)
       // .then(res => console.log(res))
       .then(res => (this.setState(
-        {
+          {
             movies: res,
             loaded: true,
           }
@@ -252,10 +327,10 @@ export class MoviesReadAll extends MoviesCrud{
   }
 
   render() {
-    let {movies, loaded}  = this.state;
+    let {movies, loaded} = this.state;
     let body;
 
-    if(loaded) {
+    if (loaded) {
       body = (
         <main>
           <Link to={`/admin/`}>{`<<<`} Go back</Link>
@@ -265,32 +340,7 @@ export class MoviesReadAll extends MoviesCrud{
               <h3>{movie.title} - <i>{movie.genre}</i></h3>
               <img alt={movie.title} src={movie.photo}/>
               <p>{movie.description}</p>
-              <table>
-                <tr>
-                  <td>Stars</td>
-                  <td>{movie.stars}</td>
-                </tr>
-                <tr>
-                  <td>Release date</td>
-                  <td>{movie.release_date}</td>
-                </tr>
-                <tr>
-                  <td>Studio</td>
-                  <td>{movie.studio}</td>
-                </tr>
-                <tr>
-                  <td>Actors</td>
-                  <td><ul>{movie.actors.map((actor) => (
-                      <li>{actor}</li>
-                  ))}</ul></td>
-                </tr>
-                <tr>
-                  <td>Keywords</td>
-                  <td><ul>{movie.keywords.map((keyword) => (
-                    <li>{keyword}</li>
-                  ))}</ul></td>
-                </tr>
-              </table>
+              <Link to={`/admin/movies/read/${movie.id}`}>> Read movie</Link>
             </section>)
           })}
         </main>
@@ -302,8 +352,7 @@ export class MoviesReadAll extends MoviesCrud{
     }
 
 
-
-    return(body);
+    return (body);
   }
 }
 

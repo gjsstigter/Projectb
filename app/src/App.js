@@ -20,7 +20,7 @@ class App extends Component {
                     <Header/>
                     <Switch>
                         <Route path={`/`} exact component={Home}/>
-                        <Route path={[`/admin/:page/:id/:crud/`, `/admin/:page/:crud/`, `/admin/:page/`, `/admin/`]} component={Admin}/>
+                        <Route path={[`/admin/:page/:crud/:id`, `/admin/:page/:crud/`, `/admin/:page/`, `/admin/`]} component={Admin}/>
                         <Route component={P404}/>
                     </Switch>
 
