@@ -121,3 +121,15 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
+
+"""
+File uploading routing. This creates a media folder in the main directory of the project.
+In the media folder, all the files will be stored there. 
+
+This folder is automatically created at the moment a file is being uploaded.
+"""
+
+PHOTO_URL = 'photos/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "cinema/media")
+PHOTO_ROOT = os.path.join(BASE_DIR, "cinema" + MEDIA_URL + PHOTO_URL)
