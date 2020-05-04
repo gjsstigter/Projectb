@@ -1,0 +1,80 @@
+.filmitem-main {
+  div {
+    display: block;
+  }
+  .single-movie {
+    margin-top: 30px;
+    color: #666;
+  }
+  .entry-showtime {
+    margin-top: 30px;
+
+    .amy-title {
+      display: inline-block;
+      font-size: 35px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      margin-top: 0;
+      position: relative;
+      padding-bottom: 5px;
+      color: $orange;
+    }
+    .showtime {
+      width: 100%;
+      float: none;
+      margin: 0;
+      background: $grey;
+      padding: 40px;
+      margin-left: 20px;
+
+      label {
+        color: $black;
+        font-size: 14.98px;
+        font-weight: bold;
+        display: inline-block;
+        margin-bottom: 5px;
+      }
+      ul {
+        padding: 0;
+        margin: 0 0 25px;
+
+        li:first-child {
+          margin-left: 0;
+        }
+        li {
+          background: #dbdbdb;
+          border-radius: 4px;
+          color: #000;
+          font-size: 14px;
+          padding: 3px 10px;
+          margin: 0 6px 9px 0;
+          list-style: none;
+          display: inline-block;
+        }
+      }
+    }
+  }
+  .clearfix:before {
+    content: " ";
+    display: table;
+  }
+  .clearfix:after {
+    clear: both;
+    content: " ";
+    display: table;
+  }
+  .buy-ticket {
+    background: $orange none repeat scroll 0 0;
+    border: 0 none;
+    border-radius: 3px;
+    color: $white;
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 25px;
+    padding: 5px 15px;
+    text-transform: uppercase;
+    transition: all 0.5s ease 0s;
+    width: auto;
+    float: right;
+  }
+}
