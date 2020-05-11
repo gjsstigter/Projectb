@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import MoviesCreate, {MoviesRead, MoviesReadAll} from "../cinema/movies/MoviesCrud";
+import MoviesCreate, {MoviesRead, MoviesReadAll, MoviesUpdate} from "../cinema/movies/MoviesCrud";
 import {Link, NavLink} from "react-router-dom";
 
 class Admin extends Component{
@@ -47,11 +47,7 @@ class Admin extends Component{
             );
             break;
           case `update`:
-            body = (
-              <main>
-                <h1>update {id}</h1>
-              </main>
-            );
+            body = <MoviesUpdate id={id}/>;
             break;
           default:
             body = (
