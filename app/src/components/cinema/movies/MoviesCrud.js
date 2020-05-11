@@ -567,7 +567,6 @@ export class MoviesReadAll extends MoviesCrud {
                         <tr>
                             <th>#</th>
                             <th>Title</th>
-                            <th>Description</th>
                             <th>Genre</th>
                             <th>View</th>
                             <th>Edit</th>
@@ -579,10 +578,9 @@ export class MoviesReadAll extends MoviesCrud {
                             return (<tr key={movie.id}>
                                 <td>{movie.id}</td>
                                 <td>{movie.title}</td>
-                                <td>{movie.description}</td>
                                 <td>{movie.genre}</td>
                                 <td><Link to={`/admin/movies/read/${movie.id}`}>Read movie</Link></td>
-                                <td><Link to={`/admin/movies/edit/${movie.id}`}>Edit movie</Link></td>
+                                <td><Link to={`/admin/movies/update/${movie.id}`}>Edit movie</Link></td>
                                 <td><Link to={`/admin/movies/read/${movie.id}`}>Delete movie</Link></td>
                             </tr>)
                         })}

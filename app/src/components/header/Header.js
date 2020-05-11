@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import Slider from "./Slider";
 import Nav from "./Nav";
 

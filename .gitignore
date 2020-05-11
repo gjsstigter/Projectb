@@ -1,3 +1,4 @@
+
 # Created by https://www.gitignore.io/api/django
 # Edit at https://www.gitignore.io/?templates=django
 
@@ -125,3 +126,5 @@ node_modules/
 
 # End of https://www.gitignore.io/api/django
 
+app/node_modules/
+app/package-lock.json

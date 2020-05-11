@@ -1,0 +1,43 @@
+.slide-container {
+    .slide-image {
+        background-size: cover;
+        height: 600px;
+    }
+
+    .slide-text {
+        color: white;
+        text-transform: uppercase;
+        position: relative;
+        top: 70%;
+        left: 10%;
+        text-shadow: 0px 0px 6px #000000;
+
+
+        p {
+            position: absolute;
+            font-size: 4rem;
+            margin: 0;
+            padding: 0;
+            text-decoration: underline;
+            text-decoration-color: $orange;
+        }
+    }
+
+    .indicators {
+        justify-content: left !important;
+        margin-top: 0 !important;
+        position: absolute;
+
+        div {
+            width: 15px !important;
+            height: 15px !important;
+            position: relative;
+            top: -30px;
+            background-color: white !important;
+        }
+
+        .active {
+            background: $orange !important;
+        }
+    }
+}

@@ -1,10 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
 
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Home from "./components/pages/Home";
 import Header from "./components/header/Header";
@@ -26,9 +22,8 @@ class App extends Component {
 
                 </div>
             </Router>
-        );
-    }
+    );
+  }
 }
-
 
 export default App;

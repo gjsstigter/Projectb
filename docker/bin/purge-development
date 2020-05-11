@@ -6,6 +6,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   /usr/local/bin/docker-compose --project-name ${PROJECT_NAME} -f docker/docker-compose.yml -f docker/docker-compose-development.yml -f docker/docker-compose-osx.yml stop
   /usr/local/bin/docker-compose --project-name ${PROJECT_NAME} -f docker/docker-compose.yml -f docker/docker-compose-development.yml -f docker/docker-compose-osx.yml rm
 else
-  /usr/local/bin/docker-compose --project-name ${PROJECT_NAME} -f docker/docker-compose.yml -f docker/docker-compose-development.yml stop
-  /usr/local/bin/docker-compose --project-name ${PROJECT_NAME} -f docker/docker-compose.yml -f docker/docker-compose-development.yml rm
+  /usr/local/bin/docker-compose --project-name ${PROJECT_NAME} -f docker/docker-compose.yml -f docker/docker-compose.yml stop
+  /usr/local/bin/docker-compose --project-name ${PROJECT_NAME} -f docker/docker-compose.yml -f docker/docker-compose.yml rm
 fi
