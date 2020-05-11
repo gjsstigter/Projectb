@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./components/pages/Home";
 import Header from "./components/header/Header";
 import P404 from "./components/pages/P404";
-import './assets/scss/All.scss'
+import './assets/sass/_main.scss'
 import Admin from "./components/pages/Admin";
 
 class App extends Component {
