@@ -126,3 +126,8 @@ package-lock.json
 
 # End of https://www.gitignore.io/api/django
 
+<<<<<<< HEAD
+=======
+app/node_modules/
+app/package-lock.json
+>>>>>>> d82ea8049ed98400b465a35c85b66221a6761319

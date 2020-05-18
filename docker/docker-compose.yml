@@ -10,6 +10,8 @@ services:
       - config/frontend.env
     volumes:
       - ../app:/app
+    depends_on:
+      - backend
 
   proxy:
     image: palamccc/cors-proxy
