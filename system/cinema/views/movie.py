@@ -20,12 +20,14 @@ def movie_overview(request):
     return Response(movies, status=status.HTTP_200_OK)
 
 
-@api_view(['PUT'])
+@api_view(['POST'])
 def movie_create(request):
     if not request.data:
         return Response({'detail': 'No data provided'}, status=status.HTTP_400_BAD_REQUEST)
 
     data = request.data
+
+    print(data)
 
     if 'genre' in data:
         genre = data['genre']
@@ -37,12 +39,11 @@ def movie_create(request):
         return Response({'detail': 'Please enter a Genre'}, status=status.HTTP_400_BAD_REQUEST)
 
     if 'keywords' in data:
-        keywords = data['keywords'].strip('][').split(', ')
+        keywords = data['keywords']
 
         keyword_ids = []
 
         for keyword in keywords:
-            keyword = keyword.strip('""')
             keyword, created = Keyword.objects.get_or_create(word=keyword)
             if created:
                 keyword.save()
@@ -50,12 +51,11 @@ def movie_create(request):
         data['keywords'] = keyword_ids
 
     if 'actors' in data:
-        actors = data['actors'].strip('][').split(', ')
+        actors = data['actors']
 
         actor_ids = []
 
         for actor in actors:
-            actor = actor.strip('""')
             actor, created = Actor.objects.get_or_create(name=actor)
             if created:
                 actor.save()
@@ -64,7 +64,6 @@ def movie_create(request):
 
     if 'photo' in data:
         image_data = request.FILES['photo'].file
-        # format, imgstr = image_data.split(';base64,')
 
         photo = ContentFile(image_data.read())
         try:
@@ -88,7 +87,7 @@ def movie_create(request):
         file.save()
         data['photo_id'] = file.id
 
-
+    print(data)
     movie_validate = MovieCreateSerializer(data=data)
     movie_validate.is_valid(raise_exception=True)
     movie_validate.save()
