@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import MoviesCreate, {MoviesRead, MoviesReadAll, MoviesUpdate} from "../cinema/movies/MoviesCrud";
 import {Link, NavLink} from "react-router-dom";
+import ShowsCrud, { ShowsCreate } from '../cinema/movies/ShowsCrud';
 
 class Admin extends Component{
   constructor(props) {
@@ -63,6 +64,13 @@ class Admin extends Component{
             break;
         }
         break;
+        case 'shows':
+        switch (crud) {
+          case 'create':
+            body = <ShowsCreate/>;
+            break;
+        }
+        break;
       default:
         return (
           <main>
@@ -73,10 +81,10 @@ class Admin extends Component{
                 <li><Link to={`/admin/movies/create`}>Create</Link></li>
                 <li><Link to={`/admin/movies/readall`}>Read all movies</Link></li>
               </ul>
-              <li><Link to={`/admin/tickets/`}>Tickets</Link></li>
+              <li><Link to={`/admin/shows/`}>Shows</Link></li>
               <ul>
-                <li><Link to={`/admin/tickets/create`}>Create</Link></li>
-                <li><Link to={`/admin/tickets/readall`}>Read all tickets</Link></li>
+                <li><Link to={`/admin/shows/create`}>Create</Link></li>
+                <li><Link to={`/admin/shows/readall`}>Read all shows</Link></li>
               </ul>
             </ul>
           </main>

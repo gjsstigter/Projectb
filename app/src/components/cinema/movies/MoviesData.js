@@ -6,7 +6,7 @@ export const MovieData = (id) => {
     return Api(`/movie/${id}`);
 };
 
-export const MoviesData = (id) => {
+export const MoviesData = () => {
 
     return Api(`/movie/`);
 };

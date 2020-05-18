@@ -10,13 +10,13 @@ class Nav extends Component {
             Maak een account
           </Link>
           <Link to={`/`} classname="login">
-            Login
+            Admin
           </Link>
         </section>
         <section className="navigation">
           <div className="logo">
             {/* <img src="#" alt="Films Euhh logo" /> */}
-            <h1>LOGO</h1>
+            <Link to={`/`}><h1>LOGO</h1></Link>
           </div>
           <ul>
             <li className="link">

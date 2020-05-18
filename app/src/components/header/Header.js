@@ -7,7 +7,7 @@ class Header extends Component{
         return(
             <header>
                 <Nav/>
-                {/*<Slider/>*/}
+                {/* <Slider/> */}
             </header>
         );
     }
