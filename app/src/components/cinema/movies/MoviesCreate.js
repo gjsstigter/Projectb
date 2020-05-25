@@ -12,7 +12,9 @@ class MoviesCreate extends Component {
         genre: '',
         studio: '',
         actors: [''],
-        keywords: ['']
+        keywords: [''],
+        // actors: '',
+        // keywords: ''
     };
 
     handleChange = (e) => {
