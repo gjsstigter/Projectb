@@ -43,177 +43,6 @@ class MoviesCrud extends Component {
     }
 }
 
-export class MoviesCreate extends MoviesCrud {
-
-    handleChange = (event) => {
-        event.preventDefault();
-        const {name, value} = event.target;
-        let {errors, inputs} = this.state;
-
-        switch (name) {
-            case 'title':
-                inputs.title = value;
-                errors.title =
-                    value < 0
-                        ? 'Vul de titel in'
-                        : '';
-                break;
-            case 'stars':
-                inputs.stars = value;
-                errors.stars =
-                    value < 0
-                        ? 'Kies het aantal sterren'
-                        : '';
-                break;
-            case 'description':
-                inputs.description = value;
-                errors.description =
-                    value < 0
-                        ? 'Vul de description aan'
-                        : '';
-                break;
-            case 'release_date':
-                inputs.release_date = value;
-                errors.release_date =
-                    value < 0
-                        ? 'Vul een geldige datum in'
-                        : '';
-                break;
-            case 'genre':
-                inputs.genre = value;
-                errors.genre =
-                    value < 0
-                        ? 'Vul de genre aan'
-                        : '';
-                break;
-            case 'studio':
-                inputs.studio = value;
-                errors.studio =
-                    value < 0
-                        ? 'Vul de studio aan'
-                        : '';
-                break;
-            case 'keywords':
-                inputs.keywords[0] = value;
-                errors.keywords =
-                    value < 0
-                        ? 'Vul de keywords aan'
-                        : '';
-                break;
-            case 'actors':
-                inputs.actors[0] = value;
-                errors.actors =
-                    value < 0
-                        ? 'Vul de acteurs aan'
-                        : '';
-        }
-
-        this.setState({errors, [name]: value}, () => {
-            console.log(errors)
-        });
-
-        this.state.valid = (this.validateForm(errors, inputs));
-        this.slider();
-    };
-
-    validateForm = (errors, inputs) => {
-        let valid = true;
-        Object.values(errors).forEach(
-            // if we have an error string set valid to false
-            (val) => val.length > 0 && (valid = false)
-        );
-
-        return valid;
-    };
-
-    slider = () => {
-        let {inputs} = this.state;
-        let inputsLength = Object.keys(inputs).length;
-        let filled = 0;
-
-        Object.values(inputs).forEach(
-            (val) => val.length > 0 && (filled += 1)
-        );
-
-        let progress = filled / inputsLength * 100;
-        this.setState({formProgress: progress});
-    };
-
-    submit = (event) => {
-        event.preventDefault();
-        console.log(JSON.stringify(this.state.inputs));
-        Api(`movie/create/`, `POST`, this.state.inputs)
-            .then(res => {
-                console.log(res)
-            });
-    };
-
-    render() {
-        let {formProgress, valid} = this.state;
-        return (
-            <main>
-                <Link to={`/admin/`}>{`<<<`} Go back</Link>
-                <h2>Create a new movie</h2>
-                <progress value={formProgress} max={100}/>
-                <form>
-                    <section>
-                        <p>
-                            <label>
-                                Title:
-                            </label>
-                            <input type={`text`} name={`title`} onChange={this.handleChange} noValidate/>
-                        </p>
-                        <p>
-                            <label>
-                                Description:
-                            </label>
-                            <textarea name={`description`} onChange={this.handleChange} noValidate/>
-                        </p>
-                        <p>
-                            <label>
-                                Release date:
-                            </label>
-                            <input type={`date`} name={`release_date`} onChange={this.handleChange} noValidate/>
-                        </p>
-                    </section>
-                    <section>
-                        <p>
-                            <label>
-                                Genre:
-                            </label>
-                            <input type={`text`} name={`genre`} onChange={this.handleChange} noValidate/>
-                        </p>
-                        <p>
-                            <label>
-                                Studio:
-                            </label>
-                            <input type={`text`} name={`studio`} onChange={this.handleChange} noValidate/>
-                        </p>
-                        <p>
-                            <label>
-                                Actors:
-                            </label>
-                            <input type={`text`} name={`actors`} onChange={this.handleChange} noValidate/>
-                        </p>
-                    </section>
-                    <section>
-                        <p>
-                            <label>
-                                Keywords:
-                            </label>
-                            <input type={`text`} name={`keywords`} onChange={this.handleChange} noValidate/>
-                        </p>
-                        <p>
-                            <input type={`submit`} name={`submit`} onClick={this.submit} disabled={!valid}
-                                   value={(valid) ? 'Verstuur' : 'Controleer de velden'}/>
-                        </p>
-                    </section>
-                </form>
-            </main>
-        )
-    }
-}
-
 export class MoviesRead extends MoviesCrud {
     constructor(props) {
         super(props);
@@ -468,19 +297,19 @@ export class MoviesUpdate extends MoviesCrud {
                             <label>
                                 Title:
                             </label>
-                            <input type={`text`} name={`title`} onChange={this.handleChange} value={movies.title} noValidate/>
+                            <input type={`text`} name={`title`}  value={movies.title} noValidate/>
                         </p>
                         <p>
                             <label>
                                 Description:
                             </label>
-                            <textarea name={`description`} onChange={this.handleChange} noValidate>{movies.description}</textarea>
+                            <textarea name={`description`}  noValidate>{movies.description}</textarea>
                         </p>
                         <p>
                             <label>
                                 Release date:
                             </label>
-                            <input type={`date`} name={`release_date`} onChange={this.handleChange} value={movies.release_date} noValidate/>
+                            <input type={`date`} name={`release_date`}  value={movies.release_date} noValidate/>
                         </p>
                     </section>
                     <section>
@@ -488,19 +317,19 @@ export class MoviesUpdate extends MoviesCrud {
                             <label>
                                 Genre:
                             </label>
-                            <input type={`text`} name={`genre`} onChange={this.handleChange} value={movies.genre[0]} noValidate/>
+                            <input type={`text`} name={`genre`}  value={movies.genre[0]} noValidate/>
                         </p>
                         <p>
                             <label>
                                 Studio:
                             </label>
-                            <input type={`text`} name={`studio`} onChange={this.handleChange} value={movies.studio} noValidate/>
+                            <input type={`text`} name={`studio`}  value={movies.studio} noValidate/>
                         </p>
                         <p>
                             <label>
                                 Actors:
                             </label>
-                            <input type={`text`} name={`actors`} onChange={this.handleChange} value={movies.actors[0]} noValidate/>
+                            <input type={`text`} name={`actors`}  value={movies.actors[0]} noValidate/>
                         </p>
                     </section>
                     <section>
@@ -508,7 +337,7 @@ export class MoviesUpdate extends MoviesCrud {
                             <label>
                                 Keywords:
                             </label>
-                            <input type={`text`} name={`keywords`} onChange={this.handleChange} value={movies.keywords[0]} noValidate/>
+                            <input type={`text`} name={`keywords`}  value={movies.keywords[0]} noValidate/>
                         </p>
                         <p>
                             <input type={`submit`} name={`submit`} onClick={this.submit} disabled={!valid}
@@ -598,5 +427,3 @@ export class MoviesReadAll extends MoviesCrud {
         return (body);
     }
 }
-
-export default MoviesCreate;
