@@ -40,7 +40,7 @@ class MoviesCreate extends Component {
         e.preventDefault();
         console.log(this.state);
         let form_data = new FormData();
-        form_data.append('photo', this.state.photo, this.state.photo.name);
+        form_data.append('photo', this.state.photo);
         form_data.append('title', this.state.title);
         form_data.append('description', this.state.description);
         form_data.append('release_date', this.state.release_date);
@@ -49,7 +49,7 @@ class MoviesCreate extends Component {
         form_data.append('actors', this.state.actors);
         form_data.append('keywords', this.state.keywords);
 
-        let url = 'http://proxy.projectb.vdmi/http://172.28.0.5/api/movie/create/';
+        let url = 'http://proxy.projectb.vdmi/http://172.28.0.4/api/movie/create/';
         axios.post(url, form_data, {
           headers: {
             'content-type': 'multipart/form-data'
