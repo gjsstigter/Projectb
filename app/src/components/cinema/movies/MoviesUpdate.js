@@ -3,7 +3,7 @@ import axios from 'axios';
 import {Link} from "react-router-dom";
 import Api from "../api/Api";
 
-class MoviesCreate extends Component {
+class MoviesUpdate extends Component {
 
     state = {
         title: '',
@@ -14,6 +14,7 @@ class MoviesCreate extends Component {
         studio: '',
         actors: [''],
         keywords: [''],
+        id: this.props.id,
     };
 
     handleChange = (e) => {
@@ -50,9 +51,32 @@ class MoviesCreate extends Component {
         form_data.append('actors', this.state.actors);
         form_data.append('keywords', this.state.keywords);
 
-        Api(`/movie/create/`, `POST`, form_data)
+        Api(`/movie/${this.state.id}/update`, `POST`, form_data)
             .then(res => (console.log(res)));
-      };
+    };
+
+    movieList = () => {
+        Api(`/movie/`, `GET`)
+            // .then(res => console.log(res))
+            .then(res => (this.setState(
+                    {
+                        title: res.data[0].title,
+                        photo_old: res.data[0].photo,
+                        description: res.data[0].description,
+                        release_date: res.data[0].release_date,
+                        genre: res.data[0].genre,
+                        studio: res.data[0].studio,
+                        actors: res.data[0].actors,
+                        keywords: res.data[0].keywords,
+                        loaded: true,
+                    }
+                )
+            ));
+    };
+
+    componentDidMount() {
+        this.movieList();
+    }
 
     render() {
         return (
@@ -68,6 +92,7 @@ class MoviesCreate extends Component {
                             <input type={`text`} name={`title`} value={this.state.title} onChange={this.handleChange} required/>
                         </p>
                         <p>
+                            <img src={this.state.photo_old} alt={this.state.photo_old}/>
                             <label>
                                 Photo:
                             </label>
@@ -123,4 +148,4 @@ class MoviesCreate extends Component {
     }
 }
 
-export default MoviesCreate;
+export default MoviesUpdate;

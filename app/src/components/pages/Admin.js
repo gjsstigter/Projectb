@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
-import {MoviesRead, MoviesReadAll, MoviesUpdate} from "../cinema/movies/MoviesCrud";
 import {Link, NavLink} from "react-router-dom";
 import MoviesCreate from "../cinema/movies/MoviesCreate";
+import MoviesReadAll from "../cinema/movies/MoviesReadAll";
+import MoviesUpdate from "../cinema/movies/MoviesUpdate";
+import MoviesRead from "../cinema/movies/MoviesRead";
 
 class Admin extends Component{
   constructor(props) {
