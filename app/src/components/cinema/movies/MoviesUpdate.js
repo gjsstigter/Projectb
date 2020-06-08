@@ -50,7 +50,7 @@ class MoviesUpdate extends Component {
         form_data.append('actors', this.state.actors);
         form_data.append('keywords', this.state.keywords);
 
-        Api(`/movie/${this.state.id}/update`, `POST`, form_data)
+        Api(`/movie/${this.state.id}/update/`, `PATCH`, form_data)
             .then(res => (console.log(res)));
     };
 
