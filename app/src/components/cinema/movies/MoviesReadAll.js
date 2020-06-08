@@ -3,11 +3,6 @@ import {Link} from "react-router-dom";
 import React, {Component} from "react";
 
 class MoviesReadAll extends Component{
-    constructor(props) {
-        super(props);
-
-    }
-
     state = {
         movies: {},
         loaded: false,

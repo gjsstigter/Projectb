@@ -17,7 +17,6 @@ class Admin extends Component{
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    let {page, crud} = this.props.match.params;
     if(prevProps !== this.props) {
       this.setState({
         page: (this.props.match.params.page) ? this.props.match.params.page.toLowerCase() : `null`,
