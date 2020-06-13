@@ -1,7 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
 import { Slide } from "react-slideshow-image";
-
-const imgbase = "../../assets/images/slideshow/";
 
 // Het importeren van alle fotos in de assets/iamges/slideshow
 function importAll(r) {
@@ -13,7 +11,7 @@ const slideImages = importAll(
 );
 
 const properties = {
-  duration: 5000,
+  duration: 10000,
   transitionDuration: 500,
   infinite: true,
   indicators: true,
@@ -25,8 +23,10 @@ const Slider = () => {
   let images = slideImages.map((imgName, index) => {
     return (
       <div className="each-slide">
-        <div style={{ backgroundImage: `url(${imgName})`, height: `500px` }}>
-          <span className="slide-text">this is de slider test</span>
+        <div style={{ backgroundImage: `url(${imgName})`}} className="slide-image"  >
+          <div className="slide-text">
+            <p>Deze film is gaaf en moet je zien!!</p>
+          </div>
         </div>
       </div>
     );

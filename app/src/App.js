@@ -1,30 +1,38 @@
 import React, { Component } from "react";
 
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 
 import Home from "./components/pages/Home";
 import FilmItem from "./components/pages/Film-item"
 import Login from "./components/pages/Login"
 import Register from "./components/pages/Register"
 import Header from "./components/header/Header";
-import P404 from "./components/pages/P404";
-import "./assets/sass/_main.scss";
+import Filmitem from "./components/pages/Filmitem";
+import Contact from "./components/pages/Contact";
+import './assets/sass/_main.scss'
+import Admin from "./components/pages/Admin";
 
 class App extends Component {
-  render() {
-    return (
-      <Router>
-        <div className="App">
-          <Header />
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/film-item" exact component={FilmItem} />
-            <Route path="/login" exact component={Login} />
-            <Route path="/Register" exact component={Register} />
-            <Route component={P404} />
-          </Switch>
-        </div>
-      </Router>
+
+    // LoginStatus = (id, uname, upass) => {
+    //     return (id && uname && upass) ?  true : false;
+    // }
+
+    render() {
+        return (
+            <Router>
+                <div className="App">
+                    <Header/>
+                    <Switch>
+                        <Route path={`/`} exact component={Home}/>
+                        <Route path={[`/admin/:page/:crud/:id`, `/admin/:page/:crud/`, `/admin/:page/`, `/admin/`, `/:page/:crud`]} component={Admin}/>
+                        <Route path={`/film/:id`} component={Filmitem}/>
+                        <Route path={`/contact`} component={Contact}/>
+                        <Redirect path={`*`} to={`/`}/>
+                    </Switch>
+
+                </div>
+            </Router>
     );
   }
 }

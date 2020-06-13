@@ -2,7 +2,7 @@ import React, { Component } from "react";
 //import List from "../";
 import HarryPotterPoster from "../../assets/images/filmitem/harry-potter-poster.jpg";
 
-class Home extends Component {
+class Filmitem extends Component {
   render() {
     return (
       <main className="filmitem-main">
@@ -144,10 +144,9 @@ class Home extends Component {
             </div>
           </div>
         </div>
-        {/* <List/> */}
       </main>
     );
   }
 }
 
-export default Home;
+export default Filmitem;
