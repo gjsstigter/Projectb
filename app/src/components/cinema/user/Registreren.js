@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Api from "../api/Api";
 
-class Login extends Component {
+class Registreren extends Component {
 
     state = {
         email: null,
@@ -39,8 +39,8 @@ class Login extends Component {
 
         if (this.state.username === `admin@admin.nl`) {
         } else {
-        Api(`/login`, `POST`, form_data)
-            .then(res => (console.log(res)));
+            Api(`/login`, `POST`, form_data)
+                .then(res => (console.log(res)));
         }
     };
 
@@ -67,30 +67,30 @@ class Login extends Component {
 
     render = () => {
         return (
-        <main>
-            <h2>Login</h2>
-            <form onSubmit={this.handleSubmit}>
-                <section>
+            <main>
+                <h2>Login</h2>
+                <form onSubmit={this.handleSubmit}>
+                    <section>
+                        <p>
+                            <label>
+                                Email:
+                            </label>
+                            <input type={`email`} name={`email`} value={this.state.email} onChange={this.handleChange} required/>
+                        </p>
+                        <p>
+                            <label>
+                                Wachtwoord:
+                            </label>
+                            <input type={`password`} name={`password`} value={this.state.password}  onChange={this.handleChange} required/>
+                        </p>
+                    </section>
                     <p>
-                    <label>
-                    Email:
-                    </label>
-                    <input type={`email`} name={`email`} value={this.state.email} onChange={this.handleChange} required/>
+                        <input type={`submit`} name={`submit`} value={`Login`}/>
                     </p>
-                    <p>
-                    <label>
-                    Wachtwoord:
-                    </label>
-                    <input type={`password`} name={`password`} value={this.state.password}  onChange={this.handleChange} required/>
-                    </p>
-                </section>
-                <p>
-                    <input type={`submit`} name={`submit`} value={`Login`}/>
-                </p>
-            </form>
-        </main>
+                </form>
+            </main>
         )
     }
 }
 
-export default Login
+export default Registreren;

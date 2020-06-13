@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Slider from "./Slider";
 import Nav from "./Nav";
 
 class Header extends Component{
@@ -7,7 +6,6 @@ class Header extends Component{
         return(
             <header>
                 <Nav/>
-                <Slider/>
             </header>
         );
     }
