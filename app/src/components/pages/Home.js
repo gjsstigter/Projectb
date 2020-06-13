@@ -5,6 +5,7 @@ import videobanner2 from "../../assets/images/home/filmbanner2.jpg";
 import videobanner3 from "../../assets/images/home/filmbanner3.jpg";
 import videobanner4 from "../../assets/images/home/filmbanner4.jpg";
 import videobanner5 from "../../assets/images/home/filmbanner5.jpg";
+import {Link} from "react-router-dom";
 
 class Home extends Component {
   render() {
@@ -12,56 +13,56 @@ class Home extends Component {
       <main className="region-main">
         <ul className="menu-category">
             <li className="menu-item">
-                <a href="#actueel">Actueel</a>
+                <Link to={`#actueel`}>Actueel</Link>
             </li>
             <li className="menu-item">
-                <a href="#verwacht">Verwacht</a>
+                <Link to={`#verwacht`}>Verwacht</Link>
             </li>
             <li className="menu-item">
-                <a href="#binnekort">Binnekort</a>
+                <Link to={`#binnekort`}>Binnekort</Link>
             </li>
         </ul>
         <section id="films">
             <div id="actueel">
             <div className="row filmscontent">
                 <div className="column-15 grid-item">
-                    <article className="film-item" onClick>
+                    <article className="film-item" onclick={console.log('hoi')}>
                         <div className="film-thumb">
                             <img alt="videobanner-1" width="204" height="350" src={videobanner1}/>
                             <div className="right-info">
-                                <span className="pg">G</span>
+                                <span className="pg">18 +</span>
                             </div>
                             <span className="rate">4</span>
                             <div className="film-content">
                                 <h4 className="film-title">Ghost Rider</h4>
                                 <div className="film-date">Release: August 3, 2017</div>
                                 <div className="film-knoppen">
-                                    <a href="https://player.vimeo.com/video/38156752"><i aria-hidden="true" className="fa"></i>Trailer</a>
-                                    <a href="http://demo.amytheme.com/movie/demo/single-cinema/amy_movie/star-trek-beyond/"><i
-                                        aria-hidden="true" className="fa"></i>Detail</a>
+                                    <Link to={`https://player.vimeo.com/video/38156752`}><i aria-hidden="true" className="fa"></i>Trailer</Link>
+                                    <Link to={`http://demo.amytheme.com/movie/demo/single-cinema/amy_movie/star-trek-beyond/`}><i
+                                        aria-hidden="true" className="fa"></i>Detail</Link>
                                 </div>
                             </div>
                             <div className="pic-caption left-info">
                                 <h4 className="film-title">
-                                    <a href="#">Ghost Rider</a>
+                                    <Link to={`#`}>Ghost Rider</Link>
                                 </h4>
-                                <span className="pg">G</span>
+                                <span className="pg">18 +</span>
                                 <div className="desc-mv"><p><span>Uitgebracht: </span>Augustus 3, 2020</p>
                                     <p>
                                     <span>Genre: </span>
-                                    <a href="#">Kinderen</a>,
-                                    <a href="#">Drama</a>,
-                                    <a href="#">Magie</a>,
-                                    <a href="#">Sci-fi</a>
+                                    <Link to={`#`}>Kinderen</Link>,
+                                    <Link to={`#`}>Drama</Link>,
+                                    <Link to={`#`}>Magie</Link>,
+                                    <Link to={`#`}>Sci-fi</Link>
                                     </p>
                                     <p><span>Duur: </span>01 uur 20 minuten</p><p><span>Taal: </span>Engels</p>
                                 </div>
                                 <span className="rate">4</span>
                                 <div className="entry-button">
-                                    <a href="https://player.vimeo.com/video/38156752" className="fancybox.iframe amy-fancybox"><i
-                                    aria-hidden="true" className="fa"></i>Trailer</a>
-                                    <a href="http://demo.amytheme.com/movie/demo/single-cinema/amy_movie/star-trek-beyond/"><i
-                                    aria-hidden="true" className="fa"></i>Detail</a>
+                                    <Link to={`https://player.vimeo.com/video/38156752`} className="fancybox.iframe amy-fancybox"><i
+                                    aria-hidden="true" className="fa"></i>Trailer</Link>
+                                    <Link to={`http://demo.amytheme.com/movie/demo/single-cinema/amy_movie/star-trek-beyond/`}><i
+                                    aria-hidden="true" className="fa"></i>Detail</Link>
                                 </div>
                             </div>
                         </div>
@@ -69,43 +70,43 @@ class Home extends Component {
                 </div>
 
                 <div className="column-15 grid-item">
-                    <article className="film-item" onClick>
+                    <article className="film-item" onclick={console.log('hoi')}>
                         <div className="film-thumb">
                             <img alt="videobanner-2" width="204" height="350" src={videobanner2}/>
                             <div className="right-info">
-                                <span className="pg">G</span>
+                                <span className="pg">18 +</span>
                             </div>
-                            <span className="rate">4</span>
+                            <span className="rate">4/10 </span>
                             <div className="film-content">
                                 <h4 className="film-title">Fiddler</h4>
                                 <div className="film-date">Release: August 3, 2017</div>
                                 <div className="film-knoppen">
-                                    <a href="https://player.vimeo.com/video/38156752"><i aria-hidden="true" className="fa"></i>Trailer</a>
-                                    <a href="http://demo.amytheme.com/movie/demo/single-cinema/amy_movie/star-trek-beyond/"><i
-                                        aria-hidden="true" className="fa"></i>Detail</a>
+                                    <Link to={`https://player.vimeo.com/video/38156752`}><i aria-hidden="true" className="fa"></i>Trailer</Link>
+                                    <Link to={`http://demo.amytheme.com/movie/demo/single-cinema/amy_movie/star-trek-beyond/`}><i
+                                        aria-hidden="true" className="fa"></i>Detail</Link>
                                 </div>
                             </div>
                             <div className="pic-caption left-info">
                                 <h4 className="film-title">
-                                    <a href="#">Fiddler</a>
+                                    <Link to={`#`}>Fiddler</Link>
                                 </h4>
-                                <span className="pg">G</span>
+                                <span className="pg">18 +</span>
                                 <div className="desc-mv"><p><span>Uitgebracht: </span>Augustus 3, 2020</p>
                                     <p>
                                         <span>Genre: </span>
-                                        <a href="#">Kinderen</a>,
-                                        <a href="#">Drama</a>,
-                                        <a href="#">Magie</a>,
-                                        <a href="#">Sci-fi</a>
+                                        <Link to={`#`}>Kinderen</Link>,
+                                        <Link to={`#`}>Drama</Link>,
+                                        <Link to={`#`}>Magie</Link>,
+                                        <Link to={`#`}>Sci-fi</Link>
                                     </p>
                                     <p><span>Duur: </span>01 uur 20 minuten</p><p><span>Taal: </span>Engels</p>
                                 </div>
                                 <span className="rate">4</span>
                                 <div className="entry-button">
-                                    <a href="https://player.vimeo.com/video/38156752" className="fancybox.iframe amy-fancybox"><i
-                                        aria-hidden="true" className="fa"></i>Trailer</a>
-                                    <a href="http://demo.amytheme.com/movie/demo/single-cinema/amy_movie/star-trek-beyond/"><i
-                                        aria-hidden="true" className="fa"></i>Detail</a>
+                                    <Link to={`https://player.vimeo.com/video/38156752" className="fancybox.iframe amy-fancybox`}><i
+                                        aria-hidden="true" className="fa"></i>Trailer</Link>
+                                    <Link to={`http://demo.amytheme.com/movie/demo/single-cinema/amy_movie/star-trek-beyond/`}><i
+                                        aria-hidden="true" className="fa"></i>Detail</Link>
                                 </div>
                             </div>
                         </div>
@@ -113,43 +114,43 @@ class Home extends Component {
                 </div>
 
                 <div className="column-15 grid-item">
-                    <article className="film-item" onClick>
+                    <article className="film-item" onclick={console.log('hoi')}>
                         <div className="film-thumb">
                             <img alt="videobanner3" width="204" height="350" src={videobanner3}/>
                             <div className="right-info">
-                                <span className="pg">G</span>
+                                <span className="pg">18 +</span>
                             </div>
-                            <span className="rate">4</span>
+                            <span className="rate">4/10</span>
                             <div className="film-content">
                                 <h4 className="film-title">Pink Floyd</h4>
                                 <div className="film-date">Release: August 3, 2017</div>
                                 <div className="film-knoppen">
-                                    <a href="https://player.vimeo.com/video/38156752"><i aria-hidden="true" className="fa"></i>Trailer</a>
-                                    <a href="http://demo.amytheme.com/movie/demo/single-cinema/amy_movie/star-trek-beyond/"><i
-                                        aria-hidden="true" className="fa"></i>Detail</a>
+                                    <Link to={`https://player.vimeo.com/video/38156752`}><i aria-hidden="true" className="fa"></i>Trailer</Link>
+                                    <Link to={`http://demo.amytheme.com/movie/demo/single-cinema/amy_movie/star-trek-beyond/`}><i
+                                        aria-hidden="true" className="fa"></i>Detail</Link>
                                 </div>
                             </div>
                             <div className="pic-caption left-info">
                                 <h4 className="film-title">
-                                    <a href="#">Pink Floyd</a>
+                                    <Link to={`#`}>Pink Floyd</Link>
                                 </h4>
-                                <span className="pg">G</span>
+                                <span className="pg">18 +</span>
                                 <div className="desc-mv"><p><span>Uitgebracht: </span>Augustus 3, 2020</p>
                                     <p>
                                         <span>Genre: </span>
-                                        <a href="#">Kinderen</a>,
-                                        <a href="#">Drama</a>,
-                                        <a href="#">Magie</a>,
-                                        <a href="#">Sci-fi</a>
+                                        <Link to={`#`}>Kinderen</Link>,
+                                        <Link to={`#`}>Drama</Link>,
+                                        <Link to={`#`}>Magie</Link>,
+                                        <Link to={`#`}>Sci-fi</Link>
                                     </p>
                                     <p><span>Duur: </span>01 uur 20 minuten</p><p><span>Taal: </span>Engels</p>
                                 </div>
                                 <span className="rate">4</span>
                                 <div className="entry-button">
-                                    <a href="https://player.vimeo.com/video/38156752" className="fancybox.iframe amy-fancybox"><i
-                                        aria-hidden="true" className="fa"></i>Trailer</a>
-                                    <a href="http://demo.amytheme.com/movie/demo/single-cinema/amy_movie/star-trek-beyond/"><i
-                                        aria-hidden="true" className="fa"></i>Detail</a>
+                                    <Link to={`https://player.vimeo.com/video/38156752" className="fancybox.iframe amy-fancybox`}><i
+                                        aria-hidden="true" className="fa"></i>Trailer</Link>
+                                    <Link to={`http://demo.amytheme.com/movie/demo/single-cinema/amy_movie/star-trek-beyond/`}><i
+                                        aria-hidden="true" className="fa"></i>Detail</Link>
                                 </div>
                             </div>
                         </div>
@@ -157,43 +158,43 @@ class Home extends Component {
                 </div>
 
                 <div className="column-15 grid-item">
-                    <article className="film-item" onClick>
+                    <article className="film-item" onclick={console.log('hoi')}>
                         <div className="film-thumb">
                             <img alt="videobanner-4" width="204" height="350" src={videobanner4}/>
                             <div className="right-info">
-                                <span className="pg">G</span>
+                                <span className="pg">18 +</span>
                             </div>
-                            <span className="rate">4</span>
+                            <span className="rate">4/10</span>
                             <div className="film-content">
                                 <h4 className="film-title">Guardians of the Galaxy</h4>
                                 <div className="film-date">Release: August 3, 2017</div>
                                 <div className="film-knoppen">
-                                    <a href="https://player.vimeo.com/video/38156752"><i aria-hidden="true" className="fa"></i>Trailer</a>
-                                    <a href="http://demo.amytheme.com/movie/demo/single-cinema/amy_movie/star-trek-beyond/"><i
-                                        aria-hidden="true" className="fa"></i>Detail</a>
+                                    <Link to={`https://player.vimeo.com/video/38156752`}><i aria-hidden="true" className="fa"></i>Trailer</Link>
+                                    <Link to={`http://demo.amytheme.com/movie/demo/single-cinema/amy_movie/star-trek-beyond/`}><i
+                                        aria-hidden="true" className="fa"></i>Detail</Link>
                                 </div>
                             </div>
                             <div className="pic-caption left-info">
                                 <h4 className="film-title">
-                                    <a href="#">Guardians of the Galaxy</a>
+                                    <Link to={`#`}>Guardians of the Galaxy</Link>
                                 </h4>
-                                <span className="pg">G</span>
+                                <span className="pg">18 +</span>
                                 <div className="desc-mv"><p><span>Uitgebracht: </span>Augustus 3, 2020</p>
                                     <p>
                                         <span>Genre: </span>
-                                        <a href="#">Kinderen</a>,
-                                        <a href="#">Drama</a>,
-                                        <a href="#">Magie</a>,
-                                        <a href="#">Sci-fi</a>
+                                        <Link to={`#`}>Kinderen</Link>,
+                                        <Link to={`#`}>Drama</Link>,
+                                        <Link to={`#`}>Magie</Link>,
+                                        <Link to={`#`}>Sci-fi</Link>
                                     </p>
                                     <p><span>Duur: </span>01 uur 20 minuten</p><p><span>Taal: </span>Engels</p>
                                 </div>
-                                <span className="rate">4</span>
+                                <span className="rate">4/10</span>
                                 <div className="entry-button">
-                                    <a href="https://player.vimeo.com/video/38156752" className="fancybox.iframe amy-fancybox"><i
-                                        aria-hidden="true" className="fa"></i>Trailer</a>
-                                    <a href="http://demo.amytheme.com/movie/demo/single-cinema/amy_movie/star-trek-beyond/"><i
-                                        aria-hidden="true" className="fa"></i>Detail</a>
+                                    <Link to={`https://player.vimeo.com/video/38156752`} className="fancybox.iframe amy-fancybox"><i
+                                        aria-hidden="true" className="fa"></i>Trailer</Link>
+                                    <Link to={`http://demo.amytheme.com/movie/demo/single-cinema/amy_movie/star-trek-beyond/`}><i
+                                        aria-hidden="true" className="fa"></i>Detail</Link>
                                 </div>
                             </div>
                         </div>
@@ -201,43 +202,43 @@ class Home extends Component {
                 </div>
 
                 <div className="column-15 grid-item">
-                    <article className="film-item" onClick>
+                    <article className="film-item" onclick={console.log('hoi')}>
                         <div className="film-thumb">
                             <img alt="videobanner-5" width="204" height="350" src={videobanner5}/>
                             <div className="right-info">
-                                <span className="pg">G</span>
+                                <span className="pg">18 +</span>
                             </div>
                             <span className="rate">4</span>
                             <div className="film-content">
                                 <h4 className="film-title">H8FULL</h4>
                                 <div className="film-date">Release: August 3, 2017</div>
                                 <div className="film-knoppen">
-                                    <a href="https://player.vimeo.com/video/38156752"><i aria-hidden="true" className="fa"></i>Trailer</a>
-                                    <a href="http://demo.amytheme.com/movie/demo/single-cinema/amy_movie/star-trek-beyond/"><i
-                                        aria-hidden="true" className="fa"></i>Detail</a>
+                                    <Link to={`https://player.vimeo.com/video/38156752`}><i aria-hidden="true" className="fa"></i>Trailer</Link>
+                                    <Link to={`http://demo.amytheme.com/movie/demo/single-cinema/amy_movie/star-trek-beyond/`}><i
+                                        aria-hidden="true" className="fa"></i>Detail</Link>
                                 </div>
                             </div>
                             <div className="pic-caption left-info">
                                 <h4 className="film-title">
-                                    <a href="#">H8FULL</a>
+                                    <Link to={`#`}>H8FULL</Link>
                                 </h4>
-                                <span className="pg">G</span>
+                                <span className="pg">18 +</span>
                                 <div className="desc-mv"><p><span>Uitgebracht: </span>Augustus 3, 2020</p>
                                     <p>
                                         <span>Genre: </span>
-                                        <a href="#">Kinderen</a>,
-                                        <a href="#">Drama</a>,
-                                        <a href="#">Magie</a>,
-                                        <a href="#">Sci-fi</a>
+                                        <Link to={`#`}>Kinderen</Link>,
+                                        <Link to={`#`}>Drama</Link>,
+                                        <Link to={`#`}>Magie</Link>,
+                                        <Link to={`#`}>Sci-fi</Link>
                                     </p>
                                     <p><span>Duur: </span>01 uur 20 minuten</p><p><span>Taal: </span>Engels</p>
                                 </div>
-                                <span className="rate">4</span>
+                                <span className="rate">18 + </span>
                                 <div className="entry-button">
-                                    <a href="https://player.vimeo.com/video/38156752" className="fancybox.iframe amy-fancybox"><i
-                                        aria-hidden="true" className="fa"></i>Trailer</a>
-                                    <a href="http://demo.amytheme.com/movie/demo/single-cinema/amy_movie/star-trek-beyond/"><i
-                                        aria-hidden="true" className="fa"></i>Detail</a>
+                                    <Link to={`https://player.vimeo.com/video/38156752`} className="fancybox.iframe amy-fancybox"><i
+                                        aria-hidden="true" className="fa"></i>Trailer</Link>
+                                    <Link to={`http://demo.amytheme.com/movie/demo/single-cinema/amy_movie/star-trek-beyond/`}><i
+                                        aria-hidden="true" className="fa"></i>Detail</Link>
                                 </div>
                             </div>
                         </div>
@@ -256,10 +257,10 @@ class Home extends Component {
                                 <div className="wpb_text_column wpb_content_element ">
                                     <div className="wpb_wrapper">
                                         <ul>
-                                            <li><a href="#">Locaties</a></li>
-                                            <li><a href="#">Aanbiedingen</a></li>
-                                            <li><a href="#">Koop tickets</a></li>
-                                            <li><a href="#">Stel een vraag</a></li>
+                                            <li><Link to={`#`}>Locaties</Link></li>
+                                            <li><Link to={`#`}>Aanbiedingen</Link></li>
+                                            <li><Link to={`#`}>Koop tickets</Link></li>
+                                            <li><Link to={`#`}>Stel een vraag</Link></li>
                                         </ul>
 
                                     </div>
@@ -283,13 +284,13 @@ class Home extends Component {
                           <div className="amy-menu">
                               <ul className="menu">
                                   <li className="menu-item">
-                                      <a href="#">Home</a>
+                                      <Link to={`#`}>Home</Link>
                                   </li>
                                   <li className="menu-item">
-                                      <a href="#">Films</a>
+                                      <Link to={`#`}>Films</Link>
                                   </li>
                                   <li className="menu-item">
-                                      <a href="#">Contact</a>
+                                      <Link to={`#`}>Contact</Link>
                                   </li>
                               </ul>
                           </div>

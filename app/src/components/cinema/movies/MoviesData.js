@@ -3,10 +3,10 @@ import Api from "../api/Api";
 
 export const MovieData = (id) => {
 
-    return Api(`/movie/${id}`);
+    return Api(`/movie/${id}`, `GET`);
 };
 
-export const MoviesData = (id) => {
+export const MoviesData = () => {
 
-    return Api(`/movie/`);
+    return Api(`/movie/`,`GET`);
 };

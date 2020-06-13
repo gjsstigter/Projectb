@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
-import MoviesCreate, {MoviesRead, MoviesReadAll, MoviesUpdate} from "../cinema/movies/MoviesCrud";
 import {Link, NavLink} from "react-router-dom";
+import MoviesCreate from "../cinema/movies/MoviesCreate";
+import MoviesReadAll from "../cinema/movies/MoviesReadAll";
+import MoviesUpdate from "../cinema/movies/MoviesUpdate";
+import MoviesRead from "../cinema/movies/MoviesRead";
+import Login from "../cinema/user/Login";
 
 class Admin extends Component{
   constructor(props) {
@@ -14,7 +18,6 @@ class Admin extends Component{
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    let {page, crud} = this.props.match.params;
     if(prevProps !== this.props) {
       this.setState({
         page: (this.props.match.params.page) ? this.props.match.params.page.toLowerCase() : `null`,
@@ -31,6 +34,19 @@ class Admin extends Component{
     let body;
     console.log(this.state);
     switch(page) {
+      case `user` :
+        switch (crud) {
+          case `inloggen`:
+            body = <Login/>;
+            break;
+          case `registreren`:
+            body = <Login/>;
+            break;
+          default:
+            body = <Login/>
+            break;
+        }
+      break;
       case `movies`:
         switch (crud) {
           case `create`:

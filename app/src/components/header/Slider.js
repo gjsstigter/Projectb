@@ -1,7 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
 import { Slide } from "react-slideshow-image";
-
-const imgbase = "../../assets/images/slideshow/";
 
 // Het importeren van alle fotos in de assets/iamges/slideshow
 function importAll(r) {
