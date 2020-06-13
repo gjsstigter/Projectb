@@ -2,6 +2,25 @@
   div {
     display: block;
   }
+  .container {
+    width: 1170px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .container:before {
+    content: " ";
+    display: table;
+  }
+  .row {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+  .row:before {
+    content: " ";
+    display: table;
+  }
   .single-movie {
     margin-top: 30px;
     color: #666;
@@ -23,9 +42,8 @@
       width: 100%;
       float: none;
       margin: 0;
-      background: $grey;
+      background: #eeeeee;
       padding: 40px;
-      margin-left: 20px;
 
       label {
         color: $black;
@@ -70,11 +88,95 @@
     color: $white;
     font-size: 13px;
     font-weight: bold;
+    text-decoration: none;
     margin-top: 25px;
     padding: 5px 15px;
     text-transform: uppercase;
     transition: all 0.5s ease 0s;
     width: auto;
     float: right;
+  }
+  .buy-ticket:hover {
+    background: $black;
+    color: $orange;
+  }
+
+  .movie-box {
+    display: flex;
+    width: 100%;
+
+    .poster {
+      min-width: 370px;
+      float: left;
+      margin-right: 30px;
+    }
+    .detail {
+
+      .summary {
+        margin-top: 25px;
+
+        p {
+          margin-bottom: 15px;
+        }
+      }
+      .detail-heading {
+
+        .genre {
+          font-size: 13px;
+          color: $orange;
+          font-weight: 600;
+          text-transform: uppercase;
+          margin-top: -4px;
+          margin-bottom: 4px;
+        }
+        .name {
+          font-size: 30px;
+          line-height: 1.4;
+          color: #222222;
+          font-weight: 600;
+          margin-bottom: 36px;
+        }
+      }
+      .detail-list {
+
+        .detail-row {
+          display: flex;
+          margin-bottom: 11px;
+
+          .detail-title {
+            font-weight: 600;
+            margin-right: 30px;
+            min-width: 100px;
+
+            span:after {
+              content: ':';
+            }
+            i {
+              font-size: 16px;
+              color: $orange;
+              margin-right: 10px;
+            }
+            .icon:before {
+              content: "●";
+            }
+          }
+        }
+        .detail-row:before {
+          content: '';
+          display: block;
+          clear: both;
+        }
+        .detail-row:after {
+          content: '';
+          display: block;
+          clear: both;
+        }
+      }
+      .detail-list:before {
+        content: '';
+        display: block;
+        clear: both;
+      }
+    }
   }
 }
