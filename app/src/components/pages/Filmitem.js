@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 //import List from "../";
 
-class Home extends Component {
+class Filmitem extends Component {
   render() {
     return (
       <main className="filmitem-main">
@@ -87,10 +87,9 @@ class Home extends Component {
             </div>
           </div>
         </div>
-        {/* <List/> */}
       </main>
     );
   }
 }
 
-export default Home;
+export default Filmitem;

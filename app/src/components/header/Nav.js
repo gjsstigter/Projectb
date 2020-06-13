@@ -9,7 +9,7 @@ class Nav extends Component {
           <Link className="create-account" to={`/`}>
             Maak een account
           </Link>
-          <Link to={`/`} classname="login">
+          <Link to={`/user/login`} classname="login">
             Login
           </Link>
         </section>
@@ -23,7 +23,7 @@ class Nav extends Component {
               <Link to={`/`}>Home</Link>
             </li>
             <li className="link">
-              <Link to={`/`}>Films</Link>
+              <Link to={`/films/`}>Films</Link>
             </li>
             <li className="link">
               <Link to={`/`}>Contact</Link>
