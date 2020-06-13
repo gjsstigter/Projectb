@@ -7,7 +7,8 @@
 
   a {
     transition: none;
-    font-size: 30px;
+    text-decoration: none;
+    color: $black;
     font-weight: bold;
     position: relative;
   }
@@ -28,10 +29,12 @@
   a {
     position: relative;
     display: block;
-    font-size: 30px;
     font-weight: bold;
     margin-right: -1px;
     transition: none;
+  }
+  a:active {
+    color: $orange;
   }
   a:hover {
     text-decoration: none;
@@ -39,7 +42,6 @@
     color: $orange;
   }
   li:after {
-    content: "/";
     font-size: 28px;
     font-weight: bold;
     position: absolute;

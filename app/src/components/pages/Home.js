@@ -30,7 +30,7 @@ class Home extends Component {
                         <div className="film-thumb">
                             <img alt="videobanner-1" width="204" height="350" src={videobanner1}/>
                             <div className="right-info">
-                                <span className="pg">G</span>
+                                <span className="pg">18 +</span>
                             </div>
                             <span className="rate">4</span>
                             <div className="film-content">
@@ -46,7 +46,7 @@ class Home extends Component {
                                 <h4 className="film-title">
                                     <Link to={`#`}>Ghost Rider</Link>
                                 </h4>
-                                <span className="pg">G</span>
+                                <span className="pg">18 +</span>
                                 <div className="desc-mv"><p><span>Uitgebracht: </span>Augustus 3, 2020</p>
                                     <p>
                                     <span>Genre: </span>
@@ -74,9 +74,9 @@ class Home extends Component {
                         <div className="film-thumb">
                             <img alt="videobanner-2" width="204" height="350" src={videobanner2}/>
                             <div className="right-info">
-                                <span className="pg">G</span>
+                                <span className="pg">18 +</span>
                             </div>
-                            <span className="rate">4</span>
+                            <span className="rate">4/10 </span>
                             <div className="film-content">
                                 <h4 className="film-title">Fiddler</h4>
                                 <div className="film-date">Release: August 3, 2017</div>
@@ -90,7 +90,7 @@ class Home extends Component {
                                 <h4 className="film-title">
                                     <Link to={`#`}>Fiddler</Link>
                                 </h4>
-                                <span className="pg">G</span>
+                                <span className="pg">18 +</span>
                                 <div className="desc-mv"><p><span>Uitgebracht: </span>Augustus 3, 2020</p>
                                     <p>
                                         <span>Genre: </span>
@@ -118,9 +118,9 @@ class Home extends Component {
                         <div className="film-thumb">
                             <img alt="videobanner3" width="204" height="350" src={videobanner3}/>
                             <div className="right-info">
-                                <span className="pg">G</span>
+                                <span className="pg">18 +</span>
                             </div>
-                            <span className="rate">4</span>
+                            <span className="rate">4/10</span>
                             <div className="film-content">
                                 <h4 className="film-title">Pink Floyd</h4>
                                 <div className="film-date">Release: August 3, 2017</div>
@@ -134,7 +134,7 @@ class Home extends Component {
                                 <h4 className="film-title">
                                     <Link to={`#`}>Pink Floyd</Link>
                                 </h4>
-                                <span className="pg">G</span>
+                                <span className="pg">18 +</span>
                                 <div className="desc-mv"><p><span>Uitgebracht: </span>Augustus 3, 2020</p>
                                     <p>
                                         <span>Genre: </span>
@@ -162,9 +162,9 @@ class Home extends Component {
                         <div className="film-thumb">
                             <img alt="videobanner-4" width="204" height="350" src={videobanner4}/>
                             <div className="right-info">
-                                <span className="pg">G</span>
+                                <span className="pg">18 +</span>
                             </div>
-                            <span className="rate">4</span>
+                            <span className="rate">4/10</span>
                             <div className="film-content">
                                 <h4 className="film-title">Guardians of the Galaxy</h4>
                                 <div className="film-date">Release: August 3, 2017</div>
@@ -178,7 +178,7 @@ class Home extends Component {
                                 <h4 className="film-title">
                                     <Link to={`#`}>Guardians of the Galaxy</Link>
                                 </h4>
-                                <span className="pg">G</span>
+                                <span className="pg">18 +</span>
                                 <div className="desc-mv"><p><span>Uitgebracht: </span>Augustus 3, 2020</p>
                                     <p>
                                         <span>Genre: </span>
@@ -189,7 +189,7 @@ class Home extends Component {
                                     </p>
                                     <p><span>Duur: </span>01 uur 20 minuten</p><p><span>Taal: </span>Engels</p>
                                 </div>
-                                <span className="rate">4</span>
+                                <span className="rate">4/10</span>
                                 <div className="entry-button">
                                     <Link to={`https://player.vimeo.com/video/38156752`} className="fancybox.iframe amy-fancybox"><i
                                         aria-hidden="true" className="fa"></i>Trailer</Link>
@@ -206,7 +206,7 @@ class Home extends Component {
                         <div className="film-thumb">
                             <img alt="videobanner-5" width="204" height="350" src={videobanner5}/>
                             <div className="right-info">
-                                <span className="pg">G</span>
+                                <span className="pg">18 +</span>
                             </div>
                             <span className="rate">4</span>
                             <div className="film-content">
@@ -222,7 +222,7 @@ class Home extends Component {
                                 <h4 className="film-title">
                                     <Link to={`#`}>H8FULL</Link>
                                 </h4>
-                                <span className="pg">G</span>
+                                <span className="pg">18 +</span>
                                 <div className="desc-mv"><p><span>Uitgebracht: </span>Augustus 3, 2020</p>
                                     <p>
                                         <span>Genre: </span>
@@ -233,7 +233,7 @@ class Home extends Component {
                                     </p>
                                     <p><span>Duur: </span>01 uur 20 minuten</p><p><span>Taal: </span>Engels</p>
                                 </div>
-                                <span className="rate">4</span>
+                                <span className="rate">18 + </span>
                                 <div className="entry-button">
                                     <Link to={`https://player.vimeo.com/video/38156752`} className="fancybox.iframe amy-fancybox"><i
                                         aria-hidden="true" className="fa"></i>Trailer</Link>
