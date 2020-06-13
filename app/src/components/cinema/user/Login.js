@@ -67,27 +67,41 @@ class Login extends Component {
 
     render = () => {
         return (
-        <main>
-            <h2>Login</h2>
-            <form onSubmit={this.handleSubmit}>
-                <section>
-                    <p>
-                    <label>
-                    Email:
-                    </label>
-                    <input type={`email`} name={`email`} value={this.state.email} onChange={this.handleChange} required/>
+        <main className="login login-main">
+            <div className="pgssl-login-inner">
+                <div id="login">
+                    <h1>
+                        <a href="/">Movie Euhh</a>
+                    </h1>
+                    <form name="loginform" id="loginform">
+                        <p>
+                            <label htmlFor="user_login">Gebruikersnaam of e-mailadres</label>
+                            <input type="text" name={`email`} value={this.state.email}  onChange={this.handleChange} id="user_login" className="input" value="" size="20" autoCapitalize="off" />
+                        </p>
+                        <div className="user-pass-wrap">
+                            <label htmlFor="user_pass">Wachtwoord</label>
+                            <div className="wp-pwd">
+                                <input type="password" name={`password`} value={this.state.password}  onChange={this.handleChange} id="user_pass" className="input password-input" value="" size="20" />
+                            </div>
+                        </div>
+                        <p className="forgetmenot">
+                            <input name="rememberme" type="checkbox" id="rememberme" value="forever" />
+                            <label htmlFor="rememberme">Onthoud mij</label>
+                        </p>
+                        <p className="submit">
+                            <input type="submit" name="wp-submit" id="wp-submit" className="button button-primary button-large" value="Inloggen" />
+                            <input type="hidden" name="redirect_to" value="/" />
+                        </p>
+                    </form>
+                    <p id="nav">
+                        <a href="/Register">Account registreren</a>
                     </p>
-                    <p>
-                    <label>
-                    Wachtwoord:
-                    </label>
-                    <input type={`password`} name={`password`} value={this.state.password}  onChange={this.handleChange} required/>
+                    <p id="backtohome">
+                        <a href="/">Terug naar de homepagina</a>
                     </p>
-                </section>
-                <p>
-                    <input type={`submit`} name={`submit`} value={`Login`}/>
-                </p>
-            </form>
+                </div>
+            </div>
+            {/* <List/> */}
         </main>
         )
     }

@@ -299,8 +299,7 @@ class Home extends Component {
               </div>
           </div>
         </div>
-        {/* <List/> */}
-      </main>
+     </main>
     );
   }
 }
