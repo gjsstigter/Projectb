@@ -4,8 +4,6 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-d
 
 import Home from "./components/pages/Home";
 import FilmItem from "./components/pages/Filmitem"
-import Login from "./components/pages/Login"
-import Register from "./components/pages/Register"
 import Header from "./components/header/Header";
 import Filmitem from "./components/pages/Filmitem";
 import Contact from "./components/pages/Contact";
