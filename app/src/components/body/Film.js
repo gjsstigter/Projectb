@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { MoviesData } from "../cinema/movies/MoviesData";
 import videobanner5 from "../../assets/images/home/filmbanner4.jpg";
+import { Link } from "react-router-dom";
 
 let Film = (props) => {
   // check if filmitem has an img
@@ -18,7 +19,9 @@ let Film = (props) => {
       <p className="release-date">Release: {props.releaseDate}</p>
 
       <div className="hover-info">
-        <h1 className="film-title-hover">{props.title}</h1>
+        <Link to={`/films/${props.id}`}>
+          <h1 className="film-title-hover">{props.title}</h1>
+        </Link>
         <div className="info-wrapper">
           <p className="release-date">Uitgebracht: {props.releaseDate}</p>
           <p className="release-date">Genres: {props.genre}</p>
