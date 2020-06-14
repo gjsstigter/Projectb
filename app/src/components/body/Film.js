@@ -3,6 +3,7 @@ import { MoviesData } from "../cinema/movies/MoviesData";
 import videobanner5 from "../../assets/images/home/filmbanner5.jpg";
 
 let Film = (props) => {
+  // check if filmitem has an img
   let imgSrc;
   if (props.photo) {
     imgSrc = props.photo;
