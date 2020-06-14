@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import HarryPotterPoster from "../../assets/images/filmitem/harry-potter-poster.jpg";
 import { MovieData } from "../cinema/movies/MoviesData";
+import videobanner5 from "../../assets/images/home/filmbanner4.jpg";
 
 class Filmitem extends Component {
   state = {
@@ -22,6 +23,36 @@ class Filmitem extends Component {
     );
   };
 
+  renderRow = (rowNumber) => {
+    let places = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
+    let row = places.map((place) => {
+      let body = (
+        <div className="place">
+          <p>
+            Plaats: {rowNumber}-{place}
+          </p>
+        </div>
+      );
+
+      return body;
+    });
+
+    return row;
+  };
+
+  renderColumns = (rowNumber) => {
+    let rows = ["A", "B", "C", "D", "E", "F", "G", "H"];
+
+    let row = rows.map((row) => {
+      let body = <div className="places-row">{this.renderRow(row)}</div>;
+
+      return body;
+    });
+
+    return row;
+  };
+
   componentDidMount() {
     this.GetDetails();
   }
@@ -30,8 +61,16 @@ class Filmitem extends Component {
     let { movie, loaded } = this.state;
     let body;
 
+    let movieImage;
+
     if (loaded) {
       console.log(movie);
+
+      if (movie.photo) {
+        movieImage = movie.photo;
+      } else {
+        movieImage = videobanner5;
+      }
 
       body = (
         <main className="filmitem-main">
@@ -48,7 +87,7 @@ class Filmitem extends Component {
                     alt="harry-potter-poster"
                     width="370"
                     height="548"
-                    src={HarryPotterPoster}
+                    src={movieImage}
                   />
                 </div>
                 <div className="detail">
@@ -89,98 +128,19 @@ class Filmitem extends Component {
                   </div>
                 </div>
               </div>
-
-              <div className="entry-showtime single-cinema">
-                <div className="clearfix">
-                  <h3 className="info-name amy-title">Kies uw tijdstip</h3>
-                </div>
-                <div className="showtime">
-                  <div className="showtime-item">
-                    <div className="st-item">
-                      <div className="st-title">
-                        <label>Mei 1, 2020</label>
-                        <a href="/login" className="buy-ticket" target="_blank">
-                          Koop ticket
-                        </a>
-                      </div>
-                      <ul>
-                        <li>14:30</li>
-                        <li>16:30</li>
-                        <li>18:15</li>
-                        <li>21:45</li>
-                        <li>23:15</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="showtime-item">
-                    <div className="st-item">
-                      <div className="st-title">
-                        <label>Mei 2, 2020</label>
-                        <a href="/login" className="buy-ticket" target="_blank">
-                          Koop ticket
-                        </a>
-                      </div>
-                      <ul>
-                        <li>14:30</li>
-                        <li>16:30</li>
-                        <li>18:15</li>
-                        <li>21:45</li>
-                        <li>23:15</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="showtime-item">
-                    <div className="st-item">
-                      <div className="st-title">
-                        <label>Mei 3, 2020</label>
-                        <a href="/login" className="buy-ticket" target="_blank">
-                          Koop ticket
-                        </a>
-                      </div>
-                      <ul>
-                        <li>14:30</li>
-                        <li>16:30</li>
-                        <li>18:15</li>
-                        <li>21:45</li>
-                        <li>23:15</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="showtime-item">
-                    <div className="st-item">
-                      <div className="st-title">
-                        <label>Mei 4, 2020</label>
-                        <a href="/login" className="buy-ticket" target="_blank">
-                          Koop ticket
-                        </a>
-                      </div>
-                      <ul>
-                        <li>14:30</li>
-                        <li>16:30</li>
-                        <li>18:15</li>
-                        <li>21:45</li>
-                        <li>23:15</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="showtime-item">
-                    <div className="st-item">
-                      <div className="st-title">
-                        <label>Mei 5, 2020</label>
-                        <a href="/login" className="buy-ticket" target="_blank">
-                          Koop ticket
-                        </a>
-                      </div>
-                      <ul>
-                        <li>14:30</li>
-                        <li>16:30</li>
-                        <li>18:15</li>
-                        <li>21:45</li>
-                        <li>23:15</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
+              <hr></hr>
+              <div className="time-stamps-wrapper">
+                <p>Deze film draait op op de volgende momenten:</p>
+                <ul className="play-moments">
+                  <li className="item">10:00 uur</li>
+                  <li className="item">11:00 uur</li>
+                  <li className="item">12:00 uur</li>
+                  <li className="item">13:00 uur</li>
+                </ul>
+              </div>
+              <div className="screen"></div>
+              <div className="stoelen-wrapper">
+                <div className="places-view">{this.renderColumns()}</div>
               </div>
             </div>
           </div>
