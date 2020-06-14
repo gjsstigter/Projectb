@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Slider from "../header/Slider";
 import videobanner1 from "../../assets/images/home/filmbanner1.jpg";
 import videobanner2 from "../../assets/images/home/filmbanner2.jpg";
 import videobanner3 from "../../assets/images/home/filmbanner3.jpg";
@@ -416,8 +415,8 @@ class Home extends Component {
               </div>
             </div>
           </div>
-        </div>
-     </main>
+        </main>
+     </div>
     );
   }
 }
