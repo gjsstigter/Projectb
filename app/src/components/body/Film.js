@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { MoviesData } from "../cinema/movies/MoviesData";
-import videobanner5 from "../../assets/images/home/filmbanner5.jpg";
+import videobanner5 from "../../assets/images/home/filmbanner4.jpg";
 
 let Film = (props) => {
   // check if filmitem has an img
