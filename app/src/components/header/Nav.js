@@ -1,17 +1,32 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import {Loginstate} from "../cinema/user/Loginmanager";
 
 class Nav extends Component {
+  loginButton = () => {
+    if (!Loginstate()) {
+      return (
+        <Link to={`/user/login`} className="login">
+        Login
+        </Link>);
+    }
+  }
+
+  registerButton = () => {
+    if (!Loginstate()) {
+      return (
+          <Link className="create-account" to={`/user/registreren`}>
+            Maak een account
+          </Link>);
+    }
+  }
+
   render() {
     return (
       <nav className="region-nav">
         <section className="account-login">
-          <Link className="create-account" to={`/`}>
-            Maak een account
-          </Link>
-          <Link to={`/user/login`} classname="login">
-            Login
-          </Link>
+          {this.registerButton()}
+          {this.loginButton()}
         </section>
         <section className="navigation">
           <div className="logo">
@@ -26,7 +41,7 @@ class Nav extends Component {
               <Link to={`/films/`}>Films</Link>
             </li>
             <li className="link">
-              <Link to={`/`}>Contact</Link>
+              <Link to={`/contact/`}>Contact</Link>
             </li>
           </ul>
         </section>

@@ -32,7 +32,6 @@ class App extends Component {
                         <Route path={`/contact`} component={Contact}/>
                         <Redirect path={`*`} to={`/`}/>
                     </Switch>
-
                 </div>
             </Router>
     );
