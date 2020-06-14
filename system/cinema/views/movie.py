@@ -26,7 +26,6 @@ def movie_create(request):
         return Response({'detail': 'No data provided'}, status=status.HTTP_400_BAD_REQUEST)
 
     data = request.data
-
     if 'genre' in data:
         genre = data['genre']
         genre, created = Genre.objects.get_or_create(name=genre)

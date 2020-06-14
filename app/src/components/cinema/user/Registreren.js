@@ -1,8 +1,79 @@
-import React, { Component } from "react";
-//import List from "../";
+import React, { Component } from 'react';
+import Api from "../api/Api";
 
-class Home extends Component {
-    render() {
+class Registreren extends Component {
+
+    state = {
+        email: null,
+        password: null,
+        firstname: null,
+        lastname: null
+    }
+
+    componentDidMount() {
+        this.userData = JSON.parse(localStorage.getItem('user'));
+
+        if (localStorage.getItem('user')) {
+            this.setState({
+                email: this.userData.email,
+                password: this.userData.password,
+                firstname: this.userData.firstname,
+                lastname: this.userData.lastname,
+            })
+        } else {
+            this.setState({
+                email: '',
+            })
+        }
+    }
+
+    handleChange = (e) => {
+
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    };
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(this.state);
+        let form_data = new FormData();
+        form_data.append('email', this.state.email);
+        form_data.append('password', this.state.password);
+        form_data.append('firstname', this.state.firstname);
+        form_data.append('lastname', this.state.lastname);
+
+        if (this.state.email === `admin@admin.nl`) {
+        } else {
+            Api(`/login`, `POST`, form_data)
+                .then(res => (console.log(res)));
+        }
+    };
+
+    componentWillUpdate(nextProps, nextState) {
+        localStorage.setItem('user', JSON.stringify(nextState));
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps !== this.props) {
+            this.userData = JSON.parse(localStorage.getItem('user'));
+
+            if (localStorage.getItem('user')) {
+                this.setState({
+                    email: this.userData.email,
+                    password: this.userData.password,
+                    firstname: this.userData.firstname,
+                    lastname: this.userData.lastname,
+                })
+            } else {
+                this.setState({
+                    email: '',
+                })
+            }
+        }
+    }
+
+    render = () => {
         return (
             <main className="register-main">
                 <div className="modal__wrapper">
@@ -22,7 +93,7 @@ class Home extends Component {
                                     <form>
                                         <h1 className="modal__title modal__group--small">Maak een account aan</h1>
                                         <p className="modal__body modal__group--large">Door middel van het registreren van
-                                        een account heeft u de mogelijkheid om een film te boeken.</p>
+                                            een account heeft u de mogelijkheid om een film te boeken.</p>
                                         <div className="modal__group--large">
                                             <div className="input-field">
                                                 <input id="voornaam" name="voornaam" value="" type="text" required="required" className="input-field__input inner-input"/>
@@ -62,10 +133,9 @@ class Home extends Component {
                         </div>
                     </div>
                 </div>
-                {/* <List/> */}
             </main>
-        );
+        )
     }
 }
 
-export default Home;
+export default Registreren;

@@ -5,6 +5,7 @@ import MoviesReadAll from "../cinema/movies/MoviesReadAll";
 import MoviesUpdate from "../cinema/movies/MoviesUpdate";
 import MoviesRead from "../cinema/movies/MoviesRead";
 import Login from "../cinema/user/Login";
+import Registreren from "../cinema/user/Registreren";
 
 class Admin extends Component{
   constructor(props) {
@@ -40,7 +41,7 @@ class Admin extends Component{
             body = <Login/>;
             break;
           case `registreren`:
-            body = <Login/>;
+            body = <Registreren/>;
             break;
           default:
             body = <Login/>
