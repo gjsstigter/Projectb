@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 
 import Home from "./components/pages/Home";
-import FilmItem from "./components/pages/Film-item"
+import FilmItem from "./components/pages/Filmitem"
 import Login from "./components/pages/Login"
 import Register from "./components/pages/Register"
 import Header from "./components/header/Header";
