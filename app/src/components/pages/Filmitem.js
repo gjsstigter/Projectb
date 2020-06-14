@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-//import List from "../";
 import HarryPotterPoster from "../../assets/images/filmitem/harry-potter-poster.jpg";
 
 class Filmitem extends Component {
