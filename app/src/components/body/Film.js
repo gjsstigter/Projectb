@@ -19,7 +19,7 @@ let Film = (props) => {
       <p className="release-date">Release: {props.releaseDate}</p>
 
       <div className="hover-info">
-        <Link to={`/film/${props.id}`}>
+        <Link to={`/films/${props.id}`}>
           <h1 className="film-title-hover">{props.title}</h1>
         </Link>
         <div className="info-wrapper">
