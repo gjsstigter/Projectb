@@ -7,22 +7,20 @@ class Filmitem extends Component {
   state = {
     movie: null,
     loaded: false,
-    id: null,
+    id: this.props.match.params.id,
   };
 
   GetDetails = () => {
-    let parts = window.location.href.split("/");
-    let movieId = parts.pop() || parts.pop();
-
+    let movieId = this.state.id;
     MovieData(movieId).then((res) =>
-      this.setState({
-        movie: res.data,
-        loaded: true,
-        id: movieId,
-      })
+        this.setState({
+          movie: res.data,
+          loaded: true,
+          id: movieId,
+        })
     );
   };
-
+  
   renderRow = (rowNumber) => {
     let places = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
