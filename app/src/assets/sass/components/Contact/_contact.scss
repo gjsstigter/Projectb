@@ -1,0 +1,185 @@
+.contact-main {
+  .container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background-color: #ece9e9;
+    position: relative;
+    z-index: 1;
+  }
+  .wrapper {
+    width: 670px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+  }
+  .contactform-title {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 64px 15px 64px 15px;
+  }
+  .hoofdtitel {
+    font-size: 20px;
+    color: #fff;
+    line-height: 1.2;
+    text-align: center;
+    padding-bottom: 7px;
+  }
+  .subtitel {
+    font-size: 15px;
+    color: #fff;
+    line-height: 1.5;
+    text-align: center;
+  }
+  .contactform {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 43px 88px 57px 190px;
+  }
+  .valideren-input {
+    position: relative;
+  }
+  .wrap-input {
+    width: 100%;
+    border-bottom: 1px solid #b2b2b2;
+    margin-bottom: 26px;
+  }
+  .label-input {
+    font-size: 15px;
+    color: #808080;
+    line-height: 1.2;
+    text-align: right;
+    position: absolute;
+    top: 14px;
+    left: -105px;
+    width: 80px;
+  }
+  .input {
+    font-size: 15px;
+    color: #555555;
+    line-height: 1.2;
+    display: block;
+    width: 100%;
+    background: transparent;
+    padding: 0 5px;
+    outline: none;
+    border: none;
+    overflow: visible;
+    margin: 0;
+    height: 45px;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: 16px 18px;
+    background-position: 98% 50%;
+    cursor: auto;
+  }
+  .focus-input {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+  }
+  .focus-input::before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    transition: all 0.6s;
+    background: $orange;
+  }
+  .input-textarea {
+    min-height: 115px;
+    padding-top: 14px;
+    padding-bottom: 13px;
+    font-size: 15px;
+    color: #555555;
+    line-height: 1.2;
+    display: block;
+    width: 100%;
+    background: transparent;
+  }
+  textarea {
+    outline: none;
+    border: none;
+    font-family: Arial;
+    overflow: auto;
+    resize: vertical;
+    margin: 0;
+  }
+  .container-contactformulier-knop {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 8px;
+  }
+  .contactformulier-knop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    min-width: 160px;
+    height: 50px;
+    background-color: $orange;
+    border-radius: 25px;
+    font-size: 16px;
+    color: #fff;
+    line-height: 1.2;
+    transition: all 0.4s;
+  }
+  .contactformulier-knop:hover {
+    background-color: #333333;
+  }
+  button {
+    outline: none !important;
+    border: none;
+    background: transparent;
+  }
+  button:hover {
+    cursor: pointer;
+  }
+  .file-input::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  .file-input::before {
+    content: 'Kies uw bestand';
+    display: inline-block;
+    background: linear-gradient(top, #f9f9f9, #e3e3e3);
+    border: 4px solid $orange;
+    border-radius: 3px;
+    padding: 20px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 10pt;
+  }
+  .file-input:hover::before {
+    border-color: black;
+  }
+  .file-input:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+  }
+}
