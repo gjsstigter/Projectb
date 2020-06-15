@@ -4,8 +4,8 @@ from cinema.models import Movie, Genre, Keyword, Actor
 
 class MovieCreateSerializer(serializers.ModelSerializer):
     genre = serializers.PrimaryKeyRelatedField(many=False, queryset=Genre.objects.all())
-    keywords = serializers.PrimaryKeyRelatedField(many=True, queryset=Keyword.objects.all())
-    actors = serializers.PrimaryKeyRelatedField(many=True, queryset=Actor.objects.all())
+    keywords = serializers.PrimaryKeyRelatedField(many=False, queryset=Keyword.objects.all())
+    actors = serializers.PrimaryKeyRelatedField(many=False, queryset=Actor.objects.all())
     photo_id = serializers.IntegerField(required=False)
 
     class Meta:
@@ -26,8 +26,8 @@ class MovieCreateSerializer(serializers.ModelSerializer):
 
 class MovieGetSerializer(serializers.ModelSerializer):
     genre = serializers.StringRelatedField(many=False)
-    keywords = serializers.StringRelatedField(many=True)
-    actors = serializers.StringRelatedField(many=True)
+    keywords = serializers.StringRelatedField(many=False)
+    actors = serializers.StringRelatedField(many=False)
     photo_id = serializers.StringRelatedField(many=False)
 
     class Meta:
