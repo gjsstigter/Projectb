@@ -10,4 +10,8 @@ urlpatterns = [
     path('movie/create/', views.movie_create),
     path('movie/<int:pk>/delete/', views.movie_delete),
     path('files/<int:pk>/', views.get_file),
+    path('rooms/create/', views.room_create),
+    path('rooms/', views.room_overview),
+    path('shows/create/', views.show_create),
+    path('shows/', views.show_overview),
 ]
