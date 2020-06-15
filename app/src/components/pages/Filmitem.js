@@ -7,26 +7,68 @@ class Filmitem extends Component {
   state = {
     movie: null,
     loaded: false,
-    id: this.props.match.params.id,
+    id: null,
+    chosenPlaces: [],
+    chosenTime: null,
   };
 
   GetDetails = () => {
-    let movieId = this.state.id;
+    let parts = window.location.href.split("/");
+    let movieId = parts.pop() || parts.pop();
+
     MovieData(movieId).then((res) =>
-        this.setState({
-          movie: res.data,
-          loaded: true,
-          id: movieId,
-        })
+      this.setState({
+        movie: res.data,
+        loaded: true,
+        id: movieId,
+      })
     );
   };
-  
+
+  choosePlace = (row, place) => {
+    let choosen = `${row}-${place}`;
+
+    if (this.state.chosenPlaces.includes(choosen)) {
+      let places = this.state.chosenPlaces;
+      var index = places.indexOf(choosen);
+
+      if (index !== -1) places.splice(index, 1);
+
+      var placeElement = document.getElementById(choosen);
+      placeElement.classList.remove("chosen-place");
+    } else {
+      let placesOld = this.state.chosenPlaces;
+
+      placesOld.push(choosen);
+      this.setState({
+        chosenPlaces: placesOld,
+      });
+
+      var placeElement = document.getElementById(choosen);
+      placeElement.classList.add("chosen-place");
+    }
+
+    console.log(this.state.chosenPlaces);
+  };
+
+  addTimeStamp = (time) => {
+    this.setState({
+      chosenTime: time,
+    });
+  };
+
   renderRow = (rowNumber) => {
     let places = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
     let row = places.map((place) => {
       let body = (
-        <div className="place">
+        <div
+          className="place"
+          key={`${rowNumber}-${place}`}
+          id={`${rowNumber}-${place}`}
+          onClick={() => {
+            this.choosePlace(rowNumber, place);
+          }}>
           <p>
             Plaats: {rowNumber}-{place}
           </p>
@@ -62,8 +104,6 @@ class Filmitem extends Component {
     let movieImage;
 
     if (loaded) {
-      console.log(movie);
-
       if (movie.photo) {
         movieImage = movie.photo;
       } else {
@@ -130,10 +170,34 @@ class Filmitem extends Component {
               <div className="time-stamps-wrapper">
                 <p>Deze film draait op op de volgende momenten:</p>
                 <ul className="play-moments">
-                  <li className="item">10:00 uur</li>
-                  <li className="item">11:00 uur</li>
-                  <li className="item">12:00 uur</li>
-                  <li className="item">13:00 uur</li>
+                  <li
+                    onClick={() => {
+                      this.addTimeStamp("10:00");
+                    }}
+                    className="item">
+                    10:00 uur
+                  </li>
+                  <li
+                    onClick={() => {
+                      this.addTimeStamp("11:00");
+                    }}
+                    className="item">
+                    11:00 uur
+                  </li>
+                  <li
+                    onClick={() => {
+                      this.addTimeStamp("12:00");
+                    }}
+                    className="item">
+                    12:00 uur
+                  </li>
+                  <li
+                    onClick={() => {
+                      this.addTimeStamp("13:00");
+                    }}
+                    className="item">
+                    13:00 uur
+                  </li>
                 </ul>
               </div>
               <div className="screen"></div>
