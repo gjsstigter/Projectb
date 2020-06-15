@@ -14,12 +14,11 @@ def get_file(self, pk):
     except File.DoesNotExist:
         return Response({'detail': f'File with id {pk} does not exist'}, status=status.HTTP_404_NOT_FOUND)
 
-    if file.type == "image":
-        try:
-            raw_file = open(settings.MEDIA_ROOT + "/" + str(file.path), 'rb')
-        except Exception:
-            return Response(str(file))
+    try:
+        raw_file = open(settings.MEDIA_ROOT + "/" + str(file.path), 'rb')
+    except Exception:
+        return Response(str(file))
 
-        return HttpResponse(raw_file.read(), content_type='image/jpg')
+    return HttpResponse(raw_file.read(), content_type='image/jpg')
 
     return Response({'detail': 'Could not get file from server'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

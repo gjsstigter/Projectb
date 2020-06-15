@@ -14,7 +14,7 @@ let Film = (props) => {
 
   let body = (
     <div className="film-card-wrapper">
-      <img src={imgSrc} className="film-img" />
+      <img src={`http://backend.projectb.vdmi/api/files/${imgSrc}/`} className="film-img" />
       <h1 className="film-title">{props.title}</h1>
       <p className="release-date">Release: {props.releaseDate}</p>
 

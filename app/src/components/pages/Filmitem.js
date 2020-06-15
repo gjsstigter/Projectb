@@ -97,6 +97,11 @@ class Filmitem extends Component {
     this.GetDetails();
   }
 
+  addChairToState = (e) => {
+    e.preventDefault();
+
+  }
+
   render() {
     let { movie, loaded } = this.state;
     let body;
@@ -105,7 +110,7 @@ class Filmitem extends Component {
 
     if (loaded) {
       if (movie.photo) {
-        movieImage = movie.photo;
+        movieImage = `http://backend.projectb.vdmi/api/files/${movie.photo}/`;
       } else {
         movieImage = videobanner5;
       }
@@ -135,7 +140,7 @@ class Filmitem extends Component {
                     <div className="detail-list">
                       <div className="detail-row">
                         <div className="detail-title">
-                          <i className="icon" aria-hidden="true"></i>
+                          <i className="icon" aria-hidden="true"/>
                           <span>Productie</span>
                         </div>
                         <div className="detail-content">
@@ -144,7 +149,7 @@ class Filmitem extends Component {
                       </div>
                       <div className="detail-row">
                         <div className="detail-title">
-                          <i className="icon" aria-hidden="true"></i>
+                          <i className="icon" aria-hidden="true"/>
                           <span>Tags</span>
                         </div>
                         <div className="detail-content">{movie.keywords}</div>
@@ -152,7 +157,7 @@ class Filmitem extends Component {
 
                       <div className="detail-row">
                         <div className="detail-title">
-                          <i className="icon" aria-hidden="true"></i>
+                          <i className="icon" aria-hidden="true"/>
                           <span>Rating</span>
                         </div>
                         <div className="detail-content">
@@ -166,7 +171,7 @@ class Filmitem extends Component {
                   </div>
                 </div>
               </div>
-              <hr></hr>
+              <hr/>
               <div className="time-stamps-wrapper">
                 <p>Deze film draait op op de volgende momenten:</p>
                 <ul className="play-moments">
@@ -200,7 +205,7 @@ class Filmitem extends Component {
                   </li>
                 </ul>
               </div>
-              <div className="screen"></div>
+              <div className="screen"/>
               <div className="stoelen-wrapper">
                 <div className="places-view">{this.renderColumns()}</div>
               </div>
