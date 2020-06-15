@@ -11,8 +11,8 @@ class MoviesUpdate extends Component {
         release_date: '',
         genre: '',
         studio: '',
-        actors: [''],
-        keywords: [''],
+        actors: '',
+        keywords: '',
         id: this.props.id,
     };
 
@@ -60,7 +60,7 @@ class MoviesUpdate extends Component {
             .then(res => (this.setState(
                     {
                         title: res.data[0].title,
-                        photo_old: res.data[0].photo,
+                        photo_old: res.data[0].photo_id,
                         description: res.data[0].description,
                         release_date: res.data[0].release_date,
                         genre: res.data[0].genre,
@@ -91,7 +91,7 @@ class MoviesUpdate extends Component {
                             <input type={`text`} name={`title`} value={this.state.title} onChange={this.handleChange} required/>
                         </p>
                         <p>
-                            <img src={this.state.photo_old} alt={this.state.photo_old}/>
+                            <img src={`http://backend.projectb.vdmi/api/files/${this.state.photo_old}/`} alt={this.state.photo_old}/>
                             <label>
                                 Photo:
                             </label>
@@ -101,7 +101,7 @@ class MoviesUpdate extends Component {
                             <label>
                                 Description:
                             </label>
-                            <textarea name={`description`} onChange={this.handleChange} required>{this.state.description}</textarea>
+                            <textarea name={`description`} onChange={this.handleChange} value={this.state.description} required>{this.state.description}</textarea>
                         </p>
                         <p>
                             <label>
@@ -127,7 +127,7 @@ class MoviesUpdate extends Component {
                             <label>
                                 Actors:
                             </label>
-                            <input type={`text`} name={`actors`} value={this.state.actors[0]} onChange={this.handleChange} required/>
+                            <input type={`text`} name={`actors`} value={this.state.actors} onChange={this.handleChange} required/>
                         </p>
                     </section>
                     <section>
@@ -135,7 +135,7 @@ class MoviesUpdate extends Component {
                             <label>
                                 Keywords:
                             </label>
-                            <input type={`text`} name={`keywords`} value={this.state.keywords[0]} onChange={this.handleChange} required/>
+                            <input type={`text`} name={`keywords`} value={this.state.keywords} onChange={this.handleChange} required/>
                         </p>
                         <p>
                             <input type={`submit`} name={`submit`} />
