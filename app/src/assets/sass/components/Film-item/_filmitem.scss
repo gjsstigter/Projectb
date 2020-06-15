@@ -7,11 +7,16 @@
     background-color: brown;
     height: 50px;
     width: 50px;
+    cursor: pointer;
 
     p {
       margin: 0;
       color: #fff;
     }
+  }
+
+  .chosen-place {
+    background-color: rgb(53, 14, 14) !important;
   }
 
   .places-row {
@@ -44,6 +49,7 @@
       margin: 30px;
 
       .item {
+        cursor: pointer;
         padding: 10px;
 
         background-color: rgb(228, 228, 228);
