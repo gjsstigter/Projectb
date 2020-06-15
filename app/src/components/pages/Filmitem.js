@@ -10,6 +10,9 @@ class Filmitem extends Component {
     id: null,
     chosenPlaces: [],
     chosenTime: null,
+    naam: null,
+    email: null,
+    done: false,
   };
 
   GetDetails = () => {
@@ -97,11 +100,6 @@ class Filmitem extends Component {
     this.GetDetails();
   }
 
-  addChairToState = (e) => {
-    e.preventDefault();
-
-  }
-
   render() {
     let { movie, loaded } = this.state;
     let body;
@@ -174,6 +172,18 @@ class Filmitem extends Component {
               <hr/>
               <div className="time-stamps-wrapper">
                 <p>Deze film draait op op de volgende momenten:</p>
+                <main className={`contact-main`}>
+                <div className={`wrap-input valideren-input`}>
+                  <span className="label-input">Naam:</span>
+                  <input type={`text`} value={this.state.name}/><br/>
+                  <span className="focus-input"></span>
+                </div>
+                <div className={`wrap-input valideren-input`}>
+                  <span className="label-input">Email:</span>
+                  <input type={`email`} value={this.state.email}/><br/>
+                  <span className="focus-input"></span>
+                </div>
+                </main>
                 <ul className="play-moments">
                   <li
                     onClick={() => {
@@ -208,6 +218,7 @@ class Filmitem extends Component {
               <div className="screen"/>
               <div className="stoelen-wrapper">
                 <div className="places-view">{this.renderColumns()}</div>
+                <button>Reserveer</button>
               </div>
             </div>
           </div>
