@@ -37,27 +37,20 @@ def movie_create(request):
 
     if 'keywords' in data:
         keywords = data['keywords']
-
-        keyword_ids = []
-
-        for keyword in keywords:
-            keyword, created = Keyword.objects.get_or_create(word=keyword)
-            if created:
-                keyword.save()
-            keyword_ids.append(keyword.id)
-        data['keywords'] = keyword_ids
-
+        keyword, created = Keyword.objects.get_or_create(word=keywords)
+        if created:
+            keyword.save()
+        data['keywords'] = keyword.id
+    else:
+        return Response({'detail': 'Please enter a Keyword'}, status=status.HTTP_400_BAD_REQUEST)
     if 'actors' in data:
-        actors = data['actors']
-
-        actor_ids = []
-
-        for actor in actors:
-            actor, created = Actor.objects.get_or_create(name=actor)
-            if created:
-                actor.save()
-            actor_ids.append(actor.id)
-        data['actors'] = actor_ids
+        actor = data['actors']
+        actor, created = Actor.objects.get_or_create(name=actor)
+        if created:
+            actor.save()
+        data['actors'] = actor.id
+    else:
+        return Response({'detail': 'Please enter a Actors'}, status=status.HTTP_400_BAD_REQUEST)
 
     if 'photo' in data:
         image_data = request.FILES['photo'].file
@@ -111,28 +104,23 @@ def movie_update(request, pk):
         movie.genre = genre.id
 
     if 'keywords' in data:
-        keywords = data['keywords']
+        keyword = data['keywords']
+        keywords, created = Genre.objects.get_or_create(name=keyword)
+        if created:
+            keywords.save()
+        data['keywords'] = keywords.id
 
-        keyword_ids = []
-
-        for keyword in keywords:
-            keyword, created = Keyword.objects.get_or_create(word=keyword)
-            if created:
-                keyword.save()
-            keyword_ids.append(keyword.id)
-        data['keywords'] = keyword_ids
+    else:
+        return Response({'detail': 'Please enter a Keyword'}, status=status.HTTP_400_BAD_REQUEST)
 
     if 'actors' in data:
-        actors = data['actors']
-
-        actor_ids = []
-
-        for actor in actors:
-            actor, created = Actor.objects.get_or_create(name=actor)
-            if created:
-                actor.save()
-            actor_ids.append(actor.id)
-        data['actors'] = actor_ids
+        actor = data['actors']
+        actors, created = Genre.objects.get_or_create(name=actor)
+        if created:
+            actors.save()
+        data['actors'] = actors.id
+    else:
+        return Response({'detail': 'Please enter a Actors'}, status=status.HTTP_400_BAD_REQUEST)
 
     if 'photo' in data:
         image_data = request.FILES['photo'].file

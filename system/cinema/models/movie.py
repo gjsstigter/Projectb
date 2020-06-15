@@ -14,8 +14,8 @@ class Movie(models.Model):
     genre = models.ForeignKey(Genre, models.PROTECT)
     stars = models.DecimalField(blank=True, max_digits=3, decimal_places=1)
     photo = models.ForeignKey(File, related_name="movies", on_delete=models.SET_NULL, null=True)
-    keywords = models.ManyToManyField(Keyword, blank=True)
-    actors = models.ManyToManyField(Actor, blank=True)
+    keywords = models.ForeignKey(Keyword, models.PROTECT)
+    actors = models.ForeignKey(Actor, models.PROTECT)
 
     def __str__(self):
         return self.title
