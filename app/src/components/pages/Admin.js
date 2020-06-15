@@ -7,6 +7,7 @@ import MoviesRead from "../cinema/movies/MoviesRead";
 import Login from "../cinema/user/Login";
 import Registreren from "../cinema/user/Registreren";
 import MoviesDelete from "../cinema/movies/MoviesDelete";
+import ShowsCrud, { ShowsCreate } from '../cinema/movies/ShowsCrud';
 
 class Admin extends Component{
   constructor(props) {
@@ -83,6 +84,13 @@ class Admin extends Component{
             break;
         }
         break;
+        case 'shows':
+        switch (crud) {
+          case 'create':
+            body = <ShowsCreate/>;
+            break;
+        }
+        break;
       default:
         return (
           <main>
@@ -92,6 +100,12 @@ class Admin extends Component{
               <ul>
                 <li><Link to={`/admin/movies/create`}>Create</Link></li>
                 <li><Link to={`/admin/movies/readall`}>Read all movies</Link></li>
+              </ul>
+
+              <li><Link to={`/admin/shows/`}>Shows</Link></li>
+              <ul>
+                <li><Link to={`/admin/shows/create`}>Create</Link></li>
+                <li><Link to={`/admin/shows/readall`}>Read all shows</Link></li>
               </ul>
             </ul>
           </main>
