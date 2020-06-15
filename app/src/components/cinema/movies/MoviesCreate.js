@@ -15,6 +15,7 @@ class MoviesCreate extends Component {
         studio: '',
         actors: ['', 'asdasd'],
         keywords: ['', 'asdasda'],
+        created: false,
     };
 
     handleChange = (e) => {
@@ -54,75 +55,96 @@ class MoviesCreate extends Component {
         form_data.append('keywords', JSON.stringify(this.state.keywords));
 
         Api(`/movie/create/`, `POST`, form_data)
-            .then(res => (console.log(res)));
+            .then(res => {
+                if (res.status === 201) {
+                    this.setState({created: true});
+                }
+            });
       };
 
     render() {
-        return (
-            <main>
-                <Link to={`/admin/`}>{`<<<`} Go back</Link>
-                <h2>Create a new movie</h2>
-                <form onSubmit={this.handleSubmit}>
-                    <section>
-                        <p>
-                            <label>
-                                Title:
-                            </label>
-                            <input type={`text`} name={`title`} value={this.state.title} onChange={this.handleChange} required/>
-                        </p>
-                        <p>
-                            <label>
-                                Photo:
-                            </label>
-                            <input type={`file`} name={`photo`}  accept={`image/png, image/jpeg"`} onChange={this.handleImageChange} required/>
-                        </p>
-                        <p>
-                            <label>
-                                Description:
-                            </label>
-                            <textarea name={`description`} onChange={this.handleChange} required>{this.state.description}</textarea>
-                        </p>
-                        <p>
-                            <label>
-                                Release date:
-                            </label>
-                            <input type={`date`} name={`release_date`} value={this.state.release_date} onChange={this.handleChange} required/>
-                        </p>
-                    </section>
-                    <section>
-                        <p>
-                            <label>
-                                Genre:
-                            </label>
-                            <input type={`text`} name={`genre`} value={this.state.genre} onChange={this.handleChange} required/>
-                        </p>
-                        <p>
-                            <label>
-                                Studio:
-                            </label>
-                            <input type={`text`} name={`studio`} value={this.state.studio} onChange={this.handleChange} required/>
-                        </p>
-                        <p>
-                            <label>
-                                Actors:
-                            </label>
-                            <input type={`text`} name={`actors`} value={this.state.actors[0]} onChange={this.handleChange} required/>
-                        </p>
-                    </section>
-                    <section>
-                        <p>
-                            <label>
-                                Keywords:
-                            </label>
-                            <input type={`text`} name={`keywords`} value={this.state.keywords[0]} onChange={this.handleChange} required/>
-                        </p>
-                        <p>
-                            <input type={`submit`} name={`submit`} />
-                        </p>
-                    </section>
-                </form>
-            </main>
-        )
+        if (!this.state.created) {
+            return (
+                <main>
+                    <Link to={`/admin/`}>{`<<<`} Ga terug</Link>
+                    <h2>Maak een nieuwe film</h2>
+                    <form onSubmit={this.handleSubmit}>
+                        <section>
+                            <p>
+                                <label>
+                                    Title:
+                                </label>
+                                <input type={`text`} name={`title`} value={this.state.title}
+                                       onChange={this.handleChange} required/>
+                            </p>
+                            <p>
+                                <label>
+                                    Photo:
+                                </label>
+                                <input type={`file`} name={`photo`} accept={`image/png, image/jpeg"`}
+                                       onChange={this.handleImageChange} required/>
+                            </p>
+                            <p>
+                                <label>
+                                    Description:
+                                </label>
+                                <textarea name={`description`} onChange={this.handleChange}
+                                          required>{this.state.description}</textarea>
+                            </p>
+                            <p>
+                                <label>
+                                    Release date:
+                                </label>
+                                <input type={`date`} name={`release_date`} value={this.state.release_date}
+                                       onChange={this.handleChange} required/>
+                            </p>
+                        </section>
+                        <section>
+                            <p>
+                                <label>
+                                    Genre:
+                                </label>
+                                <input type={`text`} name={`genre`} value={this.state.genre}
+                                       onChange={this.handleChange} required/>
+                            </p>
+                            <p>
+                                <label>
+                                    Studio:
+                                </label>
+                                <input type={`text`} name={`studio`} value={this.state.studio}
+                                       onChange={this.handleChange} required/>
+                            </p>
+                            <p>
+                                <label>
+                                    Actors:
+                                </label>
+                                <input type={`text`} name={`actors`} value={this.state.actors[0]}
+                                       onChange={this.handleChange} required/>
+                            </p>
+                        </section>
+                        <section>
+                            <p>
+                                <label>
+                                    Keywords:
+                                </label>
+                                <input type={`text`} name={`keywords`} value={this.state.keywords[0]}
+                                       onChange={this.handleChange} required/>
+                            </p>
+                            <p>
+                                <input type={`submit`} name={`submit`}/>
+                            </p>
+                        </section>
+                    </form>
+                </main>
+            );
+        } else {
+
+            return (<main>
+                <Link to={`/admin/`}>{`<<<`} Ga terug</Link>
+                <h2>Maak een nieuwe film</h2>
+                <p>Film is succesvol aangemaakt.</p>
+            </main>);
+        }
     }
 }
 

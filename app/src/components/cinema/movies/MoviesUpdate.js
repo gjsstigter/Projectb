@@ -14,10 +14,11 @@ class MoviesUpdate extends Component {
         actors: '',
         keywords: '',
         id: this.props.id,
+        updated: false,
     };
 
     handleChange = (e) => {
-        if(typeof this.state[e.target.name] === 'object') {
+        if (typeof this.state[e.target.name] === 'object') {
             let value = [''];
             value[0] = e.target.value;
             this.setState({
@@ -51,7 +52,11 @@ class MoviesUpdate extends Component {
         form_data.append('keywords', this.state.keywords);
 
         Api(`/movie/${this.state.id}/update/`, `PATCH`, form_data)
-            .then(res => (console.log(res)));
+            .then(res => {
+                if (res.status === 200) {
+                    this.setState({updated: true});
+                }
+            });
     };
 
     movieList = () => {
@@ -78,72 +83,92 @@ class MoviesUpdate extends Component {
     }
 
     render() {
-        return (
-            <main>
-                <Link to={`/admin/`}>{`<<<`} Go back</Link>
-                <h2>Create a new movie</h2>
-                <form onSubmit={this.handleSubmit}>
-                    <section>
-                        <p>
-                            <label>
-                                Title:
-                            </label>
-                            <input type={`text`} name={`title`} value={this.state.title} onChange={this.handleChange} required/>
-                        </p>
-                        <p>
-                            <img src={`http://backend.projectb.vdmi/api/files/${this.state.photo_old}/`} alt={this.state.photo_old}/>
-                            <label>
-                                Photo:
-                            </label>
-                            <input type={`file`} name={`photo`}  accept={`image/png, image/jpeg"`} onChange={this.handleImageChange} required/>
-                        </p>
-                        <p>
-                            <label>
-                                Description:
-                            </label>
-                            <textarea name={`description`} onChange={this.handleChange} value={this.state.description} required>{this.state.description}</textarea>
-                        </p>
-                        <p>
-                            <label>
-                                Release date:
-                            </label>
-                            <input type={`date`} name={`release_date`} value={this.state.release_date} onChange={this.handleChange} required/>
-                        </p>
-                    </section>
-                    <section>
-                        <p>
-                            <label>
-                                Genre:
-                            </label>
-                            <input type={`text`} name={`genre`} value={this.state.genre} onChange={this.handleChange} required/>
-                        </p>
-                        <p>
-                            <label>
-                                Studio:
-                            </label>
-                            <input type={`text`} name={`studio`} value={this.state.studio} onChange={this.handleChange} required/>
-                        </p>
-                        <p>
-                            <label>
-                                Actors:
-                            </label>
-                            <input type={`text`} name={`actors`} value={this.state.actors} onChange={this.handleChange} required/>
-                        </p>
-                    </section>
-                    <section>
-                        <p>
-                            <label>
-                                Keywords:
-                            </label>
-                            <input type={`text`} name={`keywords`} value={this.state.keywords} onChange={this.handleChange} required/>
-                        </p>
-                        <p>
-                            <input type={`submit`} name={`submit`} />
-                        </p>
-                    </section>
-                </form>
-            </main>
-        )
+
+        if (!this.state.updated) {
+            return (
+                <main>
+                    <Link to={`/admin/`}>{`<<<`} Ga terug</Link>
+                    <h2>Update de film</h2>
+                    <form onSubmit={this.handleSubmit}>
+                        <section>
+                            <p>
+                                <label>
+                                    Title:
+                                </label>
+                                <input type={`text`} name={`title`} value={this.state.title}
+                                       onChange={this.handleChange} required/>
+                            </p>
+                            <p>
+                                <img src={`http://backend.projectb.vdmi/api/files/${this.state.photo_old}/`}
+                                     alt={this.state.photo_old}/>
+                                <label>
+                                    Photo:
+                                </label>
+                                <input type={`file`} name={`photo`} accept={`image/png, image/jpeg"`}
+                                       onChange={this.handleImageChange} required/>
+                            </p>
+                            <p>
+                                <label>
+                                    Description:
+                                </label>
+                                <textarea name={`description`} onChange={this.handleChange}
+                                          value={this.state.description} required>{this.state.description}</textarea>
+                            </p>
+                            <p>
+                                <label>
+                                    Release date:
+                                </label>
+                                <input type={`date`} name={`release_date`} value={this.state.release_date}
+                                       onChange={this.handleChange} required/>
+                            </p>
+                        </section>
+                        <section>
+                            <p>
+                                <label>
+                                    Genre:
+                                </label>
+                                <input type={`text`} name={`genre`} value={this.state.genre}
+                                       onChange={this.handleChange} required/>
+                            </p>
+                            <p>
+                                <label>
+                                    Studio:
+                                </label>
+                                <input type={`text`} name={`studio`} value={this.state.studio}
+                                       onChange={this.handleChange} required/>
+                            </p>
+                            <p>
+                                <label>
+                                    Actors:
+                                </label>
+                                <input type={`text`} name={`actors`} value={this.state.actors}
+                                       onChange={this.handleChange} required/>
+                            </p>
+                        </section>
+                        <section>
+                            <p>
+                                <label>
+                                    Keywords:
+                                </label>
+                                <input type={`text`} name={`keywords`} value={this.state.keywords}
+                                       onChange={this.handleChange} required/>
+                            </p>
+                            <p>
+                                <input type={`submit`} name={`submit`}/>
+                            </p>
+                        </section>
+                    </form>
+                </main>
+            );
+        } else {
+            return (
+                <main>
+                    <Link to={`/admin/`}>{`<<<`} Ga terug</Link>
+                    <h2>Update de film</h2>
+                    <p>De film is succesvol geupdate</p>
+                </main>
+            );
+        }
     }
 }
 
