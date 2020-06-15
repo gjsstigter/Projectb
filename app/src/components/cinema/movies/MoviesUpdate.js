@@ -83,91 +83,90 @@ class MoviesUpdate extends Component {
     }
 
     render() {
-
-        if (!this.state.updated) {
+        if (!this.state.created) {
             return (
-                <main>
-                    <Link to={`/admin/`}>{`<<<`} Ga terug</Link>
-                    <h2>Update de film</h2>
-                    <form onSubmit={this.handleSubmit}>
-                        <section>
-                            <p>
-                                <label>
-                                    Title:
-                                </label>
-                                <input type={`text`} name={`title`} value={this.state.title}
-                                       onChange={this.handleChange} required/>
-                            </p>
-                            <p>
-                                <img src={`http://backend.projectb.vdmi/api/files/${this.state.photo_old}/`}
-                                     alt={this.state.photo_old}/>
-                                <label>
-                                    Photo:
-                                </label>
-                                <input type={`file`} name={`photo`} accept={`image/png, image/jpeg"`}
-                                       onChange={this.handleImageChange} required/>
-                            </p>
-                            <p>
-                                <label>
-                                    Description:
-                                </label>
-                                <textarea name={`description`} onChange={this.handleChange}
-                                          value={this.state.description} required>{this.state.description}</textarea>
-                            </p>
-                            <p>
-                                <label>
-                                    Release date:
-                                </label>
-                                <input type={`date`} name={`release_date`} value={this.state.release_date}
-                                       onChange={this.handleChange} required/>
-                            </p>
-                        </section>
-                        <section>
-                            <p>
-                                <label>
-                                    Genre:
-                                </label>
-                                <input type={`text`} name={`genre`} value={this.state.genre}
-                                       onChange={this.handleChange} required/>
-                            </p>
-                            <p>
-                                <label>
-                                    Studio:
-                                </label>
-                                <input type={`text`} name={`studio`} value={this.state.studio}
-                                       onChange={this.handleChange} required/>
-                            </p>
-                            <p>
-                                <label>
-                                    Actors:
-                                </label>
-                                <input type={`text`} name={`actors`} value={this.state.actors}
-                                       onChange={this.handleChange} required/>
-                            </p>
-                        </section>
-                        <section>
-                            <p>
-                                <label>
-                                    Keywords:
-                                </label>
-                                <input type={`text`} name={`keywords`} value={this.state.keywords}
-                                       onChange={this.handleChange} required/>
-                            </p>
-                            <p>
-                                <input type={`submit`} name={`submit`}/>
-                            </p>
-                        </section>
-                    </form>
+                <main className="contact-main">
+                    <div className="container">
+                        <div className="wrapper">
+                            <div style={{backgroundColor: "#fe7900"}} className="contactform-title">
+                                <span className="hoofdtitel">Creeër een nieuwe Film</span>
+                                <span className="subtitel">Via deze formulier kunnen er films toegevoegd worden</span>
+                                <Link to={`/admin/`}>{`<<<`} Ga terug</Link>
+                            </div>
+                            <form className="contactform" onSubmit={this.handleSubmit}>
+                                <div className="wrap-input valideren-input" data-validate="Vereist">
+                                    <span className="label-input">Film titel:</span>
+                                    <input className="input" type={`text`} name={`title`} value={this.state.title} onChange={this.handleChange} required/>
+                                    <span className="focus-input"></span>
+                                </div>
+                                <div className="wrap-input valideren-input" data-validate="Vereist">
+                                    <span className="label-input"></span>
+                                    <img src={`http://backend.projectb.vdmi/api/files/` + this.state.photo_old +`/`}/>
+                                </div>
+                                <div className="wrap-input valideren-input" data-validate="Vereist">
+                                    <span className="label-input">Film foto:</span>
+                                    <input className="file-input" type={`file`} name={`photo`}  accept={`image/png, image/jpeg"`} onChange={this.handleImageChange} required/>
+                                    <span className="focus-input"></span>
+                                </div>
+
+                                <div className="wrap-input valideren-input" data-validate="Vereist">
+                                    <span className="label-input">Beschrijving:</span>
+                                    <textarea className="input-textarea" name={`description`} onChange={this.handleChange} value={this.state.description} required>{this.state.description}</textarea>
+                                    <span className="focus-input"></span>
+                                </div>
+
+                                <div className="wrap-input valideren-input" data-validate="Vereist">
+                                    <span className="label-input">Datum van uitkomst:</span>
+                                    <input className="input" type={`date`} name={`release_date`} value={this.state.release_date} onChange={this.handleChange} required/>
+                                    <span className="focus-input"></span>
+                                </div>
+
+                                <div className="wrap-input valideren-input" data-validate="Vereist">
+                                    <span className="label-input">Genre:</span>
+                                    <input className="input" type={`text`} name={`genre`} value={this.state.genre} onChange={this.handleChange} required/>
+                                    <span className="focus-input"></span>
+                                </div>
+
+                                <div className="wrap-input valideren-input" data-validate="Vereist">
+                                    <span className="label-input">Studio:</span>
+                                    <input className="input" type={`text`} name={`studio`} value={this.state.studio} onChange={this.handleChange} required/>
+                                    <span className="focus-input"></span>
+                                </div>
+
+                                <div className="wrap-input valideren-input" data-validate="Vereist">
+                                    <span className="label-input">Acteurs:</span>
+                                    <input className="input" type={`text`} name={`actors`} value={this.state.actors} onChange={this.handleChange} required/>
+                                    <span className="focus-input"></span>
+                                </div>
+
+                                <div className="wrap-input valideren-input" data-validate="Vereist">
+                                    <span className="label-input">Zoekwoorden:</span>
+                                    <input className="input" type={`text`} name={`keywords`} value={this.state.keywords} onChange={this.handleChange} required/>
+                                    <span className="focus-input"></span>
+                                </div>
+
+
+                                <div className="container-contactformulier-knop">
+                                    <input className="contactformulier-knop" type={`submit`} name={`submit`} />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </main>
             );
         } else {
-            return (
-                <main>
-                    <Link to={`/admin/`}>{`<<<`} Ga terug</Link>
-                    <h2>Update de film</h2>
-                    <p>De film is succesvol geupdate</p>
-                </main>
-            );
+
+            return (<main className="contact-main">
+                <div className="container">
+                    <div className="wrapper">
+                        <div style={{backgroundColor: "#fe7900"}} className="contactform-title">
+                            <span className="hoofdtitel">Film is aangemaakt</span>
+                            <span className="subtitel">Via deze formulier kunnen er films toegevoegd worden</span>
+                            <Link to={`/admin/`}>{`<<<`} Ga terug</Link>
+                        </div>
+                    </div>
+                </div>
+            </main>);
         }
     }
 }

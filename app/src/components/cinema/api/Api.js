@@ -19,6 +19,14 @@ const Api = (api, method = 'GET', form_data = {}) => {
                 return res;
             })
             .catch(err => console.log(err));
+    } else if (method === 'DELETE') {
+        let url = (process.env.REACT_APP_API_URL) ? process.env.REACT_APP_API_URL + api : 'http://proxy.projectb.vdmi/http://172.20.0.6/api' + api;
+        return axios.delete(url, form_data, {
+        })
+            .then(res => {
+                return res;
+            })
+            .catch(err => console.log(err));
     } else {
         let url = (process.env.REACT_APP_API_URL) ? process.env.REACT_APP_API_URL + api : 'http://proxy.projectb.vdmi/http://172.20.0.6/api' + api;
         return axios.post(url, form_data, {

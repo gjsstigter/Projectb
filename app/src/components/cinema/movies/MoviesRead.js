@@ -41,7 +41,7 @@ class MoviesRead extends Component {
                     <h2>All movies</h2>
                     <section>
                         <h3>{movies.title} - <i>{movies.genre}</i></h3>
-                        <img alt={movies.title} src={movies.photo}/>
+                        <img alt={movies.title} src={`http://backend.projectb.vdmi/api/files/` + movies.photo}/>
                         <p>{movies.description}</p>
                         <table>
                             <tbody>
@@ -59,19 +59,11 @@ class MoviesRead extends Component {
                             </tr>
                             <tr>
                                 <td>Actors</td>
-                                <td>
-                                    <ul>{movies.actors.map((actor) => (
-                                        <li>{actor}</li>
-                                    ))}</ul>
-                                </td>
+                                <td>{movies.actors}</td>
                             </tr>
                             <tr>
                                 <td>Keywords</td>
-                                <td>
-                                    <ul>{movies.keywords.map((keyword) => (
-                                        <li>{keyword}</li>
-                                    ))}</ul>
-                                </td>
+                                <td>{movies.keywords}</td>
                             </tr>
                             </tbody>
                         </table>

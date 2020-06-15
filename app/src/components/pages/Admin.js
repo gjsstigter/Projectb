@@ -6,6 +6,7 @@ import MoviesUpdate from "../cinema/movies/MoviesUpdate";
 import MoviesRead from "../cinema/movies/MoviesRead";
 import Login from "../cinema/user/Login";
 import Registreren from "../cinema/user/Registreren";
+import MoviesDelete from "../cinema/movies/MoviesDelete";
 
 class Admin extends Component{
   constructor(props) {
@@ -48,7 +49,7 @@ class Admin extends Component{
             break;
         }
       break;
-      case `movies`:
+      case `movies` :
         switch (crud) {
           case `create`:
             body = <MoviesCreate/>;
@@ -66,14 +67,16 @@ class Admin extends Component{
           case `update`:
             body = <MoviesUpdate id={id}/>;
             break;
+          case `delete`:
+            body = <MoviesDelete id={id} />
+            break;
           default:
             body = (
               <main>
                 <h3>Kies 1 van de volgende opties</h3>
                 <ul>
-                  <li><NavLink to={`/admin/movies/1/read/`}>Read</NavLink></li>
-                  <li>Create</li>
-                  <li>Update</li>
+                  <li><NavLink to={`/admin/movies/readall/`}>Alle filmps</NavLink></li>
+                  <li><NavLink to={`/admin/movies/create/`}>Create</NavLink></li>
                 </ul>
               </main>
             );
@@ -89,11 +92,6 @@ class Admin extends Component{
               <ul>
                 <li><Link to={`/admin/movies/create`}>Create</Link></li>
                 <li><Link to={`/admin/movies/readall`}>Read all movies</Link></li>
-              </ul>
-              <li><Link to={`/admin/tickets/`}>Tickets</Link></li>
-              <ul>
-                <li><Link to={`/admin/tickets/create`}>Create</Link></li>
-                <li><Link to={`/admin/tickets/readall`}>Read all tickets</Link></li>
               </ul>
             </ul>
           </main>
