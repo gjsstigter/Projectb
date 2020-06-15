@@ -51,7 +51,7 @@ class MoviesReadAll extends Component{
                                 <td>{movie.genre}</td>
                                 <td><Link to={`/admin/movies/read/${movie.id}`}>Read movie</Link></td>
                                 <td><Link to={`/admin/movies/update/${movie.id}`}>Edit movie</Link></td>
-                                <td><Link to={`/admin/movies/read/${movie.id}`}>Delete movie</Link></td>
+                                <td><Link to={`/admin/movies/delete/${movie.id}`}>Delete movie</Link></td>
                             </tr>)
                         })}
                         </tbody>
