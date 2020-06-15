@@ -7,17 +7,19 @@ class MoviesCreate extends Component {
     state = {
         title: '',
         photo: null,
+        photo_name: null,
         description: '',
         release_date: '',
+        stars: 2.5,
         genre: '',
         studio: '',
-        actors: [''],
-        keywords: [''],
+        actors: ['', 'asdasd'],
+        keywords: ['', 'asdasda'],
     };
 
     handleChange = (e) => {
         if(typeof this.state[e.target.name] === 'object') {
-            let value = [''];
+            let value = this.state[e.target.name];
             value[0] = e.target.value;
             this.setState({
                 [e.target.name]: value
@@ -30,9 +32,10 @@ class MoviesCreate extends Component {
     };
 
     handleImageChange = (e) => {
-        console.log(e.target.files[0])
+        console.log(e.target.files)
         this.setState({
-            photo: e.target.files[0]
+            photo: e.target.files[0],
+            photo_name: e.target.files[0].name.replace(' ', '-'),
         })
     };
 
@@ -40,14 +43,15 @@ class MoviesCreate extends Component {
         e.preventDefault();
         console.log(this.state);
         let form_data = new FormData();
-        form_data.append('photo', this.state.photo);
+        form_data.append('photo', this.state.photo, this.state.photo_name);
         form_data.append('title', this.state.title);
         form_data.append('description', this.state.description);
         form_data.append('release_date', this.state.release_date);
         form_data.append('genre', this.state.genre);
+        form_data.append('stars', this.state.stars);
         form_data.append('studio', this.state.studio);
-        form_data.append('actors', this.state.actors);
-        form_data.append('keywords', this.state.keywords);
+        form_data.append('actors', JSON.stringify(this.state.actors));
+        form_data.append('keywords', JSON.stringify(this.state.keywords));
 
         Api(`/movie/create/`, `POST`, form_data)
             .then(res => (console.log(res)));

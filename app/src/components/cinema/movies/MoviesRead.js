@@ -14,12 +14,12 @@ class MoviesRead extends Component {
         id: this.props.id,
     };
 
-    movieList = () => {
-        Api(`/movie/`, `GET`)
+    movieList = (id) => {
+        Api(`/movie/${id}`, `GET`)
             // .then(res => console.log(res))
             .then(res => (this.setState(
                     {
-                        movies: res.data[0],
+                        movies: res.data,
                         loaded: true,
                     }
                 )
@@ -27,7 +27,7 @@ class MoviesRead extends Component {
     };
 
     componentDidMount() {
-        this.movieList();
+        this.movieList(this.state.id);
     }
 
     render() {

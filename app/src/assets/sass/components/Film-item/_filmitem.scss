@@ -1,4 +1,62 @@
 .filmitem-main {
+  .place {
+    border: 3px solid rgb(94, 24, 24);
+    margin: 10px 0;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: brown;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+
+    p {
+      margin: 0;
+      color: #fff;
+    }
+  }
+
+  .chosen-place {
+    background-color: rgb(53, 14, 14) !important;
+  }
+
+  .places-row {
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+    width: 80%;
+  }
+
+  .screen {
+    background-color: black;
+    width: 70%;
+    height: 10px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+  }
+  .time-stamps-wrapper {
+    p {
+      width: fit-content;
+      margin: 0 auto;
+      font-weight: bold;
+      font-size: 20px;
+    }
+    .play-moments {
+      display: flex;
+      justify-content: space-evenly;
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      margin: 30px;
+
+      .item {
+        cursor: pointer;
+        padding: 10px;
+
+        background-color: rgb(228, 228, 228);
+        border: 2px solid $orange;
+      }
+    }
+  }
   div {
     display: block;
   }
@@ -111,7 +169,6 @@
       margin-right: 30px;
     }
     .detail {
-
       .summary {
         margin-top: 25px;
 
@@ -120,7 +177,6 @@
         }
       }
       .detail-heading {
-
         .genre {
           font-size: 13px;
           color: $orange;
@@ -138,7 +194,6 @@
         }
       }
       .detail-list {
-
         .detail-row {
           display: flex;
           margin-bottom: 11px;
@@ -149,7 +204,7 @@
             min-width: 100px;
 
             span:after {
-              content: ':';
+              content: ":";
             }
             i {
               font-size: 16px;
@@ -162,18 +217,18 @@
           }
         }
         .detail-row:before {
-          content: '';
+          content: "";
           display: block;
           clear: both;
         }
         .detail-row:after {
-          content: '';
+          content: "";
           display: block;
           clear: both;
         }
       }
       .detail-list:before {
-        content: '';
+        content: "";
         display: block;
         clear: both;
       }

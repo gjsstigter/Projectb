@@ -26,7 +26,6 @@ def movie_create(request):
         return Response({'detail': 'No data provided'}, status=status.HTTP_400_BAD_REQUEST)
 
     data = request.data
-
     if 'genre' in data:
         genre = data['genre']
         genre, created = Genre.objects.get_or_create(name=genre)
@@ -38,27 +37,20 @@ def movie_create(request):
 
     if 'keywords' in data:
         keywords = data['keywords']
-
-        keyword_ids = []
-
-        for keyword in keywords:
-            keyword, created = Keyword.objects.get_or_create(word=keyword)
-            if created:
-                keyword.save()
-            keyword_ids.append(keyword.id)
-        data['keywords'] = keyword_ids
-
+        keyword, created = Keyword.objects.get_or_create(word=keywords)
+        if created:
+            keyword.save()
+        data['keywords'] = keyword.id
+    else:
+        return Response({'detail': 'Please enter a Keyword'}, status=status.HTTP_400_BAD_REQUEST)
     if 'actors' in data:
-        actors = data['actors']
-
-        actor_ids = []
-
-        for actor in actors:
-            actor, created = Actor.objects.get_or_create(name=actor)
-            if created:
-                actor.save()
-            actor_ids.append(actor.id)
-        data['actors'] = actor_ids
+        actor = data['actors']
+        actor, created = Actor.objects.get_or_create(name=actor)
+        if created:
+            actor.save()
+        data['actors'] = actor.id
+    else:
+        return Response({'detail': 'Please enter a Actors'}, status=status.HTTP_400_BAD_REQUEST)
 
     if 'photo' in data:
         image_data = request.FILES['photo'].file
@@ -109,56 +101,52 @@ def movie_update(request, pk):
         genre, created = Genre.objects.get_or_create(name=genre)
         if created:
             genre.save()
-        movie.genre = genre.id
+        data['genre'] = genre.id
+    else:
+        return Response({'detail': 'Please enter a Genre'}, status=status.HTTP_400_BAD_REQUEST)
+
 
     if 'keywords' in data:
         keywords = data['keywords']
-
-        keyword_ids = []
-
-        for keyword in keywords:
-            keyword, created = Keyword.objects.get_or_create(word=keyword)
-            if created:
-                keyword.save()
-            keyword_ids.append(keyword.id)
-        data['keywords'] = keyword_ids
-
+        keyword, created = Keyword.objects.get_or_create(word=keywords)
+        if created:
+            keyword.save()
+        data['keywords'] = keyword.id
+    else:
+        return Response({'detail': 'Please enter a Keyword'}, status=status.HTTP_400_BAD_REQUEST)
     if 'actors' in data:
-        actors = data['actors']
-
-        actor_ids = []
-
-        for actor in actors:
-            actor, created = Actor.objects.get_or_create(name=actor)
-            if created:
-                actor.save()
-            actor_ids.append(actor.id)
-        data['actors'] = actor_ids
+        actor = data['actors']
+        actor, created = Actor.objects.get_or_create(name=actor)
+        if created:
+            actor.save()
+        data['actors'] = actor.id
+    else:
+        return Response({'detail': 'Please enter a Actors'}, status=status.HTTP_400_BAD_REQUEST)
 
     if 'photo' in data:
-        image_data = request.FILES['photo'].file
+     image_data = request.FILES['photo'].file
 
-        photo = ContentFile(image_data.read())
-        try:
-            latest_id = Movie.objects.latest("id").id
-        except Exception:
-            latest_id = 0
-        try:
-            image = Image.open(photo).convert('RGB')
-            image = ImageOps.fit(image, (260, 260), Image.ANTIALIAS)
-            photo_name = f'{settings.PHOTO_URL}{latest_id + 1}.jpg'
-            if not os.path.isdir(settings.PHOTO_ROOT):
-                os.mkdir(os.path.join(settings.MEDIA_ROOT, 'photos'))
+     photo = ContentFile(image_data.read())
+     try:
+         latest_id = Movie.objects.latest("id").id
+     except Exception:
+         latest_id = 0
+     try:
+         image = Image.open(photo).convert('RGB')
+         image = ImageOps.fit(image, (260, 260), Image.ANTIALIAS)
+         photo_name = f'{settings.PHOTO_URL}{latest_id + 1}.jpg'
+         if not os.path.isdir(settings.PHOTO_ROOT):
+             os.mkdir(os.path.join(settings.MEDIA_ROOT, 'photos'))
 
-            image.save(f'{settings.MEDIA_ROOT}/{photo_name}', 'JPEG')
-        except IOError:
-            return Response({'detail': 'Photo is not a valid image'}, status=status.HTTP_400_BAD_REQUEST)
+         image.save(f'{settings.MEDIA_ROOT}/{photo_name}', 'JPEG')
+     except IOError:
+         return Response({'detail': 'Photo is not a valid image'}, status=status.HTTP_400_BAD_REQUEST)
 
-        file = File()
-        file.path = photo_name
-        file.type = "image"
-        file.save()
-        movie.photo = file.id
+     file = File()
+     file.path = photo_name
+     file.type = "image"
+     file.save()
+     data['photo_id'] = file.id
 
     movie_validate = MovieCreateSerializer(movie, data, partial=True)
     movie_validate.is_valid(raise_exception=True)

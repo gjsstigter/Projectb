@@ -1,0 +1,70 @@
+.film-card-wrapper {
+  //   border: 1px solid black;
+  width: 250px;
+  margin: 25px 0;
+  border-bottom: 3px solid $orange;
+  position: relative;
+
+  .film-img {
+    width: 250px;
+    height: 430px;
+  }
+
+  .film-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px;
+    margin-left: 0;
+  }
+
+  .release-date {
+    color: gray;
+    font-size: 13px;
+  }
+
+  .hover-info {
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 250px;
+    height: 513px;
+    position: absolute;
+    top: 0;
+    // display: none;
+    opacity: 0;
+    transition: ease-in 0.1s;
+
+    &:hover {
+      //   display: absolute;
+      //   display: block;
+      opacity: 1;
+    }
+
+    .film-title-hover {
+      color: #fff;
+      font-size: 20px;
+      font-weight: bold;
+      margin: 35px 15px 15px 15px;
+    }
+
+    .info-wrapper {
+      margin: 15px;
+      margin-top: 50px;
+    }
+
+    .rating {
+      width: 75px;
+      height: 75px;
+      border-radius: 100%;
+      background: gray;
+      background-color: $orange;
+      border: 3px solid $white;
+      margin: 25px auto;
+      margin-top: 100px;
+      display: flex;
+
+      h1 {
+        margin: auto;
+        color: white;
+      }
+    }
+  }
+}
