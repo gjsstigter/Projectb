@@ -4,7 +4,7 @@ from rest_framework.response import Response
 
 from cinema.models import Show, Seat, AvailableSeat, Room
 from cinema.serializers.Room import RoomGetSerializer
-from cinema.serializers.show import ShowGetSerializer, ShowCreateSerializer
+from cinema.serializers.show import ShowGetSerializer, ShowCreateSerializer, ShowGetOneSerializer
 
 
 @api_view(['POST'])
@@ -46,6 +46,31 @@ def show_overview(request):
     return Response(shows, status=status.HTTP_200_OK)
 
 
+@api_view(['GET'])
+def show_detail(request, pk):
+    try:
+        data = Show.objects.get(pk=pk)
+    except Show.DoesNotExist:
+        return Response({'detail': 'Could not find show'}, status=status.HTTP_404_NOT_FOUND)
+    show = ShowGetOneSerializer(data).data
+
+    seats = []
+
+    for seat in show['seats']:
+        seat = Seat.objects.get(pk=seat)
+        seat_available = AvailableSeat.objects.get(seat=seat)
+        seat = {
+            'id': seat.id,
+            'row': seat.row,
+            'number': seat.number,
+            'available': seat_available.available
+        }
+        seats.append(seat)
+    show['seats'] = seats
+
+    return Response(show, status=status.HTTP_200_OK)
+
+
 @api_view(['POST'])
 def show_create(request):
     if not request.data:
@@ -65,3 +90,23 @@ def show_create(request):
         AvailableSeat.objects.create(show=show, seat=seat).save()
 
     return Response({'detail': 'Show has been created'}, status=status.HTTP_201_CREATED)
+
+
+@api_view(['POST'])
+def reserve_seat(request, pk):
+    try:
+        show = Show.objects.get(pk=pk)
+    except Show.DoesNotExist:
+        return Response({'detail': 'Could not find show'}, status=status.HTTP_404_NOT_FOUND)
+
+    if not request.data:
+        return Response({'detail': 'No data provided'}, status=status.HTTP_400_BAD_REQUEST)
+
+    for seat in request.data['seats']:
+        available_seat = AvailableSeat.objects.get(seat_id=seat, show=show)
+        if not available_seat.available:
+            return Response({'detail': 'One of the seats has already been reserved'}, status=status.HTTP_400_BAD_REQUEST)
+        available_seat.available = False
+        available_seat.save()
+
+    return Response({'detail': 'Seats have been reserved'}, status=status.HTTP_200_OK)
