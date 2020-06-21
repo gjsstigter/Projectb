@@ -7,8 +7,8 @@ import MoviesRead from "../cinema/movies/MoviesRead";
 import Login from "../cinema/user/Login";
 import Registreren from "../cinema/user/Registreren";
 import MoviesDelete from "../cinema/movies/MoviesDelete";
-import ShowCreate from '../cinema/movies/ShowCreate';
-import ShowReadAll from '../cinema/movies/ShowReadAll';
+import ShowsCreate from '../cinema/shows/ShowsCreate';
+import ShowReadAll from '../cinema/shows/ShowsReadAll';
 
 class Admin extends Component {
     constructor(props) {
@@ -98,7 +98,7 @@ class Admin extends Component {
             case 'shows':
                 switch (crud) {
                     case 'create':
-                        body = <ShowCreate/>;
+                        body = <ShowsCreate/>;
                         break;
                     case 'readall':
                         body = <ShowReadAll/>
