@@ -4,15 +4,46 @@ class Contact extends Component {
 
     render = () => {
         return (
-            <main>
-                <h2>Contact</h2>
-                <ul>
-                    <li>Telefoon: <a href={`tel:+311012348767`}>+31 (0) 10 1234 8767</a></li>
-                    <li>Email: <a href={`mailto:info@cinema.nl`}>info@cinema.nl</a></li>
-                    <h3>Address</h3>
-                    <li>Govertpleijn 2</li>
-                    <li>3033 BL, Rotterdam</li>
-                </ul>
+            <main className="contact-main">
+                <div className="container">
+                    <div className="wrapper">
+                        <div style={{backgroundColor: "#fe7900"}} className="contactform-title">
+                            <span className="hoofdtitel">Neem contact met ons op</span>
+                            <span className="subtitel">Stuur ons gerust een berichtje hieronder!</span>
+                        </div>
+                        <form className="contactform">
+                            <div className="wrap-input valideren-input" data-validate="Naam is vereist">
+                                <span className="label-input">Volledige naam:</span>
+                                <input className="input" type="text" name="name" placeholder="Vul uw naam in"/>
+                                <span className="focus-input"></span>
+                            </div>
+
+                            <div className="wrap-input valideren-input" data-validate="Geldig e-mailadres is vereist: voorbeeld@gmail.com">
+                                <span className="label-input">E-mailadres:</span>
+                                <input className="input" type="text" name="email" placeholder="Vul uw e-mailadres in"/>
+                                <span className="focus-input"></span>
+                            </div>
+
+                            <div className="wrap-input valideren-input" data-validate="Telefoonnummer is verplicht">
+                                <span className="label-input">Telefoon nummer:</span>
+                                <input className="input" type="text" name="phone" placeholder="Voer uw telefoonnummer in"/>
+                                <span className="focus-input"></span>
+                            </div>
+
+                            <div className="wrap-input valideren-input" data-validate="Bericht is verplicht">
+                                <span className="label-input">Bericht:</span>
+                                <textarea className="input-textarea" name="message" placeholder="Beschrijf uw bericht/opmerkingen"/>
+                                <span className="focus-input"></span>
+                            </div>
+
+                            <div className="container-contactformulier-knop">
+                                <button className="contactformulier-knop">
+                                    <span>Verzenden</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </main>
         )
     }

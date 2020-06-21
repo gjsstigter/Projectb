@@ -31,7 +31,7 @@ class Nav extends Component {
         <section className="navigation">
           <div className="logo">
             {/* <img src="#" alt="Films Euhh logo" /> */}
-            <h1>LOGO</h1>
+            <Link to={`/`}><h1>LOGO</h1></Link>
           </div>
           <ul>
             <li className="link">

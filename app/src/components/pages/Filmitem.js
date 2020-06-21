@@ -2,53 +2,136 @@ import React, { Component } from "react";
 import HarryPotterPoster from "../../assets/images/filmitem/harry-potter-poster.jpg";
 import { MovieData } from "../cinema/movies/MoviesData";
 import videobanner5 from "../../assets/images/home/filmbanner4.jpg";
+import {ShowsData , ShowData} from "../cinema/shows/ShowsData";
+import Moment from "moment";
+import Api from "../cinema/api/Api";
 
 class Filmitem extends Component {
+  constructor(props) {
+    super(props);
+
+    this.loadRoom = this.loadRoom.bind(this);
+    this.pickChair = this.pickChair.bind(this);
+  }
+
   state = {
-    movie: null,
-    loaded: false,
     id: this.props.match.params.id,
+    created: null,
+    movie: null,
+    shows: null,
+    room: null,
+    loaded: false,
+    chosenPlaces: [],
+    chosenTime: null,
+    naam: '',
+    email: '',
+    selectedChairs: [],
+    fullDataChairs: [],
+    boughtChairs: null,
   };
 
-  GetDetails = () => {
+  GetDetails = async () => {
     let movieId = this.state.id;
-    MovieData(movieId).then((res) =>
+
+    await MovieData(movieId).then((res) => {
+      this.setState({
+        movie: res.data,
+        id: movieId,
+      })
+      return true}
+    );
+
+    await ShowsData().then((res) => {
         this.setState({
-          movie: res.data,
+          shows: res.data,
           loaded: true,
           id: movieId,
         })
+      return true}
     );
-  };
-  
-  renderRow = (rowNumber) => {
-    let places = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
-    let row = places.map((place) => {
-      let body = (
-        <div className="place">
-          <p>
-            Plaats: {rowNumber}-{place}
-          </p>
-        </div>
+    let show = this.state.shows.filter((value, index, arr) => value.movie === this.state.movie.title);
+    this.setState({shows: show});
+  };
+
+  loadRoom = async (id) => {
+    await ShowData(id).then(
+        (res) => {
+          this.setState({room: res.data});
+        }
+    )
+
+    let available = await this.state.room.seats.filter((value, index, arr) => !value.available);
+    this.setState({ boughtChairs: available });
+  }
+
+  seats = () => {
+    if(!this.state.shows.length){
+      return (
+        <p>Er zijn helaas geen shows meer beschikbaar</p>
       );
+    } else if (!this.state.room) {
+      return (
+          <p>Selecteer 1 van de tijden hierboven</p>
+      );
+    } else {
+      let {seats} = this.state.room;
+      let body;
+      let form;
+      if(!this.state.room.seats.length === 0) {
+        body = (<p>Helaas zijn er geen stoelen meer beschikbaar!</p>);
+      } else {
+        body = (seats.map((seat) => (<div key={seat.id} className={`place ${(seat.available)? ` available` : ` chosen-place`} ${(this.state.selectedChairs.includes(seat.id) ? ` chosen-place` : ` available`)}`} style={{gridColumn : `${seat.number} / ${seat.number}`, gridRow: `${seat.row} / ${seat.row}`}} onClick={(e) => this.pickChair(this, seat.id)}>{seat.row} - {seat.number}</div>)));
+        form = (<div>
+          <form>
+            <label>
+              Naam:
+              <input type="text" name={`naam`}  value={this.state.naam} onChange={this.handleChange}/>
+            </label>
+            <label>
+              Email:
+              <input type="email" name={`email`} value={this.state.email} onChange={this.handleChange}/>
+            </label>
+          </form>
+        </div>)
+      }
+      return(<div><div className={`stoelen-wrapper`}>{body}</div>{form}</div>);
+    }
+  }
 
-      return body;
-    });
+  pickChair = (e ,id) => {
+    let { selectedChairs, boughtChairs } = this.state;
+    if(!selectedChairs.includes(id) && boughtChairs.filter((value, index, arr) => value.id === id)) {
+      selectedChairs.push(id);
+    }
+    else {
+      selectedChairs.map((chair, index) => {
+        if (chair === id) {
+          selectedChairs = selectedChairs.filter((value, index, arr) => value !== id);
+        }
+      })
+    }
+    let chairs = this.state.fullDataChairs;
+    chairs.push(this.state.room.seats.filter((value, index, arr) => value.id === id));
+    this.setState({selectedChairs: selectedChairs, fullDataChairs: chairs});
+  }
 
-    return row;
-  };
+  reserv = (e) => {
+    let form_data = {
+      'seats': this.state.selectedChairs,
+    }
+    Api(`/shows/${this.state.room.id}/reserve/`,`RES`, form_data).then((res) => {
+        if (res.status === 200) {
+          this.setState({created: true});
+        }
+      }
+    )
+  }
 
-  renderColumns = (rowNumber) => {
-    let rows = ["A", "B", "C", "D", "E", "F", "G", "H"];
-
-    let row = rows.map((row) => {
-      let body = <div className="places-row">{this.renderRow(row)}</div>;
-
-      return body;
-    });
-
-    return row;
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
   };
 
   componentDidMount() {
@@ -56,16 +139,14 @@ class Filmitem extends Component {
   }
 
   render() {
-    let { movie, loaded } = this.state;
+    let { movie, loaded, shows, created} = this.state;
     let body;
 
     let movieImage;
 
     if (loaded) {
-      console.log(movie);
-
       if (movie.photo) {
-        movieImage = movie.photo;
+        movieImage = `http://backend.projectb.vdmi/api/files/${movie.photo}/`;
       } else {
         movieImage = videobanner5;
       }
@@ -95,7 +176,7 @@ class Filmitem extends Component {
                     <div className="detail-list">
                       <div className="detail-row">
                         <div className="detail-title">
-                          <i className="icon" aria-hidden="true"></i>
+                          <i className="icon" aria-hidden="true"/>
                           <span>Productie</span>
                         </div>
                         <div className="detail-content">
@@ -104,7 +185,7 @@ class Filmitem extends Component {
                       </div>
                       <div className="detail-row">
                         <div className="detail-title">
-                          <i className="icon" aria-hidden="true"></i>
+                          <i className="icon" aria-hidden="true"/>
                           <span>Tags</span>
                         </div>
                         <div className="detail-content">{movie.keywords}</div>
@@ -112,7 +193,7 @@ class Filmitem extends Component {
 
                       <div className="detail-row">
                         <div className="detail-title">
-                          <i className="icon" aria-hidden="true"></i>
+                          <i className="icon" aria-hidden="true"/>
                           <span>Rating</span>
                         </div>
                         <div className="detail-content">
@@ -126,20 +207,39 @@ class Filmitem extends Component {
                   </div>
                 </div>
               </div>
-              <hr></hr>
-              <div className="time-stamps-wrapper">
+              <hr/>
+              <main className={`time-stamps-wrapper`}>
                 <p>Deze film draait op op de volgende momenten:</p>
-                <ul className="play-moments">
-                  <li className="item">10:00 uur</li>
-                  <li className="item">11:00 uur</li>
-                  <li className="item">12:00 uur</li>
-                  <li className="item">13:00 uur</li>
-                </ul>
-              </div>
-              <div className="screen"></div>
-              <div className="stoelen-wrapper">
-                <div className="places-view">{this.renderColumns()}</div>
-              </div>
+                <section>
+                  <ul className={`play-moments`}>
+                    {shows.map((show) => (
+                      <li key={show.id} onClick={(e) => this.loadRoom(show.id)} className={`item`}>{Moment(show.time).format('d MMM - H:m')}</li>
+                    ))}
+                  </ul>
+                </section>
+                <section>
+                  { (created) ? (<div>
+                    <table>
+                      <tbody><tr>
+                        <td>Naam:</td>
+                        <td>{this.state.naam}</td>
+                      </tr>
+                      <tr>
+                        <td>Email:</td>
+                        <td>{this.state.email}</td>
+                      </tr>
+                      <tr>
+                        <td>Gereserveerd:</td>
+                        <td>{this.state.fullDataChairs.sort().map((chair) => (
+                          <p key={chair[0].id}>{chair[0].row} - {chair[0].number}</p>
+                        ))}</td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>) : this.seats() }
+                  <button onClick={(e) => this.reserv()}>Reserveer</button>
+                </section>
+              </main>
             </div>
           </div>
         </main>
