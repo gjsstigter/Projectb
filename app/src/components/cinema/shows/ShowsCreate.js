@@ -60,54 +60,72 @@ class ShowsCreate extends Component{
 
     render = () => {
 
-        let {movies, rooms, loaded} = this.state;
+        let {movies, rooms, loaded, created} = this.state;
         let body;
 
         if (loaded) {
-            body = (
-                <main className="contact-main">
+            if(!created) {
+                body = (
+                    <main className="contact-main">
+                        <div className="container">
+                            <div className="wrapper">
+                                <div style={{backgroundColor: "#fe7900"}} className="contactform-title">
+                                    <span className="hoofdtitel">Creeër een nieuwe Show</span>
+                                    <span
+                                        className="subtitel">Via dit formulier kunnen er shows toegevoegd worden</span>
+                                    <Link to={`/admin/`}>{`<<<`} Ga terug</Link>
+                                </div>
+                                <form className="contactform" onSubmit={this.handleSubmit}>
+                                    <div className="wrap-input valideren-input" data-validate="Vereist">
+                                        <span className="label-input">Datum:</span>
+                                        <input className="input" type={`date`} name={`date`} value={this.state.date}
+                                               onChange={this.handleChange} required/>
+                                        <span className="focus-input"></span>
+                                    </div>
+                                    <div className="wrap-input valideren-input" data-validate="Vereist">
+                                        <span className="label-input">Tijdstip:</span>
+                                        <input className="input" type={`time`} name={`start_time`}
+                                               value={this.state.start_time} onChange={this.handleChange} required/>
+                                        <span className="focus-input"></span>
+                                    </div>
+                                    <div className="wrap-input valideren-input" data-validate="Vereist">
+                                        <span className="label-input">Film:</span>
+                                        {movies.map((movie) => (
+                                            <label><input key={movie.id} type={`radio`}
+                                                          value={movie.id} name={`movie`}
+                                                          onChange={this.handleChange}/>{movie.title}</label>
+                                        ))}
+                                    </div>
+                                    <div className="wrap-input valideren-input" data-validate="Vereist">
+                                        <span className="label-input">Film:</span>
+                                        {rooms.map((room) => (
+                                            <label><input key={room.id} type={`radio`}
+                                                          value={room.id} name={`room`}
+                                                          onChange={this.handleChange}/>{room.name}</label>
+                                        ))}
+                                    </div>
+                                    <div className="container-contactformulier-knop">
+                                        <input className="contactformulier-knop" type={`submit`} name={`+`}
+                                               value={`+`}/>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </main>
+                );
+            } else {
+                body = (<main className="contact-main">
                     <div className="container">
                         <div className="wrapper">
                             <div style={{backgroundColor: "#fe7900"}} className="contactform-title">
-                                <span className="hoofdtitel">Creeër een nieuwe Show</span>
-                                <span className="subtitel">Via dit formulier kunnen er shows toegevoegd worden</span>
+                                <span className="hoofdtitel">Show is aangemaakt</span>
+                                <span className="subtitel">Via deze formulier kunnen er shows toegevoegd worden</span>
                                 <Link to={`/admin/`}>{`<<<`} Ga terug</Link>
                             </div>
-                            <form className="contactform" onSubmit={this.handleSubmit}>
-                                <div className="wrap-input valideren-input" data-validate="Vereist">
-                                    <span className="label-input">Datum:</span>
-                                    <input className="input" type={`date`} name={`date`} value={this.state.date} onChange={this.handleChange} required/>
-                                    <span className="focus-input"></span>
-                                </div>
-                                <div className="wrap-input valideren-input" data-validate="Vereist">
-                                    <span className="label-input">Tijdstip:</span>
-                                    <input className="input" type={`time`} name={`start_time`} value={this.state.start_time} onChange={this.handleChange} required/>
-                                    <span className="focus-input"></span>
-                                </div>
-                                <div className="wrap-input valideren-input" data-validate="Vereist">
-                                    <span className="label-input">Film:</span>
-                                    {movies.map((movie) => (
-                                        <label><input key={movie.id} type={`radio`}
-                                                      value={movie.id} name={`movie`}
-                                                      onChange={this.handleChange}/>{movie.title}</label>
-                                    ))}
-                                </div>
-                                <div className="wrap-input valideren-input" data-validate="Vereist">
-                                    <span className="label-input">Film:</span>
-                                    {rooms.map((room) => (
-                                        <label><input key={room.id} type={`radio`}
-                                                      value={room.id} name={`room`}
-                                                      onChange={this.handleChange}/>{room.name}</label>
-                                    ))}
-                                </div>
-                                <div className="container-contactformulier-knop">
-                                    <input className="contactformulier-knop" type={`submit`} name={`+`} value={`+`}/>
-                                </div>
-                            </form>
                         </div>
                     </div>
-                </main>
-            );
+                </main>);
+            }
         } else {
             body = (<main>
                 <h2>Loading...</h2>

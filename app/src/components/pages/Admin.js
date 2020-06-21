@@ -9,6 +9,9 @@ import Registreren from "../cinema/user/Registreren";
 import MoviesDelete from "../cinema/movies/MoviesDelete";
 import ShowsCreate from '../cinema/shows/ShowsCreate';
 import ShowReadAll from '../cinema/shows/ShowsReadAll';
+import RoomsCreate from "../cinema/room/RoomsCreate";
+import RoomsReadAll from "../cinema/room/RoomsReadAll";
+import ShowsRead from "../cinema/shows/ShowsRead";
 
 class Admin extends Component {
     constructor(props) {
@@ -80,6 +83,7 @@ class Admin extends Component {
                                         <div style={{backgroundColor: "#fe7900"}} className="contactform-title">
                                             <span className="hoofdtitel">Films</span>
                                             <span className="subtitel">Hieronder alle links</span>
+                                            <Link to={`/admin/`}>{`<<<`} Ga terug</Link>
                                         </div>
                                         <div>
                                             <h3>Kies 1 van de volgende opties</h3>
@@ -103,6 +107,9 @@ class Admin extends Component {
                     case 'readall':
                         body = <ShowReadAll/>
                         break;
+                    case 'read':
+                        body = <ShowsRead id={id}/>
+                        break;
                     default:
                         body = (
                             <main className="contact-main">
@@ -111,12 +118,45 @@ class Admin extends Component {
                                         <div style={{backgroundColor: "#fe7900"}} className="contactform-title">
                                             <span className="hoofdtitel">Shows</span>
                                             <span className="subtitel">Hieronder alle links</span>
+                                            <Link to={`/admin/`}>{`<<<`} Ga terug</Link>
                                         </div>
                                         <div>
                                             <h3>Kies 1 van de volgende opties</h3>
                                             <ul>
                                                 <li><NavLink to={`/admin/shows/readall/`}>Alle shows</NavLink></li>
-                                                <li><NavLink to={`/admin/shows/create/`}>Create</NavLink></li>
+                                                <li><NavLink to={`/admin/shows/create/`}>Maak een nieuwe show aan</NavLink></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </main>
+                        );
+                        break;
+                }
+                break;
+            case `rooms`:
+                switch (crud) {
+                    case 'create':
+                        body = <RoomsCreate/>
+                        break;
+                    case 'readall':
+                        body = <RoomsReadAll/>
+                        break;
+                    default:
+                        body = (
+                            <main className="contact-main">
+                                <div className="container">
+                                    <div className="wrapper">
+                                        <div style={{backgroundColor: "#fe7900"}} className="contactform-title">
+                                            <span className="hoofdtitel">Zalen</span>
+                                            <span className="subtitel">Hieronder alle links</span>
+                                            <Link to={`/admin/`}>{`<<<`} Ga terug</Link>
+                                        </div>
+                                        <div>
+                                            <h3>Kies 1 van de volgende opties</h3>
+                                            <ul>
+                                                <li><NavLink to={`/admin/rooms/readall/`}>Alle zalen</NavLink></li>
+                                                <li><NavLink to={`/admin/rooms/create/`}>Maak nieuwe zaal aan</NavLink></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -137,7 +177,7 @@ class Admin extends Component {
                                 </div>
                                 <div>
                                     <ul>
-                                        <li><Link to={`/admin/movies/`}>Movies</Link></li>
+                                        <li><Link to={`/admin/movies/`}>Films</Link></li>
                                         <ul>
                                             <li><Link to={`/admin/movies/create`}>Maak nieuwe film</Link></li>
                                             <li><Link to={`/admin/movies/readall`}>Lees alle films</Link></li>
@@ -147,6 +187,12 @@ class Admin extends Component {
                                         <ul>
                                             <li><Link to={`/admin/shows/create`}>Maak nieuwe show</Link></li>
                                             <li><Link to={`/admin/shows/readall`}>Lees alle shows</Link></li>
+                                        </ul>
+
+                                        <li><Link to={`/admin/rooms/`}>Zalen</Link></li>
+                                        <ul>
+                                            <li><Link to={`/admin/rooms/create`}>Maak nieuwe zaal</Link></li>
+                                            <li><Link to={`/admin/rooms/readall`}>Lees alle zalen</Link></li>
                                         </ul>
                                     </ul>
                                 </div>
