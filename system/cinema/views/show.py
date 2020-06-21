@@ -20,6 +20,9 @@ def room_create(request):
     room = Room.objects.create(name=data['name'])
     room.save()
 
+    data['rows'] = int(data['rows'])
+    data['seats'] = int(data['seats'])
+
     while data['rows'] > 0:
         seats = data['seats']
         while seats > 0:
@@ -58,7 +61,7 @@ def show_detail(request, pk):
 
     for seat in show['seats']:
         seat = Seat.objects.get(pk=seat)
-        seat_available = AvailableSeat.objects.get(seat=seat)
+        seat_available = AvailableSeat.objects.get(seat=seat, show=show['id'])
         seat = {
             'id': seat.id,
             'row': seat.row,

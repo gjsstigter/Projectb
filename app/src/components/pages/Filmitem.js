@@ -12,6 +12,7 @@ class Filmitem extends Component {
 
     this.loadRoom = this.loadRoom.bind(this);
     this.pickChair = this.pickChair.bind(this);
+    this.printpage = this.printpage.bind(this);
   }
 
   state = {
@@ -65,6 +66,10 @@ class Filmitem extends Component {
     this.setState({ boughtChairs: available });
   }
 
+  printpage = () => {
+    window.print();
+  }
+
   seats = () => {
     if(!this.state.shows.length){
       return (
@@ -83,19 +88,19 @@ class Filmitem extends Component {
       } else {
         body = (seats.map((seat) => (<div key={seat.id} className={`place ${(seat.available)? ` available` : ` chosen-place`} ${(this.state.selectedChairs.includes(seat.id) ? ` chosen-place` : ` available`)}`} style={{gridColumn : `${seat.number} / ${seat.number}`, gridRow: `${seat.row} / ${seat.row}`}} onClick={(e) => this.pickChair(this, seat.id)}>{seat.row} - {seat.number}</div>)));
         form = (<div>
-          <form>
-            <label>
-              Naam:
-              <input type="text" name={`naam`}  value={this.state.naam} onChange={this.handleChange}/>
-            </label>
-            <label>
-              Email:
-              <input type="email" name={`email`} value={this.state.email} onChange={this.handleChange}/>
-            </label>
-          </form>
+            <div className="wrap-input valideren-input" data-validate="Vereist">
+                <span className="label-input">Naam:</span>
+                <input className="input" type={`naam`} name={`naam`}
+                       value={this.state.naam} onChange={this.handleChange} required/>
+            </div>
+              <div className="wrap-input valideren-input" data-validate="Vereist">
+                  <span className="label-input">Email:</span>
+                  <input className="input" type={`email`} name={`email`}
+                         value={this.state.email} onChange={this.handleChange} required/>
+              </div>
         </div>)
       }
-      return(<div><div className={`stoelen-wrapper`}>{body}</div>{form}</div>);
+        return(<div><div className={`stoelen-wrapper`}>{body}</div>{form}<div className="container-contactformulier-knop"><input type={`submit`}  className="contactformulier-knop" onClick={(e) => this.reserv()}/></div></div>);
     }
   }
 
@@ -120,12 +125,14 @@ class Filmitem extends Component {
     let form_data = {
       'seats': this.state.selectedChairs,
     }
-    Api(`/shows/${this.state.room.id}/reserve/`,`RES`, form_data).then((res) => {
-        if (res.status === 200) {
-          this.setState({created: true});
-        }
-      }
-    )
+    if (this.state.selectedChairs !== 0) {
+        Api(`/shows/${this.state.room.id}/reserve/`, `RES`, form_data).then((res) => {
+                if (res.status === 200) {
+                    this.setState({created: true});
+                }
+            }
+        )
+    }
   }
 
   handleChange = (e) => {
@@ -213,7 +220,7 @@ class Filmitem extends Component {
                 <section>
                   <ul className={`play-moments`}>
                     {shows.map((show) => (
-                      <li key={show.id} onClick={(e) => this.loadRoom(show.id)} className={`item`}>{Moment(show.time).format('d MMM - H:m')}</li>
+                      <li key={show.id} onClick={(e) => this.loadRoom(show.id)} className={`item`}></li>
                     ))}
                   </ul>
                 </section>
@@ -234,10 +241,10 @@ class Filmitem extends Component {
                           <p key={chair[0].id}>{chair[0].row} - {chair[0].number}</p>
                         ))}</td>
                       </tr>
+                      <tr>Print nu je kaartje uit <input type={`submit`} value={`Print`} onClick={this.printpage}/></tr>
                       </tbody>
                     </table>
                   </div>) : this.seats() }
-                  <button onClick={(e) => this.reserv()}>Reserveer</button>
                 </section>
               </main>
             </div>
