@@ -1,10 +1,10 @@
 import React, {Component} from "react";
 import Api from "../api/Api";
 import {Link} from "react-router-dom";
-import {MoviesData} from "./MoviesData";
-import Moment from "moment";
 
-export default class ShowsCreate {
+
+class ShowsCreate extends Component{
+
     dataList = async () => {
         await Api(`/movie/`, `GET`)
             .then(res => (this.setState(
@@ -118,3 +118,5 @@ export default class ShowsCreate {
         return (body);
     };
 }
+
+export default ShowsCreate;
