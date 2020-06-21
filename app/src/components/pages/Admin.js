@@ -1,6 +1,13 @@
 import React, {Component} from 'react';
-import MoviesCreate, {MoviesRead, MoviesReadAll, MoviesUpdate} from "../cinema/movies/MoviesCrud";
 import {Link, NavLink} from "react-router-dom";
+import MoviesCreate from "../cinema/movies/MoviesCreate";
+import MoviesReadAll from "../cinema/movies/MoviesReadAll";
+import MoviesUpdate from "../cinema/movies/MoviesUpdate";
+import MoviesRead from "../cinema/movies/MoviesRead";
+import Login from "../cinema/user/Login";
+import Registreren from "../cinema/user/Registreren";
+import MoviesDelete from "../cinema/movies/MoviesDelete";
+import ShowsCrud, { ShowsCreate } from '../cinema/movies/ShowsCrud';
 
 class Admin extends Component{
   constructor(props) {
@@ -14,7 +21,6 @@ class Admin extends Component{
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    let {page, crud} = this.props.match.params;
     if(prevProps !== this.props) {
       this.setState({
         page: (this.props.match.params.page) ? this.props.match.params.page.toLowerCase() : `null`,
@@ -31,7 +37,20 @@ class Admin extends Component{
     let body;
     console.log(this.state);
     switch(page) {
-      case `movies`:
+      case `user` :
+        switch (crud) {
+          case `inloggen`:
+            body = <Login/>;
+            break;
+          case `registreren`:
+            body = <Registreren/>;
+            break;
+          default:
+            body = <Login/>
+            break;
+        }
+      break;
+      case `movies` :
         switch (crud) {
           case `create`:
             body = <MoviesCreate/>;
@@ -49,17 +68,26 @@ class Admin extends Component{
           case `update`:
             body = <MoviesUpdate id={id}/>;
             break;
+          case `delete`:
+            body = <MoviesDelete id={id} />
+            break;
           default:
             body = (
               <main>
                 <h3>Kies 1 van de volgende opties</h3>
                 <ul>
-                  <li><NavLink to={`/admin/movies/1/read/`}>Read</NavLink></li>
-                  <li>Create</li>
-                  <li>Update</li>
+                  <li><NavLink to={`/admin/movies/readall/`}>Alle filmps</NavLink></li>
+                  <li><NavLink to={`/admin/movies/create/`}>Create</NavLink></li>
                 </ul>
               </main>
             );
+            break;
+        }
+        break;
+        case 'shows':
+        switch (crud) {
+          case 'create':
+            body = <ShowsCreate/>;
             break;
         }
         break;
@@ -73,10 +101,11 @@ class Admin extends Component{
                 <li><Link to={`/admin/movies/create`}>Create</Link></li>
                 <li><Link to={`/admin/movies/readall`}>Read all movies</Link></li>
               </ul>
-              <li><Link to={`/admin/tickets/`}>Tickets</Link></li>
+
+              <li><Link to={`/admin/shows/`}>Shows</Link></li>
               <ul>
-                <li><Link to={`/admin/tickets/create`}>Create</Link></li>
-                <li><Link to={`/admin/tickets/readall`}>Read all tickets</Link></li>
+                <li><Link to={`/admin/shows/create`}>Create</Link></li>
+                <li><Link to={`/admin/shows/readall`}>Read all shows</Link></li>
               </ul>
             </ul>
           </main>

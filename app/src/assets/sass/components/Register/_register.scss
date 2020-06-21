@@ -1,0 +1,233 @@
+.register-main {
+  background-color: #fe7900;
+
+  .modal__wrapper {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    -webkit-box-align: center;
+    align-items: center;
+    height: auto;
+    min-height: 100%;
+    width: 500px;
+    margin: 0 auto;
+    padding: 40px;
+  }
+
+  div {
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+    text-decoration: none;
+  }
+
+  .modal__card--has-header {
+    padding-top: 20px;
+  }
+
+  .modal__card {
+    border-radius: 5px;
+    height: auto;
+    -webkit-box-flex: 1;
+    flex: 1;
+    padding: 60px 24px;
+    border: 0;
+    width: 100%;
+    background-color: #f7f7f7;
+    box-shadow: 0 8px 10px -10px rgba(0,0,0,.7), 0 20px 30px -10px rgba(0,0,0,.5);
+    transition: transform .3s,-webkit-transform .3s;
+  }
+
+  .modal__header--progress {
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
+
+  .modal__header-inner {
+    align-items: center;
+    flex-wrap: wrap;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+  }
+
+  .top-menu-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: $orange;
+  }
+
+  span {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+    text-decoration: none;
+  }
+
+  .app-icon {
+    display: inline-block;
+  }
+
+  .modal__lock-icon {
+    margin-left: auto;
+  }
+
+  .solid {
+    border-top: 3px solid $orange;
+  }
+
+  .modal__content {
+    color: #000;
+    text-align: center;
+  }
+
+  .modal__container {
+    max-width: 300px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  form {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+    text-decoration: none;
+  }
+
+  .modal__title {
+    font-size: 1.1875rem;
+    font-weight: 700;
+  }
+
+  .modal__group--small {
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    line-height: 1.2;
+  }
+
+  .modal__body {
+    font-size: .875rem;
+    line-height: 1.75;
+  }
+
+  .modal__group--large {
+    margin-bottom: 40px;
+  }
+
+  .input-field {
+    display: flex;
+    position: relative;
+    margin-top: 20px;
+  }
+
+  .input-field__input {
+    display: inline-block;
+    width: 100%;
+    color: #000;
+    margin-bottom: 0;
+    border: none;
+    border-bottom: 1px solid hsla(0,0%,50.2%,.2);
+    padding-bottom: 10px;
+    background-color: transparent;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .inner-input {
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: 16px 18px;
+    background-position: 98% 50%;
+    cursor: pointer;
+  }
+
+  .input-field__label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: grey;
+    pointer-events: none;
+    transition: all .2s ease;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .modal__group {
+    margin-bottom: 24px;
+  }
+
+  .input-field__input--is-password-field {
+    padding-right: 36px;
+  }
+
+  .input-field__see-password {
+    background-color: $orange;
+    position: absolute;
+    width: 100px;
+    color: white;
+    padding: 10px;
+    right: 0;
+    top: 25%;
+    transform: translateY(-50%);
+    transition: opacity .2s;
+  }
+
+  button {
+    outline: 0;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    border: none;
+    line-height: 1;
+    font-size: 1rem;
+    font-family: montserrat,sans-serif;
+  }
+  .app-button {
+    padding: 20px 30px;
+    min-width: 300px;
+    border: 2px solid transparent;
+    border-radius: 50px;
+    color: #000;
+    background-color: $orange;
+    font-family: montserrat,sans-serif;
+    line-height: 1;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    box-shadow: 0 25px 15px -20px rgba(0,0,0,.1), 0 30px 30px -20px rgba(255,196,38,.3);
+  }
+  .app-button__content {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+  }
+  .app-button__text {
+    font-size: 1.1875rem;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    vertical-align: middle;
+    line-height: 1;
+  }
+  .font-bold {
+    font-weight: 600;
+  }
+}

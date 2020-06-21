@@ -539,7 +539,6 @@ export class MoviesReadAll extends MoviesCrud {
 
     movieList = () => {
         Api(`/movie/`)
-            // .then(res => console.log(res))
             .then(res => (this.setState(
                     {
                         movies: res,

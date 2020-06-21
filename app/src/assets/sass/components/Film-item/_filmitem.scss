@@ -1,0 +1,260 @@
+.filmitem-main {
+  .place {
+    border: 3px solid rgb(94, 24, 24);
+    color: #ededed;
+    margin: 10px 0;
+    border-radius: 10px 10px 50% 50%;
+    padding: 5px;
+    background-color: brown;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+
+    p {
+      margin: 0;
+      color: #fff;
+    }
+  }
+
+  .chosen-place {
+    background-color: rgb(53, 14, 14) !important;
+  }
+
+  .places-row {
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+    width: 80%;
+  }
+
+  .screen {
+    background-color: black;
+    width: 70%;
+    height: 10px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+  }
+  .time-stamps-wrapper {
+    p {
+      width: fit-content;
+      margin: 0 auto;
+      font-weight: bold;
+      font-size: 20px;
+    }
+    .play-moments {
+      display: flex;
+      justify-content: space-evenly;
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      margin: 30px;
+
+      .item {
+        cursor: pointer;
+        padding: 10px;
+
+        background-color: rgb(228, 228, 228);
+        border: 2px solid $orange;
+      }
+    }
+  }
+  div {
+    display: block;
+  }
+  .container {
+    width: 1170px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .container:before {
+    content: " ";
+    display: table;
+  }
+  .row {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+  .row:before {
+    content: " ";
+    display: table;
+  }
+  .single-movie {
+    margin-top: 30px;
+    color: #666;
+  }
+
+  .stoelen-wrapper {
+    border-top: 2px solid;
+    display: grid;
+    grid-template-rows: repeat(1fr);
+    grid-template-columns: repeat(1fr);
+    gap: 10px;
+    justify-items: stretch;
+    margin: 0;
+    margin-block-end:0px;
+    margin-block-start:0px;
+    margin-bottom:0px;
+    margin-inline-end:0px;
+    margin-inline-start:0px;
+    font-size:20px;
+    font-weight:700;
+
+    .place {
+      align-self: center;
+    }
+  }
+
+  .entry-showtime {
+    margin-top: 30px;
+
+    .amy-title {
+      display: inline-block;
+      font-size: 35px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      margin-top: 0;
+      position: relative;
+      padding-bottom: 5px;
+      color: $orange;
+    }
+    .showtime {
+      width: 100%;
+      float: none;
+      margin: 0;
+      background: #eeeeee;
+      padding: 40px;
+
+      label {
+        color: $black;
+        font-size: 14.98px;
+        font-weight: bold;
+        display: inline-block;
+        margin-bottom: 5px;
+      }
+      ul {
+        padding: 0;
+        margin: 0 0 25px;
+
+        li:first-child {
+          margin-left: 0;
+        }
+        li {
+          background: #dbdbdb;
+          border-radius: 4px;
+          color: #000;
+          font-size: 14px;
+          padding: 3px 10px;
+          margin: 0 6px 9px 0;
+          list-style: none;
+          display: inline-block;
+        }
+      }
+    }
+  }
+  .clearfix:before {
+    content: " ";
+    display: table;
+  }
+  .clearfix:after {
+    clear: both;
+    content: " ";
+    display: table;
+  }
+  .buy-ticket {
+    background: $orange none repeat scroll 0 0;
+    border: 0 none;
+    border-radius: 3px;
+    color: $white;
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: 25px;
+    padding: 5px 15px;
+    text-transform: uppercase;
+    transition: all 0.5s ease 0s;
+    width: auto;
+    float: right;
+  }
+  .buy-ticket:hover {
+    background: $black;
+    color: $orange;
+  }
+
+  .movie-box {
+    display: flex;
+    width: 100%;
+
+    .poster {
+      min-width: 370px;
+      float: left;
+      margin-right: 30px;
+    }
+    .detail {
+      .summary {
+        margin-top: 25px;
+
+        p {
+          margin-bottom: 15px;
+        }
+      }
+      .detail-heading {
+        .genre {
+          font-size: 13px;
+          color: $orange;
+          font-weight: 600;
+          text-transform: uppercase;
+          margin-top: -4px;
+          margin-bottom: 4px;
+        }
+        .name {
+          font-size: 30px;
+          line-height: 1.4;
+          color: #222222;
+          font-weight: 600;
+          margin-bottom: 36px;
+        }
+      }
+      .detail-list {
+        .detail-row {
+          display: flex;
+          margin-bottom: 11px;
+
+          .detail-title {
+            font-weight: 600;
+            margin-right: 30px;
+            min-width: 100px;
+
+            span:after {
+              content: ":";
+            }
+            i {
+              font-size: 16px;
+              color: $orange;
+              margin-right: 10px;
+            }
+            .icon:before {
+              content: "●";
+            }
+          }
+        }
+        .detail-row:before {
+          content: "";
+          display: block;
+          clear: both;
+        }
+        .detail-row:after {
+          content: "";
+          display: block;
+          clear: both;
+        }
+      }
+      .detail-list:before {
+        content: "";
+        display: block;
+        clear: both;
+      }
+    }
+  }
+}

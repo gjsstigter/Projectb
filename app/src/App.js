@@ -1,14 +1,21 @@
 import React, { Component } from "react";
 
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 
 import Home from "./components/pages/Home";
+import FilmItem from "./components/pages/Filmitem"
 import Header from "./components/header/Header";
-import P404 from "./components/pages/P404";
+import Contact from "./components/pages/Contact";
 import './assets/sass/_main.scss'
 import Admin from "./components/pages/Admin";
+import Films from "./components/pages/Films";
 
 class App extends Component {
+
+    // LoginStatus = (id, uname, upass) => {
+    //     return (id && uname && upass) ?  true : false;
+    // }
+
     render() {
         return (
             <Router>
@@ -16,10 +23,12 @@ class App extends Component {
                     <Header/>
                     <Switch>
                         <Route path={`/`} exact component={Home}/>
-                        <Route path={[`/admin/:page/:crud/:id`, `/admin/:page/:crud/`, `/admin/:page/`, `/admin/`]} component={Admin}/>
-                        <Route component={P404}/>
+                        <Route path={`/films/:id`} component={FilmItem}/>
+                        <Route path={`/films`} component={Films}/>
+                        <Route path={`/contact`} component={Contact}/>
+                        <Route path={[`/admin/:page/:crud/:id`, `/admin/:page/:crud/`, `/admin/:page/`, `/admin/`, `/:page/:crud`]} component={Admin}/>
+                        <Redirect path={`*`} to={`/`}/>
                     </Switch>
-
                 </div>
             </Router>
     );

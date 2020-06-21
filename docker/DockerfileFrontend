@@ -8,8 +8,6 @@ RUN mkdir -p /app
 WORKDIR /app
 COPY ./app ./
 
-ENV DANGEROUSLY_DISABLE_HOST_CHECK=true
-
 CMD if [ "${APP_ENV}" = "production" ]; \
 	then \
 	npm install && \
