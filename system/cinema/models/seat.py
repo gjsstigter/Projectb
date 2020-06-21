@@ -8,10 +8,10 @@ class Seat(models.Model):
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
 
     class Meta:
-        unique_together = ('row', 'number', )
+        unique_together = ('room', 'row', 'number', )
 
     def __str__(self):
-        return str(room) + ":" + str(self.row) + "-" + str(self.number)
+        return str(self.row) + "-" + str(self.number)
 
     @classmethod
     def create(cls, row, number, room):

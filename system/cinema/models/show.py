@@ -4,6 +4,8 @@ from django.db import models
 from .room import Room
 from .movie import Movie
 from .seat import Seat
+import random
+import string
 
 
 class Show(models.Model):
