@@ -50,7 +50,7 @@ class showsReadAll extends Component{
                                     return (<tr key={sho.id}>
                                         <td>{sho.id}</td>
                                         <td>{sho.movie}</td>
-                                        <td><Link to={`/admin/show/read/${show.id}`}>Bekijk show</Link></td>
+                                        <td><Link to={`/admin/shows/read/${sho.id}`}>Bekijk show</Link></td>
                                     </tr>)
                                 })}
                                 </tbody>

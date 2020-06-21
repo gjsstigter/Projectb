@@ -20,6 +20,9 @@ def room_create(request):
     room = Room.objects.create(name=data['name'])
     room.save()
 
+    data['rows'] = int(data['rows'])
+    data['seats'] = int(data['seats'])
+
     while data['rows'] > 0:
         seats = data['seats']
         while seats > 0:
